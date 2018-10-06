@@ -10,3 +10,6 @@
 
 - include_tasks:
     journald.yml
+
+- include_tasks:
+    dnf.yml
