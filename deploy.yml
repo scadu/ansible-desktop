@@ -1,0 +1,47 @@
+---
+- name: zomg desktop
+  hosts: all
+  pre_tasks:
+  - name: Install libselinux-python
+    become: yes
+    package:
+      name: libselinux-python
+    state: present
+
+  roles:
+  - role: common
+    tags: ['common']
+  - role: flatpak
+    tags: ['flatpak']
+  - role: syncthing
+    when: install_syncthing
+    tags: ['syncthing']
+  - role: vscode
+    tags: ['vscode']
+    users:
+     - username: "{{ansible_user_id}}"
+       visual_studio_code_extensions:
+        - ms-python.python
+        - technosophos.vscode-helm
+        - vscodevim.vim
+        - redhat.vscode-yaml
+        - mauve.terraform
+        - eamodio.gitlens
+        - wholroyd.jinja
+       visual_studio_code_settings: {
+        "update.channel": "none",
+        "telemetry.enableTelemetry": false,
+        "gitlens.showWhatsNewAfterUpgrades": false,
+        "workbench.colorTheme": "Solarized Light",
+        "workbench.sideBar.location": "right",
+        "window.menuBarVisibility": "toggle",
+        "editor.minimap.enabled": false,
+        "editor.renderWhitespace": "all",
+        "git.autofetch": false,
+        "git.confirmSync": false,
+        "window.zoomLevel": 0,
+        "breadcrumbs.enabled": true
+       }
+
+  vars_files:
+    - config.yml

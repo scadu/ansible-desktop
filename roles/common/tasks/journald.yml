@@ -1,0 +1,17 @@
+---
+- name: configure jorunald
+  become: yes
+
+  handlers:
+  - name: restart journald
+    service:
+      name: systemd-journald 
+      state: restarted
+
+  template:
+    src: templates/journald.conf.j2
+    dest: /etc/systemd/journald.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart jorunald

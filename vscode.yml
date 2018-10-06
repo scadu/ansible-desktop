@@ -1,0 +1,27 @@
+---
+- hosts: all
+  roles:
+  - role: vscode
+    users:
+     - username: "{{ansible_user_id}}"
+       visual_studio_code_extensions:
+        - ms-python.python
+        - technosophos.vscode-helm
+        - vscodevim.vim
+        - redhat.vscode-yaml
+        - mauve.terraform
+        - eamodio.gitlens
+       visual_studio_code_settings: {
+        "update.channel": "none",
+        "telemetry.enableTelemetry": false,
+        "gitlens.showWhatsNewAfterUpgrades": false,
+        "workbench.colorTheme": "Solarized Light",
+        "workbench.sideBar.location": "right",
+        "window.menuBarVisibility": "toggle",
+        "editor.minimap.enabled": false,
+        "editor.renderWhitespace": "all",
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "window.zoomLevel": 0,
+        "breadcrumbs.enabled": true
+       }

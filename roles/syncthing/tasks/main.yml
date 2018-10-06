@@ -1,0 +1,13 @@
+---
+- name: install syncthing
+  become: yes
+  package:
+    name: syncthing
+    state: present
+
+- name: enable syncthing service
+  become: yes
+  systemd:
+    name: "syncthing@{{ansible_user_id}}.service"
+    state: started
+    enabled: yes
