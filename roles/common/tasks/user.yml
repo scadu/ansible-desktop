@@ -2,7 +2,7 @@
 - name: set zsh as default shell
   become: yes
   user:
-    name: "{{ansible_user_id}}"
+    name: "{{ ansible_user_id }}"
     update_password: on_create
     shell: /bin/zsh
     

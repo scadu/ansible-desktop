@@ -19,7 +19,7 @@
   - role: vscode
     tags: ['vscode']
     users:
-     - username: "{{ansible_user_id}}"
+     - username: "{{ ansible_user_id }}"
        visual_studio_code_extensions:
         - ms-python.python
         - technosophos.vscode-helm

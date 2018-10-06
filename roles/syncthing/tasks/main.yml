@@ -8,6 +8,6 @@
 - name: enable syncthing service
   become: yes
   systemd:
-    name: "syncthing@{{ansible_user_id}}.service"
+    name: "syncthing@{{ ansible_user_id }}.service"
     state: started
     enabled: yes
