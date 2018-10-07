@@ -1,15 +1,13 @@
 ---
-- include_tasks:
-    user.yml
+- include_tasks: user.yml
 
-- include_tasks:
-    rpmfusion.yml
+- include_tasks: rpmfusion.yml
 
-- include_tasks:
-    packages.yml
+- include_tasks: packages.yml
 
-- include_tasks:
-    journald.yml
+- include_tasks: journald.yml
 
-- include_tasks:
-    dnf.yml
+- include_tasks: dnf.yml
+
+- include_tasks: alps.yml
+  when: ansible_product_name == "Latitude E7240"
