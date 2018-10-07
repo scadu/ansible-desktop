@@ -5,4 +5,4 @@ if ! [ -x "$(command -v ansible)" ]; then
   sudo dnf install -y ansible
 fi
 
-ansible-playbook deploy.yml
+ansible-playbook deploy.yml -vv -D
