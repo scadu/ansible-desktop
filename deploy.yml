@@ -18,6 +18,7 @@
     tags: ['syncthing']
   - role: vscode
     tags: ['vscode']
+    when: install_syncthing
     users:
      - username: "{{ ansible_user_id }}"
        visual_studio_code_extensions:
