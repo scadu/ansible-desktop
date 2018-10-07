@@ -13,6 +13,8 @@ packages:
   - htop
   - iftop
   - ncdu
+  - strace
+  - kubernetes-client
   - aria2
   - youtube-dl
   - mpv
