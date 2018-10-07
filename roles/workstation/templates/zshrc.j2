@@ -1,0 +1,103 @@
+# Modules
+autoload -Uz compinit vcs_info
+autoload -Uz history-search-end
+compinit
+
+# vcs_info configurations
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git*' actionformats "%u%c %b"
+zstyle ':vcs_info:*' check-for-changes true
+
+zle -N edit-command-line
+zle -N zle-line-init
+zle -N zle-keymap-select
+zle -N history-beginning-search-backward-end history-search-end
+
+# Shell options
+setopt auto_cd                  \
+    glob_dots                   \
+    hist_verify                 \
+    hist_append                 \
+    prompt_subst                \
+    share_history               \
+    extended_glob               \
+    rm_star_silent              \
+    hist_fcntl_lock             \
+    complete_aliases            \
+    numeric_glob_sort           \
+    hist_save_no_dups           \
+    hist_ignore_space           \
+    hist_ignore_space           \
+    hist_reduce_blanks          \
+    inc_append_history          \
+    hist_ignore_all_dups        \
+
+READNULLCMD=$PAGER
+HELPDIR=/usr/share/zsh/$ZSH_VERSION/help
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=25000
+SAVEHIST=$HISTSIZE
+HISTORY_IGNORE="ls:[bf]g:clear:reset:cd:cd ..:exit"
+
+# Style
+zstyle ':completion:*' menu select
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' rehash yes
+zstyle ':completion:*' list-colors
+
+if [[ $EUID -ne 0 ]]; then
+	PROMPT='%M ${vimode}%F{green}${branch}%f %F{cyan}%~ %f'
+else
+	PROMPT='%F{red}%}%M%F ${vimode}%F{green}${branch}%f %F{cyan}%~ %f'
+fi
+
+# vimode, insert mode by default, replace indicators
+function zle-line-init zle-keymap-select {
+    vimode=${${KEYMAP/vicmd/n}/(main|viins)/i}
+    zle reset-prompt
+}
+
+bindkey -v
+vimode=i
+
+# allow v to edit the command line (standard behaviour)
+autoload -Uz edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+# allow ctrl-p, ctrl-n for navigate history (standard behaviour)
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# allow ctrl-h, ctrl-w, ctrl-? for char and word deletion (standard behaviour)
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+
+# allow ctrl-r to perform backward search in history
+bindkey '^r' history-incremental-search-backward
+
+# allow ctrl-a and ctrl-e to move to beginning/end of line
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
+# search history with already entered command
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-backward-end
+
+# Misc aliases
+alias e='$EDITOR'
+alias resrc='source $HOME/.zshrc'
+alias rexsrc='xrdb -all $HOME/.Xresources'
+alias rm='rm -vI'
+alias rmr='rm -vIr'
+alias mkdir='mkdir -vp'
+alias ln='ln -vi'
+alias ls='ls -ltr'
+alias cp='cp -rvi'
+alias mv='mv -vi'
+alias grep='grep --color=auto'
+
+alias aria2t="aria2c --bt-force-encryption=true --seed-time=0"

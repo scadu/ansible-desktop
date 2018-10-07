@@ -1,0 +1,10 @@
+export LC_ALL="en_US.UTF-8"
+export PATH="/usr/local/bin:/opt/:$HOME/bin:$HOME/.local/bin/:$PATH"
+
+if [ -x "$(which nvim)" ] ; then
+	export EDITOR="nvim"
+elif [ -x "$(which vim)" ] ; then
+	export EDITOR="vim"
+elif [ -x "$(which vi)" ] ; then
+	export EDITOR="vi"
+fi

@@ -31,3 +31,9 @@ vscode_extensions:
   - mauve.terraform
   - eamodio.gitlens
   - wholroyd.jinja
+
+git:
+  name: Łukasz Jendrysik
+  email: scadu@disroot.org
+  signingkey: 81428558222B6C926149C6814F521D0B0F66261E
+  gpgsign: true

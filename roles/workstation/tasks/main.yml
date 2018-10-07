@@ -20,3 +20,5 @@
 
 - import_tasks: tlp.yml
   when: install_tlp
+
+- import_tasks: dotfiles.yml

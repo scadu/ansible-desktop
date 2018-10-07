@@ -29,7 +29,7 @@
 
   - name: apply vscode settings
     template:
-      src: templates/settings.json.j2
+      src: templates/vscode_settings.json.j2
       dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
       force: yes
       mode: 'u=rw,go='

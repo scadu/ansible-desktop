@@ -1,0 +1,16 @@
+---
+- name: install dotfiles
+  tags:
+    - dotfiles
+
+  block:
+  - name: install dotfiles
+    template: 
+      src: "templates/{{ item }}.j2"
+      dest: "{{ ansible_user_dir }}/.{{ item }}"
+      owner: "{{ ansible_user_id }}"
+      group: "{{ ansible_user_id }}"
+    with_items:
+      - gitconfig
+      - zshrc
+      - zshenv
