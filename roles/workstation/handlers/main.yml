@@ -1,0 +1,11 @@
+---
+- name: restart journald
+  systemd:
+    name: systemd-journald
+    state: restarted
+
+- name: start syncthing
+  systemd:
+    name: "syncthing@{{ ansible_user_id }}.service"
+    state: started
+    enabled: yes

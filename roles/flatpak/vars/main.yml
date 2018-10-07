@@ -1,5 +1,0 @@
----
-
-flathub_repo: https://flathub.org/repo/flathub.flatpakrepo
-flatpak_spotify_ref: https://flathub.org/repo/appstream/com.spotify.Client.flatpakref
-flatpak_signal_ref: https://flathub.org/repo/appstream/org.signal.Signal.flatpakref

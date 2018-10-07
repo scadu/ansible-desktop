@@ -1,3 +1,30 @@
 ---
 install_syncthing: yes
 install_vscode: yes
+
+packages:
+  - git
+  - vim
+  - ansible
+  - zsh
+  - ShellCheck
+  - tmux
+  - htop
+  - iftop
+  - ncdu
+  - aria2
+  - youtube-dl
+  - mpv
+  - keepassxc
+  - chrome-gnome-shell
+  - gnome-tweak-tool
+  - asciinema
+
+vscode_extensions:
+  - ms-python.python
+  - technosophos.vscode-helm
+  - vscodevim.vim
+  - redhat.vscode-yaml
+  - mauve.terraform
+  - eamodio.gitlens
+  - wholroyd.jinja

@@ -1,0 +1,19 @@
+---
+- import_tasks: user.yml
+
+- import_tasks: dnf_config.yml
+
+- import_tasks: packages.yml
+
+- import_tasks: terraform.yml
+
+- import_tasks: syncthing.yml
+  when: install_syncthing
+
+- import_tasks: journald.yml
+
+- import_tasks: vscode.yml
+  when: install_vscode
+
+- import_tasks: alps.yml
+  when: ansible_product_name == "Latitude E7240"

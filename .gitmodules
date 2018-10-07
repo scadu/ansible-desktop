@@ -1,3 +1,0 @@
-[submodule "roles/vscode"]
-	path = roles/vscode
-	url = https://github.com/scadu/ansible-role-visual-studio-code

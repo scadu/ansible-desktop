@@ -1,0 +1,12 @@
+---
+- name: install syncthing
+  become: yes
+  tags:
+    - syncthing
+
+  block:
+  - name: install syncthing
+    package:
+      name: syncthing
+      state: present
+    notify: start syncthing

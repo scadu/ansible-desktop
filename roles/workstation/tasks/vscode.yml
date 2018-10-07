@@ -1,0 +1,57 @@
+
+---
+- name: install vscode
+  tags:
+    - vscode
+
+  block:
+  - name: install vscode repo
+    become: yes
+    yum_repository:
+      name: code
+      description: Visual Studio Code repo
+      file: vscode
+      baseurl: https://packages.microsoft.com/yumrepos/vscode
+      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+      gpgcheck: yes
+
+  - name: install vscode
+    become: yes
+    package:
+      name: code
+      state: present
+
+  - name: create vscode settings directory
+    file:
+      path: "{{ ansible_user_dir }}/.config/Code/User"
+      state: directory
+      mode: 'u=rwx,go='
+
+  - name: apply vscode settings
+    template:
+      src: templates/settings.json.j2
+      dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
+      force: yes
+      mode: 'u=rw,go='
+
+  - name: install extension cli dependencies
+    become: yes
+    package:
+      name: libX11-xcb
+      state: present
+
+  - name: create config directory
+    file:
+      path: "{{ ansible_user_dir }}/.config"
+      state: directory
+      mode: 'u=rwx,go=r'
+
+  - name: create vscode config directory
+    file:
+      path: "{{ ansible_user_dir }}/.config/Code/User"
+      state: directory
+      mode: 'u=rwx,go='
+
+  - name: install vscode extensions
+    command: "code --install-extension '{{ item }}'"
+    loop: "{{ vscode_extensions }}"

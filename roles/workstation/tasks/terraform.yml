@@ -1,0 +1,23 @@
+---
+
+- name: install Terraform
+  tags:
+    - terraform
+  block:
+    - name: make sure that bin dir exists
+      file: 
+        path: "{{ ansible_user_dir }}/bin"
+        state: directory
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_id }}"
+
+    - name: download Terraform binary
+      get_url:
+        url: "{{ terraform_url }}"
+        dest: /tmp/terraform.zip
+        checksum: "{{ terraform_checksum }}"
+
+    - name: download Terraform binary
+      unarchive:
+        src: /tmp/terraform.zip
+        dest: "{{ ansible_user_dir }}/bin"
