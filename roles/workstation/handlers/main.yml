@@ -1,11 +1,32 @@
 ---
 - name: restart journald
+  become: yes
   systemd:
     name: systemd-journald
     state: restarted
 
 - name: start syncthing
+  become: yes
   systemd:
     name: "syncthing@{{ ansible_user_id }}.service"
     state: started
     enabled: yes
+
+- name: start tlp
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - tlp
+    - tlp-sleep
+
+- name: mask systemd-rfkill
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    masked: yes
+  with_items:
+    - systemd-rfkill.service
+    - systemd-rfkll.socket

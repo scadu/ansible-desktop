@@ -1,6 +1,7 @@
 ---
 install_syncthing: yes
 install_vscode: yes
+install_tlp: yes
 
 packages:
   - git

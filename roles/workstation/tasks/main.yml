@@ -17,3 +17,6 @@
 
 - import_tasks: alps.yml
   when: ansible_product_name == "Latitude E7240"
+
+- import_tasks: tlp.yml
+  when: install_tlp
