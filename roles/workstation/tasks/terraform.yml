@@ -11,13 +11,13 @@
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_id }}"
 
-    - name: download Terraform binary
+    - name: download Terraform
       get_url:
         url: "{{ terraform_url }}"
         dest: /tmp/terraform.zip
         checksum: "{{ terraform_checksum }}"
 
-    - name: download Terraform binary
+    - name: extract Terraform binary
       unarchive:
         src: /tmp/terraform.zip
         dest: "{{ ansible_user_dir }}/bin"
