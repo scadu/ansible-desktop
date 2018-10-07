@@ -26,6 +26,7 @@
   become: yes
   systemd:
     name: "{{ item }}"
+    enabled: no
     masked: yes
   with_items:
     - systemd-rfkill.service
