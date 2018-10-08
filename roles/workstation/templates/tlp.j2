@@ -195,7 +195,7 @@ USB_AUTOSUSPEND=1
 # Use lsusb to get the ids.
 # Note: input devices (usbhid) are excluded automatically
 {% if ansible_product_name == "Latitude E7240" %}
-USB_BLACKLIST="8087:8000"
+USB_BLACKLIST="00:19.0 02:00.0"
 {% else %}
 #USB_BLACKLIST="1111:2222 3333:4444"
 {% endif %}
