@@ -1,3 +1,4 @@
+{{ ansible_managed | comment }}
 # ------------------------------------------------------------------------------
 # tlp - Parameters for power saving
 # See full explanation: http://linrunner.de/en/tlp/docs/tlp-configuration.html
@@ -128,8 +129,14 @@ DISK_APM_LEVEL_ON_BAT="128"
 #   min_power, med_power_with_dipm(*), medium_power, max_performance.
 # (*) Kernel >= 4.15 required, then recommended.
 # Multiple values separated with spaces are tried sequentially until success.
+{% if (ansible_mounts | selectattr('fstype', 'equalto', 'btrfs')  | map(attribute='fstype') | list) %}
+# https://github.com/linrunner/TLP/issues/128
+SATA_LINKPWR_ON_AC="max_performance"
+SATA_LINKPWR_ON_BAT="max_performance"
+{% else %}
 SATA_LINKPWR_ON_AC="med_power_with_dipm max_performance"
 SATA_LINKPWR_ON_BAT="med_power_with_dipm min_power"
+{% endif %}
 
 # Exclude host devices from AHCI link power management.
 # Separate multiple hosts with spaces.
