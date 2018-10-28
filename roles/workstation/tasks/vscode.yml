@@ -5,15 +5,20 @@
     - vscode
 
   block:
+  - name: install vscode repo key
+    become: yes
+    rpm_key:
+      state: present
+      key: https://packages.microsoft.com/keys/microsoft.asc
+
   - name: install vscode repo
     become: yes
-    yum_repository:
-      name: code
-      description: Visual Studio Code repo
-      file: vscode
-      baseurl: https://packages.microsoft.com/yumrepos/vscode
-      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-      gpgcheck: yes
+    template:
+      src: vscode.repo.j2
+      dest: '/etc/zypp/repos.d/vscode.repo'
+      mode: 'u=rw,go=r'
+      owner: root
+      group: root
 
   - name: install vscode
     become: yes
@@ -33,12 +38,6 @@
       dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
       force: yes
       mode: 'u=rw,go='
-
-  - name: install extension cli dependencies
-    become: yes
-    package:
-      name: libX11-xcb
-      state: present
 
   - name: create config directory
     file:

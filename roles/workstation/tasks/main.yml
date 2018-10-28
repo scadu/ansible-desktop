@@ -1,8 +1,6 @@
 ---
 - import_tasks: user.yml
 
-- import_tasks: dnf_config.yml
-
 - import_tasks: packages.yml
 
 - import_tasks: terraform.yml
@@ -16,7 +14,7 @@
   when: install_vscode
 
 - import_tasks: alps.yml
-  when: ansible_product_name == "Latitude E7240"
+  when: ansible_product_name == "Latitude E7240" and configure_alps
 
 - import_tasks: tlp.yml
   when: install_tlp

@@ -9,7 +9,6 @@
         path: "{{ ansible_user_dir }}/bin"
         state: directory
         owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_id }}"
 
     - name: download Terraform
       get_url:

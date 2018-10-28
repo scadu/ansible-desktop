@@ -1,13 +1,6 @@
 ---
 - name: zomg desktop
   hosts: all
-  pre_tasks:
-  - name: install libselinux-python so text-based operations would pass
-    become: yes
-    package:
-      name: libselinux-python
-    state: present
-
   roles:
   - role: workstation
     tags: ['workstation']
