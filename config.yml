@@ -2,6 +2,7 @@
 install_syncthing: yes
 install_vscode: yes
 install_tlp: yes
+configure_alps: no
 
 packages:
   - git
@@ -14,14 +15,11 @@ packages:
   - iftop
   - ncdu
   - strace
-  - kubernetes-client
   - aria2
   - youtube-dl
   - mpv
-  - keepassxc
-  - chrome-gnome-shell
-  - gnome-tweak-tool
   - asciinema
+  - kubectl
 
 vscode_extensions:
   - ms-python.python
@@ -36,4 +34,4 @@ git:
   name: Łukasz Jendrysik
   email: scadu@disroot.org
   signingkey: 81428558222B6C926149C6814F521D0B0F66261E
-  gpgsign: true
+  gpgsign: false
