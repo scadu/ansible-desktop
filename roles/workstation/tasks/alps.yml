@@ -7,6 +7,15 @@
     - touchpad
 
   block:
+  - name: create /etc/udev/hwdb.d
+    file:
+      name: /etc/udev/hwdb.d
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+
+
   - name: apply hwdb touchpad configuration
     template:
       src: templates/99-touchpad-pressure.hwdb.j2
