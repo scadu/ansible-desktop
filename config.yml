@@ -6,7 +6,8 @@ configure_alps: no
 
 packages:
   - git
-  - vim
+  - neovim
+  - python3-neovim
   - ansible
   - zsh
   - ShellCheck
@@ -19,11 +20,9 @@ packages:
   - youtube-dl
   - mpv
   - asciinema
-  - kubectl
 
 vscode_extensions:
   - ms-python.python
-  - technosophos.vscode-helm
   - vscodevim.vim
   - redhat.vscode-yaml
   - mauve.terraform
