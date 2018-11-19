@@ -19,6 +19,8 @@ packages:
   - youtube-dl
   - mpv
   - asciinema
+  - chromium
+  - chromium-plugin-widevinecdm
 
 vscode_extensions:
   - ms-python.python
