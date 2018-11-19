@@ -2,7 +2,7 @@
 
 if ! [ -x "$(command -v ansible)" ]; then
   echo 'Ansible not found. Installing...' >&2
-  sudo zypper install -y ansible
+  pip install --user 'ansible==2.6.8'
 fi
 
-ansible-playbook deploy.yml -vv -D
+ansible-playbook deploy.yml -vv -D -K
