@@ -8,7 +8,6 @@ packages:
   - git
   - neovim
   - python3-neovim
-  - ansible
   - zsh
   - ShellCheck
   - tmux
