@@ -6,3 +6,4 @@ terraform_checksum: "sha256:43543a0e56e31b0952ea3623521917e060f2718ab06fe2b2d506
 flathub_repo: https://flathub.org/repo/flathub.flatpakrepo
 flatpak_spotify: https://flathub.org/repo/appstream/com.spotify.Client.flatpakref
 flatpak_signal: https://flathub.org/repo/appstream/org.signal.Signal.flatpakref
+flatpak_telegram: https://flathub.org/repo/appstream/org.telegram.desktop.flatpakref

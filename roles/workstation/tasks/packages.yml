@@ -37,3 +37,26 @@
     flatpak:
       name: "{{ flatpak_signal }}"
       state: present
+
+  - name: install telegram flatpak
+    flatpak:
+      name: "{{ flatpak_telegram }}"
+      state: present
+
+- name: install devl basis
+  become: yes
+  tags:
+    - packages
+    - devel
+
+  block:
+  - name: install devel basis
+    package:
+      name: devel_basis
+      type: pattern
+      state: present
+
+  - name: install python3-devel
+    package:
+      name: python3-devel
+      state: present
