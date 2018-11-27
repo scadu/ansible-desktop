@@ -10,7 +10,7 @@
   - name: add packman repository
     zypper_repository:
       name: packman
-      repo: 'http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_{{ ansible_distribution_version }}/'
+      repo: "{{ packman_repo }}"
       state: present
       auto_import_keys: yes
       runrefresh: yes
@@ -23,7 +23,7 @@
   become: yes
   zypper_repository:
     name: security
-    repo: 'https://download.opensuse.org/repositories/security/openSUSE_Leap_{{ ansible_distribution_version }}/'
+    repo: "{{ security_repo }}"
     state: present
     auto_import_keys: yes
     runrefresh: yes
