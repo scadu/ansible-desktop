@@ -8,7 +8,7 @@ if ! [ -x "$(command -v pip2)" ]; then
 fi
 
 echo 'Installing Ansible...' >&2
-pip2 install virtualenv && pip install --user virtualenv
+pip2 install virtualenv && pip2 install --user virtualenv
 virtualenv venv && source venv/bin/activate
 pip2 install -r requirements.txt
 
