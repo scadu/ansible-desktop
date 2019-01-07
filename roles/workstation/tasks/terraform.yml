@@ -3,9 +3,6 @@
   tags:
     - terraform
 
-- name: install terraform
-  tags:
-    - terraform
   block:
     - name: make sure that bin dir exists
       file: 
