@@ -1,56 +1,50 @@
-
 ---
 - name: install vscode
   tags:
     - vscode
 
+  become: yes
   block:
-  - name: install vscode repo key
-    become: yes
-    rpm_key:
-      state: present
-      key: https://packages.microsoft.com/keys/microsoft.asc
+  - name: add microsoft signing key
+    apt_key:
+       url: "{{ ms_repo_key }}"
+       state: present
 
-  - name: install vscode repo
-    become: yes
-    template:
-      src: vscode.repo.j2
-      dest: '/etc/zypp/repos.d/vscode.repo'
-      mode: 'u=rw,go=r'
-      owner: root
-      group: root
+  - name: add vscode repository
+    apt_repository:
+      repo: "{{ vscode_repo }}"
+      state: present
 
   - name: install vscode
-    become: yes
     package:
       name: code
       state: present
 
-  - name: create vscode settings directory
-    file:
-      path: "{{ ansible_user_dir }}/.config/Code/User"
-      state: directory
-      mode: 'u=rwx,go='
+- name: create vscode settings directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/Code/User"
+    state: directory
+    mode: 'u=rwx,go='
 
-  - name: apply vscode settings
-    template:
-      src: templates/vscode_settings.json.j2
-      dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
-      force: yes
-      mode: 'u=rw,go='
+- name: apply vscode settings
+  template:
+    src: templates/vscode_settings.json.j2
+    dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
+    force: yes
+    mode: 'u=rw,go='
 
-  - name: create config directory
-    file:
-      path: "{{ ansible_user_dir }}/.config"
-      state: directory
-      mode: 'u=rwx,go=r'
+- name: create config directory
+  file:
+    path: "{{ ansible_user_dir }}/.config"
+    state: directory
+    mode: 'u=rwx,go=r'
 
-  - name: create vscode config directory
-    file:
-      path: "{{ ansible_user_dir }}/.config/Code/User"
-      state: directory
-      mode: 'u=rwx,go='
+- name: create vscode config directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/Code/User"
+    state: directory
+    mode: 'u=rwx,go='
 
-  - name: install vscode extensions
-    command: "code --install-extension '{{ item }}'"
-    loop: "{{ vscode_extensions }}"
+- name: install vscode extensions
+  command: "code --install-extension '{{ item }}'"
+  loop: "{{ vscode_extensions }}"

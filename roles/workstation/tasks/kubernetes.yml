@@ -1,0 +1,21 @@
+---
+- name: install kubernetes
+  tags:
+    - kubernetes
+
+  become: yes
+  block:
+    - name: add kubernetes repo key
+      apt_key:
+          url: "{{ kubernetes_repo_key }}"
+          state: present
+
+    - name: add kubernetes repository
+      apt_repository:
+        repo: "{{ kubernetes_repo }}"
+        state: present
+
+    - name: install kubectl
+      package:
+        name: kubectl
+        state: present

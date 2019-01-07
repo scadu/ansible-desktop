@@ -1,12 +1,24 @@
 ---
+# terraform
 terraform_version: 0.11.10
 terraform_url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
 terraform_checksum: "sha256:43543a0e56e31b0952ea3623521917e060f2718ab06fe2b2d506cfaa14d54527"
 
-flathub_repo: https://flathub.org/repo/flathub.flatpakrepo
-flatpak_spotify: https://flathub.org/repo/appstream/com.spotify.Client.flatpakref
-flatpak_signal: https://flathub.org/repo/appstream/org.signal.Signal.flatpakref
-flatpak_telegram: https://flathub.org/repo/appstream/org.telegram.desktop.flatpakref
+# chrome
+chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+chrome_repo: "deb http://dl.google.com/linux/chrome/deb/ stable main"
 
-security_repo: http://download.opensuse.org/repositories/security/{{ ansible_lsb.description | regex_replace(' ', '_') }}/
-packman_repo: http://ftp.gwdg.de/pub/linux/misc/packman/suse/{{ ansible_lsb.description | regex_replace(' ', '_') }}/
+# vscode
+ms_repo_key: "https://packages.microsoft.com/keys/microsoft.asc"
+vscode_repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+
+# kubernetes
+kubernetes_repo_key: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+kubernetes_repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+
+# tarsnap
+tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
+tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
+
+# prezto
+prezto_repo: "https://github.com/scadu/prezto.git"

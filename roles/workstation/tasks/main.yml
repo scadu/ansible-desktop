@@ -1,8 +1,6 @@
 ---
 - import_tasks: user.yml
 
-- import_tasks: repos.yml
-
 - import_tasks: packages.yml
 
 - import_tasks: terraform.yml
@@ -14,6 +12,15 @@
 
 - import_tasks: vscode.yml
   when: install_vscode
+
+- import_tasks: chrome.yml
+  when: install_chrome
+
+- import_tasks: tarsnap.yml
+  when: install_tarsnap
+
+- import_tasks: kubernetes.yml
+  when: install_kubernetes
 
 - import_tasks: alps.yml
   when: ansible_product_name == "Latitude E7240" and configure_alps

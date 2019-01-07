@@ -1,0 +1,21 @@
+---
+- name: install chrome
+  tags:
+    - chrome
+
+  become: yes
+  block:
+  - name: add chrome repo key
+    apt_key:
+       url: "{{ chrome_repo_key }}"
+       state: present
+
+  - name: add chrome repository
+    apt_repository:
+      repo: "{{ chrome_repo }}"
+      state: present
+
+  - name: install chrome
+    package:
+      name: google-chrome-stable
+      state: present
