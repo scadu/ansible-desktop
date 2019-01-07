@@ -1,4 +1,4 @@
-This repository contains an Ansible roles to set up Ubuntu-based machines.
+This repository contains Ansible role for provisioning Ubuntu machines.
 
 Tested on Ubuntu 18.04.
 
