@@ -13,6 +13,7 @@
     - name: add kubernetes repository
       apt_repository:
         repo: "{{ kubernetes_repo }}"
+        filename: kubernetes
         state: present
 
     - name: install kubectl

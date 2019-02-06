@@ -13,6 +13,7 @@
   - name: add tarsnap repository
     apt_repository:
       repo: "{{ tarsnap_repo }}"
+      filename: tarsnap
       state: present
 
   - name: install tarsnap

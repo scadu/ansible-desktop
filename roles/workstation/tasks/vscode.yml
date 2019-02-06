@@ -13,6 +13,7 @@
   - name: add vscode repository
     apt_repository:
       repo: "{{ vscode_repo }}"
+      filename: vscode
       state: present
 
   - name: install vscode
