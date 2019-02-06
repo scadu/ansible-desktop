@@ -1,8 +1,8 @@
 ---
 # terraform
-terraform_version: 0.11.10
+terraform_version: 0.11.11
 terraform_url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-terraform_checksum: "sha256:43543a0e56e31b0952ea3623521917e060f2718ab06fe2b2d506cfaa14d54527"
+terraform_checksum: "sha256:94504f4a67bad612b5c8e3a4b7ce6ca2772b3c1559630dfd71e9c519e3d6149c"
 
 # chrome
 chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
