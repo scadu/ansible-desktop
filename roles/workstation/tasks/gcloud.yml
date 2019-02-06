@@ -1,0 +1,22 @@
+---
+- name: install gcloud
+  tags:
+    - gcloud
+
+  become: yes
+  block:
+  - name: add gcloud repo key
+    apt_key:
+       url: "{{ gcloud_repo_key }}"
+       state: present
+
+  - name: add gcloud repository
+    apt_repository:
+      repo: "{{ gcloud_repo }}"
+      filename: gcloud
+      state: present
+
+  - name: install google-cloud-sdk
+    package:
+      name: google-cloud-sdk
+      state: present
