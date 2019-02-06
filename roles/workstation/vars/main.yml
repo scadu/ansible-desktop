@@ -19,13 +19,18 @@ kubernetes_repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
 # gcloud-sdk
 gcloud_repo_key: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
 gcloud_repo: "deb http://packages.cloud.google.com/apt cloud-sdk-{{ ansible_distribution_release }} main"
+
 # helm
 helm_version: 2.12.3
 helm_url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ helm_version }}-linux-amd64.tar.gz"
 helm_checksum: "sha256:3425a1b37954dabdf2ba37d5d8a0bd24a225bb8454a06f12b115c55907809107"
+
 # tarsnap
 tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
 tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
 
 # prezto
 prezto_repo: "https://github.com/scadu/prezto.git"
+
+# define local dir
+user_local_dir: "{{ ansible_user_dir }}/.local"
