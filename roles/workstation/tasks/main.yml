@@ -22,6 +22,8 @@
 - import_tasks: kubernetes.yml
   when: install_kubernetes
 
+- import_tasks: helm.yml
+  when: install_kubernetes
 - import_tasks: alps.yml
   when: ansible_product_name == "Latitude E7240" and configure_alps
 
