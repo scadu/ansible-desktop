@@ -6,7 +6,7 @@
   block:
     - name: make sure that bin dir exists
       file: 
-        path: "{{ ansible_user_dir }}/.local/bin"
+        path: "{{ user_local_dir }}/bin"
         state: directory
         owner: "{{ ansible_user_id }}"
 
@@ -19,4 +19,4 @@
     - name: extract terraform binary
       unarchive:
         src: /tmp/terraform.zip
-        dest: "{{ ansible_user_dir }}/.local/bin"
+        dest: "{{ user_local_dir }}/bin"
