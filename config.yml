@@ -1,5 +1,4 @@
 ---
-install_syncthing: yes
 install_vscode: yes
 install_chrome: yes
 install_kubernetes: yes
@@ -7,6 +6,7 @@ install_gcloud: yes
 install_tarsnap: yes
 install_tlp: no
 configure_alps: no
+install_syncthing: no
 
 packages:
   - firefox
