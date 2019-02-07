@@ -13,6 +13,7 @@ packages:
   - asciinema
   - build-essential
   - chrome-gnome-shell
+  - curl
   - firefox
   - git
   - gnome-tweak-tool
