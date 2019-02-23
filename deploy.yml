@@ -5,5 +5,8 @@
   - role: workstation
     tags: ['workstation']
 
-  vars_files:
-    - config.yml
+    vars:
+
+    # available params: "desktop", "wsl"
+    # see available files in vars/
+    install_type: "wsl"

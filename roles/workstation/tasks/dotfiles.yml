@@ -4,7 +4,7 @@
     - dotfiles
 
   block:
-  - name: install dotfiles
+  - name: install git config
     template: 
       src: "templates/{{ item }}.j2"
       dest: "{{ ansible_user_dir }}/.{{ item }}"
