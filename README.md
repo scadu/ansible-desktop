@@ -15,7 +15,7 @@ Tested on Ubuntu 18.04.
 
 2. Run deploy script
 
-    ```
+    ``` sh
     ./deploy.sh
     ```
 
