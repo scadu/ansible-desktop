@@ -1,37 +1,49 @@
 ---
+- include_vars: vars/{{ install_type }}_config.yml
+  when: install_type is defined and install_type == "wsl" or "desktop"
+
+- import_tasks: upgrade.yml
+
 - import_tasks: user.yml
 
 - import_tasks: packages.yml
+  when: packages is defined
 
 - import_tasks: terraform.yml
+  when: install_terraform | default(False)
 
 - import_tasks: syncthing.yml
-  when: install_syncthing
+  when: install_syncthing | default(False)
 
 - import_tasks: journald.yml
+  when: configure_journald | default(False)
 
 - import_tasks: vscode.yml
-  when: install_vscode
+  when: install_vscode | default(False)
 
 - import_tasks: chrome.yml
-  when: install_chrome
+  when: install_chrome | default(False)
 
 - import_tasks: tarsnap.yml
-  when: install_tarsnap
+  when: install_tarsnap | default(False)
 
 - import_tasks: kubernetes.yml
-  when: install_kubernetes
+  when: install_kubernetes | default(False)
 
 - import_tasks: helm.yml
-  when: install_kubernetes
+  when: install_kubernetes | default(False)
 
 - import_tasks: gcloud.yml
-  when: install_gcloud
+  when: install_gcloud | default(False)
 
 - import_tasks: alps.yml
-  when: ansible_product_name == "Latitude E7240" and configure_alps
+  when: ansible_product_name == "Latitude E7240" and configure_alps | default(False)
 
 - import_tasks: tlp.yml
-  when: install_tlp
+  when: install_tlp | default(False)
 
 - import_tasks: dotfiles.yml
+  when: install_dotfiles | default(False)
+
+- import_tasks: python.yml
+  when: install_python | default(False)
