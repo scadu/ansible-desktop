@@ -181,7 +181,7 @@
 #[remote "origin"]
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
 
-{% if git is defined %}}
+{% if git is defined %}
 {% if git.gpgsign %}
 [commit]
     	gpgsign = true
