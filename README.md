@@ -9,7 +9,7 @@ Tested on Ubuntu 18.04.
     - wsl
     - desktop
 
-`install_type` should be adjusted in `deploy.yml` playbook.
+`install_type` should be adjusted in the `deploy.yml` playbook.
 
 1. Adjust `{{ install_type}}_config.yml`
 
