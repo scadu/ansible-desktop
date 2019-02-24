@@ -49,3 +49,4 @@
 - name: install vscode extensions
   command: "code --install-extension '{{ item }}'"
   loop: "{{ vscode_extensions }}"
+  when: vscode_extensions is defined
