@@ -21,31 +21,6 @@
       name: code
       state: present
 
-- name: create vscode settings directory
-  file:
-    path: "{{ ansible_user_dir }}/.config/Code/User"
-    state: directory
-    mode: 'u=rwx,go='
-
-- name: apply vscode settings
-  template:
-    src: templates/vscode_settings.json.j2
-    dest: "{{ ansible_user_dir }}/.config/Code/User/settings.json"
-    force: yes
-    mode: 'u=rw,go='
-
-- name: create config directory
-  file:
-    path: "{{ ansible_user_dir }}/.config"
-    state: directory
-    mode: 'u=rwx,go=r'
-
-- name: create vscode config directory
-  file:
-    path: "{{ ansible_user_dir }}/.config/Code/User"
-    state: directory
-    mode: 'u=rwx,go='
-
 - name: install vscode extensions
   command: "code --install-extension '{{ item }}'"
   loop: "{{ vscode_extensions }}"
