@@ -4,7 +4,7 @@ Tested on Ubuntu 18.04.
 
 ## Usage
 
-### Available installation types (`install_type`)
+### Available install types
 
     - wsl
     - desktop
