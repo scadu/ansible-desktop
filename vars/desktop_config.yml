@@ -1,9 +1,25 @@
 ---
 install_dotfiles: yes
 install_vscode: yes
+install_chrome: yes
+install_gcloud: yes
+install_kubernetes: yes
+install_terraform: yes
+install_python: yes
 
 vscode_extensions:
   - shan.code-settings-sync
+
+packages:
+  - build-essential
+  - curl
+  - git
+  - neovim
+  - shellcheck
+  - strace
+  - unzip
+  - gnome-tweak-tool
+  - chrome-gnome-shell
 
 git:
   name: Łukasz Jendrysik
