@@ -9,4 +9,4 @@
 
     # available params: "desktop", "wsl"
     # see available files in vars/
-    install_type: "desktop"
+    install_type: "wsl"
