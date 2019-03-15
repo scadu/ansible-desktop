@@ -1,28 +1,30 @@
 ---
-install_dotfiles: yes
-install_vscode: yes
-install_chrome: yes
-install_gcloud: yes
+install_chrome:     yes
+install_dotfiles:   yes
+install_gcloud:     yes
 install_kubernetes: yes
-install_terraform: yes
-install_python: yes
+install_python:     yes
+install_terraform:  yes
+install_vscode:     yes
+remove_dock:        yes
 
 vscode_extensions:
   - shan.code-settings-sync
 
 packages:
   - build-essential
+  - chrome-gnome-shell
   - curl
   - git
+  - gnome-tweak-tool
   - neovim
   - shellcheck
   - strace
+  - tilix
   - unzip
-  - gnome-tweak-tool
-  - chrome-gnome-shell
 
 git:
-  name: Łukasz Jendrysik
-  email: scadu@disroot.org
+  name:       Łukasz Jendrysik
+  email:      scadu@disroot.org
   signingkey: 81428558222B6C926149C6814F521D0B0F66261E
-  gpgsign: false
+  gpgsign:    false

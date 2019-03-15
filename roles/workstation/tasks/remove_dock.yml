@@ -1,0 +1,6 @@
+---
+- name: remove ubuntu dock
+  become: yes
+  package:
+    name: gnome-shell-extension-ubuntu-dock
+    state: absent
