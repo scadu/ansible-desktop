@@ -9,6 +9,9 @@
 - import_tasks: packages.yml
   when: packages is defined
 
+- import_tasks: remove_dock.yml
+  when: remove_dock
+
 - import_tasks: terraform.yml
   when: install_terraform | default(False)
 
