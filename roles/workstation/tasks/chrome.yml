@@ -13,7 +13,7 @@
   - name: add chrome repository
     apt_repository:
       repo: "{{ chrome_repo }}"
-      filename: chrome
+      filename: google-chrome
       state: present
 
   - name: install chrome
