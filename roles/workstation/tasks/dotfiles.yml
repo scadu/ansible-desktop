@@ -13,6 +13,13 @@
       - gitconfig
       - gitignore
 
+
+  - name: install zsh
+    become: yes
+    package:
+      name: zsh
+      state: present
+
   - name: install zprezto
     shell: |
       git clone --recursive "{{ prezto_repo }}" "${ZDOTDIR:-$HOME}/.zprezto"
