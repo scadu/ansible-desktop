@@ -1,0 +1,10 @@
+---
+- name: install scripts
+  copy:
+    src: "{{ item }}"
+    dest: "{{ user_local_dir }}/bin/"
+    mode: 0755
+  with_fileglob:
+    - "{{ playbook_dir }}/scripts/*"
+  tags:
+    - scripts

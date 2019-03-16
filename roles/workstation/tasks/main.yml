@@ -10,7 +10,10 @@
   when: packages is defined
 
 - import_tasks: remove_dock.yml
-  when: remove_dock
+  when: remove_dock | default(False)
+
+- import_tasks: scripts.yml
+  when: install_scripts | default(False)
 
 - import_tasks: terraform.yml
   when: install_terraform | default(False)
