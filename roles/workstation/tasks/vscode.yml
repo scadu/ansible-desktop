@@ -1,7 +1,5 @@
 ---
 - name: install vscode
-  tags:
-    - vscode
 
   become: yes
   block:

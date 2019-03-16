@@ -3,8 +3,6 @@
 # https://bugs.freedesktop.org/show_bug.cgi?id=106425
 - name: configure Alps touchpad
   become: yes
-  tags:
-    - touchpad
 
   block:
   - name: create /etc/udev/hwdb.d

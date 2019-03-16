@@ -1,7 +1,5 @@
 ---
 - name: install dotfiles
-  tags:
-    - dotfiles
 
   block:
   - name: install git config

@@ -1,9 +1,7 @@
 ---
 - name: install kubernetes
-  tags:
-    - kubernetes
-
   become: yes
+  
   block:
     - name: add kubernetes repo key
       apt_key:

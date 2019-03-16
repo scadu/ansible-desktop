@@ -1,9 +1,7 @@
 ---
 - name: install signal desktop client
-  tags:
-    - signal
-
   become: yes
+  
   block:
   - name: add signal repo key
     apt_key:

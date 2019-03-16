@@ -1,8 +1,5 @@
 ---
 - name: install gcloud
-  tags:
-    - gcloud
-
   become: yes
   block:
   - name: add gcloud repo key

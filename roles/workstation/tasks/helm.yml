@@ -1,7 +1,5 @@
 ---
 - name: install helm
-  tags:
-    - helm
 
   block:
     - name: make sure that bin and helm dirs exists

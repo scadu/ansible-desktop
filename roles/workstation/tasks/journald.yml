@@ -1,11 +1,7 @@
 ---
-
 - name: configure journald
   become: yes
-  tags:
-    - journald
-    - systemd
-
+  
   block:
   - name: apply journald configuration
     template:

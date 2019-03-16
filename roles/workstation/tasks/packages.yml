@@ -1,8 +1,6 @@
 ---
 - name: install common packages
   become: yes
-  tags:
-    - packages
 
   block:
   - name: install common packages

@@ -1,7 +1,5 @@
 ---
 - name: install tarsnap
-  tags:
-    - tarsnap
 
   become: yes
   block:

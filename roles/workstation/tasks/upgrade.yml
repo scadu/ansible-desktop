@@ -1,9 +1,7 @@
 ---
 - name: upgrade system packages
-  tags:
-    - upgrade
-
   become: yes
+  
   block:
   - name: refresh repo cache
     apt:
