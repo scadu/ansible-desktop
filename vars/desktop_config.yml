@@ -8,6 +8,7 @@ install_terraform:  yes
 install_vscode:     yes
 install_signal:     yes
 install_scripts:    yes
+configure_journald: yes
 remove_dock:        yes
 
 vscode_extensions:
