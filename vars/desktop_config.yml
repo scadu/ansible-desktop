@@ -6,6 +6,7 @@ install_kubernetes: yes
 install_python:     yes
 install_terraform:  yes
 install_vscode:     yes
+install_signal:     yes
 remove_dock:        yes
 
 vscode_extensions:

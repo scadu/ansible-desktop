@@ -45,6 +45,9 @@
 - import_tasks: tlp.yml
   when: install_tlp | default(False)
 
+- import_tasks: signal.yml
+  when: install_signal | default(False)
+
 - import_tasks: dotfiles.yml
   when: install_dotfiles | default(False)
 

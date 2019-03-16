@@ -1,0 +1,22 @@
+---
+- name: install signal desktop client
+  tags:
+    - signal
+
+  become: yes
+  block:
+  - name: add signal repo key
+    apt_key:
+       url: "{{ signal_repo_key }}"
+       state: present
+
+  - name: add signal repository
+    apt_repository:
+      repo: "{{ signal_repo }}"
+      filename: signal-desktop
+      state: present
+
+  - name: install signal
+    package:
+      name: signal-desktop
+      state: present
