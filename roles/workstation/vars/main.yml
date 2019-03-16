@@ -33,6 +33,10 @@ tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }}
 signal_repo_key: "https://updates.signal.org/desktop/apt/keys.asc"
 signal_repo: "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main"
 
+# docker
+docker_repo_key: "https://download.docker.com/linux/ubuntu/gpg"
+docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+
 # prezto
 prezto_repo: "https://github.com/scadu/prezto.git"
 
