@@ -1,14 +1,15 @@
 ---
+configure_journald: yes
 install_chrome:     yes
+install_docker:     yes
 install_dotfiles:   yes
 install_gcloud:     yes
 install_kubernetes: yes
 install_python:     yes
+install_scripts:    yes
+install_signal:     yes
 install_terraform:  yes
 install_vscode:     yes
-install_signal:     yes
-install_scripts:    yes
-configure_journald: yes
 remove_dock:        yes
 
 vscode_extensions:
