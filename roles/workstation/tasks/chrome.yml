@@ -1,7 +1,7 @@
 ---
 - name: install chrome
-
   become: yes
+  
   block:
   - name: add chrome repo key
     apt_key:

@@ -1,6 +1,7 @@
 ---
 - name: install gcloud
   become: yes
+  
   block:
   - name: add gcloud repo key
     apt_key:

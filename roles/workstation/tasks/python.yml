@@ -1,7 +1,5 @@
 ---
 - name: install python system packages
-  tags:
-    - python
 
   block:
   - name: install python3 system packages

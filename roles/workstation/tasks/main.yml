@@ -8,12 +8,21 @@
   tags:
     - upgrade
 
+- import_tasks: prepare.yml
+  tags:
+    - prepare
+
 - import_tasks: user.yml
 
 - import_tasks: packages.yml
   when: packages is defined
   tags:
     - packages
+
+- import_tasks: dotfiles.yml
+  when: install_dotfiles | default(False)
+  tags:
+    - dotfiles
 
 - import_tasks: remove_dock.yml
   when: remove_dock | default(False)
@@ -49,10 +58,10 @@
   tags:
     - chrome
 
-- import_tasks: tarsnap.yml
-  when: install_tarsnap | default(False)
+- import_tasks: docker.yml
+  when: install_docker | default(False)
   tags:
-    - tarsnap
+    - docker
 
 - import_tasks: kubernetes.yml
   when: install_kubernetes | default(False)
@@ -86,12 +95,12 @@
   tags:
     - signal
 
-- import_tasks: dotfiles.yml
-  when: install_dotfiles | default(False)
-  tags:
-    - dotfiles
-
 - import_tasks: python.yml
   when: install_python | default(False)
   tags:
     - python
+
+- import_tasks: tarsnap.yml
+  when: install_tarsnap | default(False)
+  tags:
+    - tarsnap
