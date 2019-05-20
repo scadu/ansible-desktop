@@ -182,16 +182,20 @@
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
 
 {% if git is defined %}
+	{% if git.gpgsign is defined %}
 {% if git.gpgsign %}
 [commit]
     	gpgsign = true
 
 [gpg]
     	program = gpg
+	{% endif %}
 {% endif %}
 
 [user]
 	name = "{{ git.name }}"
 	email = {{ git.email }}
+{% if git.signingkey is defined %}
 	signingkey = "{{ git.signingkey }}"
+{% endif %}
 {% endif %}
