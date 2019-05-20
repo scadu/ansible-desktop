@@ -3,6 +3,7 @@
 sudo apt update
 sudo apt upgrade
 sudo apt autoclean
+sudo snap refresh
 
 if [ -f /var/run/reboot-required.pkgs ]; then
     printf "Reboot required due to: \n\n"
