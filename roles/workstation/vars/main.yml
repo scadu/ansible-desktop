@@ -1,8 +1,8 @@
 ---
 # terraform
-terraform_version: 0.11.13
+terraform_version: 0.11.14
 terraform_url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
-terraform_checksum: "sha256:5925cd4d81e7d8f42a0054df2aafd66e2ab7408dbed2bd748f0022cfe592f8d2"
+terraform_checksum: "sha256:9b9a4492738c69077b079e595f5b2a9ef1bc4e8fb5596610f69a6f322a8af8dd"
 
 # chrome
 chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
@@ -21,17 +21,13 @@ gcloud_repo_key: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
 gcloud_repo: "deb http://packages.cloud.google.com/apt cloud-sdk-{{ ansible_distribution_release }} main"
 
 # helm
-helm_version: 2.12.3
+helm_version: 2.14.0
 helm_url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ helm_version }}-linux-amd64.tar.gz"
-helm_checksum: "sha256:3425a1b37954dabdf2ba37d5d8a0bd24a225bb8454a06f12b115c55907809107"
+helm_checksum: "sha256:b5f6a1e642971af1363cadbe1f7f37c029c11dd93813151b521c0dbeacfbdaa9"
 
 # tarsnap
 tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
 tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
-
-# signal desktop client
-signal_repo_key: "https://updates.signal.org/desktop/apt/keys.asc"
-signal_repo: "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main"
 
 # docker
 docker_repo_key: "https://download.docker.com/linux/ubuntu/gpg"
@@ -42,3 +38,6 @@ prezto_repo: "https://github.com/scadu/prezto.git"
 
 # define local dir
 user_local_dir: "{{ ansible_user_dir }}/.local"
+
+# node snap
+snap_node_channel: "12/stable"

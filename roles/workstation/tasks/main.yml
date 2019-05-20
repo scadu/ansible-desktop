@@ -95,6 +95,21 @@
   tags:
     - signal
 
+- import_tasks: spotify.yml
+  when: install_spotify | default(False)
+  tags:
+    - spotify
+
+- import_tasks: awscli.yml
+  when: install_awscli | default(False)
+  tags:
+    - awscli
+
+- import_tasks: node.yml
+  when: install_node | default(False)
+  tags:
+    - node
+
 - import_tasks: python.yml
   when: install_python | default(False)
   tags:

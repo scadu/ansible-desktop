@@ -1,9 +1,9 @@
 ---
-- name: install signal desktop client
+- name: install spotify snap
   become: yes
   
   block:
   - name: add signal snap
     snap:
-      name: signal-desktop
+      name: spotify
       state: present

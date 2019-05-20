@@ -1,0 +1,11 @@
+---
+- name: install node
+  become: yes
+  
+  block:
+  - name: add node snap
+    snap:
+      name: node
+      state: present
+      classic: yes
+      channel: "{{ snap_node_channel }}"

@@ -1,0 +1,10 @@
+---
+- name: install aws-cli
+  become: yes
+  
+  block:
+  - name: add aws-cli snap
+    snap:
+      name: aws-cli
+      state: present
+      classic: yes

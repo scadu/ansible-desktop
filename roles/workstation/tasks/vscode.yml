@@ -3,21 +3,11 @@
   become: yes
   
   block:
-  - name: add microsoft signing key
-    apt_key:
-       url: "{{ ms_repo_key }}"
-       state: present
-
-  - name: add vscode repository
-    apt_repository:
-      repo: "{{ vscode_repo }}"
-      filename: vscode
-      state: present
-
-  - name: install vscode
-    package:
+  - name: install vscode snap
+    snap:
       name: code
       state: present
+      classic: yes
 
 - name: install vscode extensions
   command: "code --install-extension '{{ item }}'"
