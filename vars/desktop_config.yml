@@ -28,6 +28,7 @@ packages:
   - gnome-tweak-tool
   - neovim
   - shellcheck
+  - ssh-askpass-gnome
   - strace
   - unzip
 
