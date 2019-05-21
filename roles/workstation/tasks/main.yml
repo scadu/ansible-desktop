@@ -4,14 +4,6 @@
   tags:
     - always
 
-- import_tasks: upgrade.yml
-  tags:
-    - upgrade
-
-- import_tasks: prepare.yml
-  tags:
-    - prepare
-
 - import_tasks: user.yml
 
 - import_tasks: packages.yml
