@@ -7,4 +7,4 @@ then
   sudo apt install ansible -y
 fi
 
-ansible-playbook deploy.yml -vv -D -K
+ansible-playbook deploy.yml -D -K
