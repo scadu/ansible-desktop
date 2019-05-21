@@ -2,6 +2,16 @@
 - name: zomg desktop
   hosts: all
 
+  roles:
+  - role: workstation
+    tags: ['workstation']
+
+
+    vars:
+    # available params: "desktop", "wsl"
+    # see available files in vars/
+    install_type: "desktop"
+
   pre_tasks:
     - name: install chrome
       become: yes
@@ -23,15 +33,19 @@
             - gnupg-agent
             - software-properties-common
           tags:
-            - upgrade
-            - pre
+            - pre_tasks
 
-  roles:
-  - role: workstation
-    tags: ['workstation']
+  post_tasks:
+    - name: check if reboot required
 
+      block:
+       - name: check if reboot required
+         stat:
+          path: "/var/run/reboot-required"
+         register: reboot_required
 
-    vars:
-    # available params: "desktop", "wsl"
-    # see available files in vars/
-    install_type: "desktop"
+       - debug:
+            msg: "Reboot required!"
+         when: reboot_required.stat.isreg is defined
+      tags:
+        - post_tasks
