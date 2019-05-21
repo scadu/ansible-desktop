@@ -1,13 +1,10 @@
 ---
-- name: install vscode
+- name: install vscode snap
   become: yes
-  
-  block:
-  - name: install vscode snap
-    snap:
-      name: code
-      state: present
-      classic: yes
+  snap:
+    name: code
+    state: present
+    classic: yes
 
 - name: install vscode extensions
   command: "code --install-extension '{{ item }}'"
