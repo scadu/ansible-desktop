@@ -29,5 +29,5 @@
     enabled: no
     masked: yes
   with_items:
-    - systemd-rfkll.socket
+    - systemd-rfkill.socket
     - systemd-rfkill.service
