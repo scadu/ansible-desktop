@@ -31,3 +31,7 @@
   with_items:
     - systemd-rfkill.socket
     - systemd-rfkill.service
+
+- name: regenerate grub cfg
+  become: yes
+  command: "grub-mkconfig -o /boot/grub/grub.cfg"

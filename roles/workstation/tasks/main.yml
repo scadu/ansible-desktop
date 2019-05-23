@@ -111,3 +111,8 @@
   when: install_tarsnap | default(False)
   tags:
     - tarsnap
+
+- import_tasks: grub.yml
+  when: configure_grub | default(False)
+  tags:
+    - grub

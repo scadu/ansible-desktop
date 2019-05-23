@@ -1,5 +1,6 @@
 ---
 configure_journald: yes
+configure_grub:     yes
 install_chrome:     yes
 # disable for now; not all packages available on disco
 # consider using snap version
@@ -37,3 +38,5 @@ git:
   email:      scadu9@gmail.com
   #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
   #gpgsign:    false
+
+grub_options: "quiet splash btusb.enable_autosuspend=n"
