@@ -48,15 +48,15 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-    # - { key: "background/picture-options", value: "'wallpaper'" }
-    # - { key: "background/color-shading-type", value: "'solid'" }
-    # - { key: "background/secondary-color", value: "'#888888'" }
-    # - { key: "background/primary-color", value: "'#888888'" }
+    - { key: "background/picture-options", value: "'wallpaper'" }
+    - { key: "background/color-shading-type", value: "'solid'" }
+    - { key: "background/secondary-color", value: "'#888888'" }
+    - { key: "background/primary-color", value: "'#888888'" }
     - { key: "background/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
-    # - { key: "screensaver/picture-options", value: "'wallpaper'" }
-    # - { key: "screensaver/color-shading-type", value: "'solid'" }
-    # - { key: "screensaver/secondary-color", value: "'#888888'" }
-    # - { key: "screensaver/primary-color", value: "'#888888'" }
+    - { key: "screensaver/picture-options", value: "'wallpaper'" }
+    - { key: "screensaver/color-shading-type", value: "'solid'" }
+    - { key: "screensaver/secondary-color", value: "'#888888'" }
+    - { key: "screensaver/primary-color", value: "'#888888'" }
     - { key: "screensaver/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
 
 - name: set notifications preferences
