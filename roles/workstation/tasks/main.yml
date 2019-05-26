@@ -16,8 +16,10 @@
   tags:
     - dotfiles
 
-- import_tasks: remove_dock.yml
-  when: remove_dock | default(False)
+- import_tasks: dconf.yml
+  when: configure_dconf | default(False)
+  tags:
+    - dconf
 
 - import_tasks: scripts.yml
   when: install_scripts | default(False)

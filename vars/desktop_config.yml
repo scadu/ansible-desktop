@@ -16,7 +16,7 @@ install_vscode:     yes
 install_spotify:    yes
 install_awscli:     yes
 install_node:       yes
-remove_dock:        yes
+configure_dconf:    yes
 
 vscode_extensions:
   - shan.code-settings-sync

@@ -1,0 +1,94 @@
+---
+- name: configure dock
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { key: "hot-keys", value: "false" }
+    - { key: "dock-position", value: "'RIGHT'"}
+    - { key: "dock-fixed", value: "false" }
+    - { key: "dash-max-icon-size", value: "20" }
+
+- name: set wm keybindings
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "switch-to-workspace-1", value: "['<Super>1']" }
+    - { key: "switch-to-workspace-2", value: "['<Super>2']" }
+    - { key: "switch-to-workspace-3", value: "['<Super>3']" }
+    - { key: "switch-to-workspace-4", value: "['<Super>4']" }
+    - { key: "move-to-workspace-1", value: "['<Shift><Super>exclam']" }
+    - { key: "move-to-workspace-2", value: "['<Shift><Super>at']" }
+    - { key: "move-to-workspace-3", value: "['<Shift><Super>numbersign']" }
+    - { key: "move-to-workspace-4", value: "['<Shift><Super>dollar']" }
+    - { key: "close", value: "['<Super>c']"}
+    - { key: "toggle-maximized", value: "['<Super>x']" }
+
+
+- name: set interface misc settings
+  dconf:
+    key: "/org/gnome/desktop/interface/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+   - { key: "enable-animations", value: "false" }
+   - { key: "show-battery-percentage", value: "true" }
+   
+- name: set background colors
+  dconf:
+    key: "/org/gnome/desktop/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    # - { key: "background/picture-options", value: "'wallpaper'" }
+    # - { key: "background/color-shading-type", value: "'solid'" }
+    # - { key: "background/secondary-color", value: "'#888888'" }
+    # - { key: "background/primary-color", value: "'#888888'" }
+    - { key: "background/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
+    # - { key: "screensaver/picture-options", value: "'wallpaper'" }
+    # - { key: "screensaver/color-shading-type", value: "'solid'" }
+    # - { key: "screensaver/secondary-color", value: "'#888888'" }
+    # - { key: "screensaver/primary-color", value: "'#888888'" }
+    - { key: "screensaver/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
+
+- name: set notifications preferences
+  dconf:
+    key: "/org/gnome/desktop/notifications/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "show-in-lock-screen", value: "false" }
+
+- name: set media keys
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "terminal", value: "'<Super>Return'"}
+
+- name: set keyboard layout
+  dconf:
+    key: "/org/gnome/desktop/input-sources/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "sources", value: "[('xkb', 'pl')]" }
+
+- name: set shell settings
+  dconf:
+    key: "/org/gnome/shell/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "enable-hot-corners", value: "true" }
+
+- name: set static workspaces
+  dconf:
+    key: "/org/gnome/mutter/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "dynamic-workspaces", value: "false" }
