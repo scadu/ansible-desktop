@@ -77,11 +77,9 @@
 
 - name: set keyboard layout
   dconf:
-    key: "/org/gnome/desktop/input-sources/{{ item.key }}"
-    value: "{{ item.value }}"
+    key: "/org/gnome/desktop/input-sources/sources"
     state: present
-  with_items:
-    - { key: "sources", value: "[('xkb', 'pl')]" }
+    value: "[('xkb', 'pl')]"
 
 - name: set shell settings
   dconf:
