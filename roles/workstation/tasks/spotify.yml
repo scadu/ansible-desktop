@@ -3,7 +3,7 @@
   become: yes
   
   block:
-  - name: add signal snap
+  - name: add spotify snap
     snap:
       name: spotify
       state: present
