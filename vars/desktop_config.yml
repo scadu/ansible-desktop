@@ -1,22 +1,25 @@
 ---
-configure_journald: yes
+configure_dconf:    yes
 configure_grub:     yes
+configure_journald: yes
+install_awscli:     yes
 install_chrome:     yes
-# disable for now; not all packages available on disco
+
 # consider using snap version
+# disable for now; not all packages available on disco
 install_docker:     no
+
 install_dotfiles:   yes
 install_gcloud:     yes
 install_kubernetes: yes
+install_node:       yes
 install_python:     yes
 install_scripts:    yes
 install_signal:     yes
-install_terraform:  yes
-install_vscode:     yes
 install_spotify:    no
-install_awscli:     yes
-install_node:       yes
-configure_dconf:    yes
+install_terraform:  yes
+install_tlp:        yes
+install_vscode:     yes
 
 vscode_extensions:
   - shan.code-settings-sync
