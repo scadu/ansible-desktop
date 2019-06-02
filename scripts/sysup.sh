@@ -5,6 +5,7 @@ set -eu -o pipefail
 sudo apt update
 sudo apt upgrade
 sudo apt autoclean
+sudo apt autoremove
 sudo snap refresh
 
 if [ -f /var/run/reboot-required.pkgs ]; then
