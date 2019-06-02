@@ -16,7 +16,7 @@ install_node:       yes
 install_python:     yes
 install_scripts:    yes
 install_signal:     yes
-install_spotify:    no
+install_spotify:    yes
 install_terraform:  yes
 install_tlp:        yes
 install_vscode:     yes
@@ -30,6 +30,7 @@ packages:
   - curl
   - git
   - gnome-tweak-tool
+  - htop
   - neovim
   - shellcheck
   - ssh-askpass-gnome
