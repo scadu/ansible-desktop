@@ -66,15 +66,14 @@
   tags:
     - docker
 
-- import_tasks: kubernetes.yml
-  when: install_kubernetes | default(False)
+- import_tasks: kubectl.yml
+  when: install_kubectl | default(False)
   tags:
-    - kubernetes
+    - kubectl
 
 - import_tasks: helm.yml
-  when: install_kubernetes | default(False)
+  when: install_helm | default(False)
   tags:
-    - kubernetes
     - helm
 
 - import_tasks: gcloud.yml
