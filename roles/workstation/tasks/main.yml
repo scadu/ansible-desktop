@@ -94,6 +94,11 @@
   tags:
     - spotify
 
+- import_tasks: slack.yml
+  when: install_slack | default(False)
+  tags:
+    - slack
+
 - import_tasks: awscli.yml
   when: install_awscli | default(False)
   tags:
