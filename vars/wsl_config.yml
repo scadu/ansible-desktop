@@ -1,8 +1,16 @@
 ---
-install_python: yes
-install_terraform: yes
+# dots and scripts
 install_dotfiles: yes
-install_kubernetes: yes
+
+# languages
+install_python: yes
+
+# IaC
+install_terraform: yes
+
+# tools
+## docker and k8s
+install_kubectl: yes
 
 packages:
   - build-essential

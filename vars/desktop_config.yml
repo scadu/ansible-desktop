@@ -1,25 +1,44 @@
 ---
+# desktop things
 configure_dconf:    yes
-configure_grub:     yes
-configure_journald: yes
-install_awscli:     yes
-install_chrome:     yes
 
-# consider using snap version
-# disable for now; not all packages available on disco
-install_docker:     no
-
+# dots and scripts
 install_dotfiles:   yes
-install_gcloud:     yes
-install_kubernetes: yes
-install_node:       yes
-install_python:     yes
 install_scripts:    yes
+
+# apps
 install_signal:     yes
 install_spotify:    yes
-install_terraform:  yes
+install_slack:      yes
+install_chrome:     yes
+
+# system configuration
+configure_grub:     yes
+configure_journald: yes
 install_tlp:        yes
+
+# tools
+## docker and k8s
+install_docker:     yes
+install_kubectl:    yes
+install_helm:       yes
+
+## aws
+install_awscli:     yes
+
+## gcp
+install_gcloud:     yes
+
+## IaC
+install_terraform:  yes
+
+## editor
 install_vscode:     yes
+
+# languages
+install_node:       yes
+install_python:     yes
+
 
 vscode_extensions:
   - shan.code-settings-sync
