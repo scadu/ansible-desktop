@@ -13,7 +13,7 @@
     install_type: "desktop"
 
   pre_tasks:
-    - name: install chrome
+    - name: prepare system
       become: yes
 
       block:
