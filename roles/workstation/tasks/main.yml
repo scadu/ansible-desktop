@@ -52,8 +52,17 @@
   tags:
     - chrome
 
+- import_tasks: docker_upstream.yml
+  when: |
+    - install_docker | default(False) and
+    (ansible_distribution == "Ubuntu" and ansible_distribution_version is version('18.10', '<='))
+  tags:
+    - docker
+
 - import_tasks: docker.yml
-  when: install_docker | default(False)
+  when: |
+    - install_docker | default(False) and
+    (ansible_distribution == "Ubuntu" and ansible_distribution_version is version('19.04', '>='))
   tags:
     - docker
 

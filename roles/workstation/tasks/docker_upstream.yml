@@ -1,0 +1,27 @@
+---
+- name: install docker
+  become: yes
+  
+  block:
+  - name: add docker upstream repo key
+    apt_key:
+        url: "{{ docker_repo_key }}"
+        state: present
+
+  - name: add docker upstream repository
+    apt_repository:
+      repo: "{{ docker_repo }}"
+      filename: docker
+      state: present
+
+  - name: install docker from upstream repository
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+  - name: install docker-compose pip package
+    import_tasks: docker_compose.yml
