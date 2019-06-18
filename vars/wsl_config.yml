@@ -5,12 +5,12 @@ install_dotfiles: yes
 # languages
 install_python: yes
 
-# IaC
-install_terraform: yes
-
 # tools
 ## docker and k8s
 install_kubectl: yes
+
+## IaC
+install_terraform: yes
 
 packages:
   - build-essential
