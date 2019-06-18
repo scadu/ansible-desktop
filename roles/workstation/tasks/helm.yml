@@ -8,3 +8,4 @@
         name: helm
         state: present
         classic: yes
+        channel: "{{ helm_snap_channel }}"
