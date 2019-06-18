@@ -1,6 +1,6 @@
 ---
 - include_vars: vars/{{ install_type }}_config.yml
-  when: install_type is defined and install_type == "wsl" or "desktop"
+  when: (install_type is defined) and (install_type == "wsl" or install_type == "desktop")
   tags:
     - always
 
