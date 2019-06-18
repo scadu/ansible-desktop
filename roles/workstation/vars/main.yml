@@ -12,7 +12,7 @@ chrome_repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable mai
 tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
 tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
 
-# docker
+# docker upstream repo
 docker_repo_key: "https://download.docker.com/linux/ubuntu/gpg"
 docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
@@ -24,3 +24,9 @@ user_local_dir: "{{ ansible_user_dir }}/.local"
 
 # node snap
 snap_node_channel: "12/stable"
+
+# kubectl snap
+kubectl_snap_channel: "1.14"
+
+# helm snap
+helm_snap_channel: "latest/stable"
