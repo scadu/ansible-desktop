@@ -96,3 +96,14 @@
     state: present
   with_items:
     - { key: "dynamic-workspaces", value: "false" }
+
+- name: set night light (all day)
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "night-light-schedule-automatic", value: "false"}
+    - { key: "night-light-schedule-from", value: "0.0"}
+    - { key: "night-light-schedule-to", value: "24.0"}
+    - { key: "night-light-temperature", value: "uint32 4200"}
