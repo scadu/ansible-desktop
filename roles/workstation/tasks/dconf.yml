@@ -106,4 +106,4 @@
     - { key: "night-light-schedule-automatic", value: "false"}
     - { key: "night-light-schedule-from", value: "0.0"}
     - { key: "night-light-schedule-to", value: "24.0"}
-    - { key: "night-light-temperature", value: "uint32 4200"}
+    - { key: "night-light-temperature", value: "uint32 4500"}
