@@ -1,20 +1,32 @@
 ---
-- name: install terraform
+- name: install tfenv
 
   block:
-    - name: make sure that bin dir exists
+    - name: make sure that bin and tfenv dirs exists
       file: 
-        path: "{{ user_local_dir }}/bin"
+        name: "{{ item }}"
         state: directory
         owner: "{{ ansible_user_id }}"
+      with_items:
+        - "{{ user_local_dir }}/bin"
+        - "{{ user_local_dir }}/tfenv"
 
-    - name: download terraform
+    - name: download tfenv
       get_url:
-        url: "{{ terraform_url }}"
-        dest: /tmp/terraform.zip
-        checksum: "{{ terraform_checksum }}"
+        url: "{{ tfenv_url }}"
+        dest: /tmp/tfenv.zip
+        checksum: "{{ tfenv_checksum }}"
 
-    - name: extract terraform binary
+    - name: extract tfenv scripts
       unarchive:
-        src: /tmp/terraform.zip
-        dest: "{{ user_local_dir }}/bin"
+        src: /tmp/tfenv.zip
+        dest: "{{ user_local_dir }}/tfenv"
+
+    - name: link tfenv scripts
+      file:
+        state: link
+        path: "{{ user_local_dir }}/bin/{{ item }}"
+        src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/{{ item }}"
+      with_items:
+        - tfenv
+        - terraform

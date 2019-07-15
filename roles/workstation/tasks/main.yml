@@ -30,6 +30,7 @@
   when: install_terraform | default(False)
   tags:
     - terraform
+    - tfenv
 
 - import_tasks: syncthing.yml
   when: install_syncthing | default(False)
@@ -52,6 +53,7 @@
   tags:
     - chrome
 
+# TODO: add user to docker group
 - import_tasks: docker_upstream.yml
   when: |
     - install_docker | default(False) and
