@@ -5,9 +5,9 @@ tfenv_url: "https://github.com/tfutils/tfenv/archive/v{{ tfenv_version }}.tar.gz
 tfenv_checksum: sha256:8121f269a1c6214d7621a06e7f40e114e0a1c38a87d5b57585405aa4862ff0f0"
 
 # terragrunt
-terragrunt_version: 0.19.8
+terragrunt_version: 0.19.9
 terragrunt_url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
-terragrunt_checksum: "sha256:70e81e5cc7a7c504557103e2ba90ac4c3c90a01bceffb2a34d4419643cf09998"
+terragrunt_checksum: "sha256:9226cffc6b67b48c78e659b8ed1228e41b01c6fa4bd55e26e3b56c4d488db7ea"
 
 # chrome
 chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
