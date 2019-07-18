@@ -2,7 +2,7 @@
 - name: install tfenv
 
   block:
-    - name: make sure that bin and tfenv dirs exists
+    - name: make sure that bin, terragrunt and tfenv dirs exists
       file: 
         name: "{{ item }}"
         state: directory
@@ -10,6 +10,7 @@
       with_items:
         - "{{ user_local_dir }}/bin"
         - "{{ user_local_dir }}/tfenv"
+        - "{{ user_local_dir }}/terragrunt"
 
     - name: download tfenv
       get_url:
@@ -22,11 +23,18 @@
         src: /tmp/tfenv.zip
         dest: "{{ user_local_dir }}/tfenv"
 
-    - name: link tfenv scripts
+    - name: download terragrunt binary
+      get_url:
+        url: "{{ terragrunt_url }}"
+        dest: "{{ user_local_dir }}/terragrunt/terragrunt"
+        checksum: "{{ terragrunt_checksum }}"
+
+    - name: link tfenv and terragrunt scripts/binaries
       file:
         state: link
-        path: "{{ user_local_dir }}/bin/{{ item }}"
-        src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/{{ item }}"
+        mode: '0700'
+        path: "{{ item.path }}"
+        src: "{{ item.src }}"
       with_items:
-        - tfenv
-        - terraform
+        - { src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/tfenv", path: "{{ user_local_dir }}/bin/tfenv" }
+        - { src: "{{ user_local_dir }}/terragrunt/terragrunt", path: "{{ user_local_dir }}/bin/terragrunt" }
