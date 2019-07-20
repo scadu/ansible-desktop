@@ -26,8 +26,8 @@ install_helm:       yes
 ## IaC
 install_terraform:  yes
 
-## aws
-install_awscli:     yes
+## AWSL tools
+install_aws_tools:     yes
 
 ## gcp
 install_gcloud:     yes

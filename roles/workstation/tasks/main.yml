@@ -109,10 +109,10 @@
   tags:
     - slack
 
-- import_tasks: awscli.yml
-  when: install_awscli | default(False)
+- import_tasks: aws_tools.yml
+  when: install_aws_tools | default(False)
   tags:
-    - awscli
+    - aws
 
 - import_tasks: node.yml
   when: install_node | default(False)
