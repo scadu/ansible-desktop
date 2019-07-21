@@ -2,13 +2,6 @@
 - name: install AWS tools
   
   block:
-  - name: add aws-cli snap
-    become: yes
-    snap:
-      name: aws-cli
-      state: present
-      classic: yes
-
   - name: make sure that required directories exists
     file: 
       name: "{{ item }}"
@@ -16,17 +9,9 @@
       owner: "{{ ansible_user_id }}"
     with_items:
       - "{{ user_local_dir }}/bin"
-      - "{{ user_local_dir }}/aws-vault"
-      
-  - name: download aws-vault binary
-    get_url:
-      url: "{{ aws_vault_url }}"
-      dest: "{{ user_local_dir }}/aws-vault/"
-      checksum: "{{ aws_vault_checksum }}"
-      mode: '0700'
 
-  - name: link aws-vault binary
-    file:
-      state: link
-      path: "{{ user_local_dir }}/bin/aws-vault"
-      src: "{{ user_local_dir }}/aws-vault/aws-vault-linux-amd64"
+  - name: install AWS tools via pip
+    pip:
+      name: "{{ aws_tools }}"
+      extra_args: "--user"
+      executable: pip3
