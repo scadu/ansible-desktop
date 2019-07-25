@@ -12,6 +12,7 @@ terragrunt_checksum: "sha256:9226cffc6b67b48c78e659b8ed1228e41b01c6fa4bd55e26e3b
 # list of AWS tools installed via pip
 aws_tools: [
   "awscli",
+  "awsebcli",
   "aws-sam-cli"
 ]
 
