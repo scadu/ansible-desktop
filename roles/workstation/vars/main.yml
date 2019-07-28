@@ -47,3 +47,7 @@ kubectl_snap_channel: "1.14"
 
 # helm snap
 helm_snap_channel: "latest/stable"
+
+# go
+go_version: 1.12.7
+go_checksum: "sha256:66d83bfb5a9ede000e33c6579a91a29e6b101829ad41fffb5c5bb6c900e109d9"

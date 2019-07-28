@@ -38,6 +38,7 @@ install_vscode:     yes
 # languages
 install_node:       yes
 install_python:     yes
+install_go:         yes
 
 vscode_extensions:
   - shan.code-settings-sync

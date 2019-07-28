@@ -1,0 +1,24 @@
+---
+
+- name: download Go binary
+  get_url: 
+    url: "https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz"
+    dest: /tmp/go-{{ go_version }}.linux-amd64.tar.gz
+    checksum: "{{ go_checksum }}"
+
+- name: create Go directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  with_items:
+    - "/usr/local/go"
+
+- name: extract Go
+  become: yes
+  unarchive:
+    src: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
+    dest: "/usr/local/go/"
