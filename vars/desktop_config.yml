@@ -1,44 +1,44 @@
 ---
 # desktop things
-configure_dconf:    yes
+configure_dconf: yes
 
 # dots and scripts
-install_dotfiles:   yes
-install_scripts:    yes
+install_dotfiles: yes
+install_scripts: yes
 
 # apps
-install_signal:     yes
-install_spotify:    yes
-install_slack:      yes
-install_chrome:     yes
+install_signal: no
+install_spotify: no
+install_slack: yes
+install_chrome: yes
 
 # system configuration
-configure_grub:     yes
+configure_grub: yes
 configure_journald: yes
-install_tlp:        yes
+install_tlp: yes
 
 # tools
 ## docker and k8s
-install_docker:     yes
-install_kubectl:    yes
-install_helm:       yes
+install_docker: yes
+install_kubectl: yes
+install_helm: yes
 
 ## IaC
-install_terraform:  yes
+install_terraform: yes
 
 ## AWSL tools
-install_aws_tools:     yes
+install_aws_tools: yes
 
 ## gcp
-install_gcloud:     yes
+install_gcloud: yes
 
 ## editor
-install_vscode:     yes
+install_vscode: yes
 
 # languages
-install_node:       yes
-install_python:     yes
-install_go:         yes
+install_node: yes
+install_python: yes
+install_go: yes
 
 vscode_extensions:
   - shan.code-settings-sync
@@ -58,8 +58,8 @@ packages:
   - unzip
 
 git:
-  name:       Łukasz Jendrysik
-  email:      scadu9@gmail.com
+  name: Łukasz Jendrysik
+  email: scadu9@gmail.com
   #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
   #gpgsign:    false
 
