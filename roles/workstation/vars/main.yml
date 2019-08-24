@@ -16,12 +16,6 @@ aws_tools: [
   "aws-sam-cli"
 ]
 
-# aws-vault
-aws_vault_version: 4.6.2
-aws_vault_url: "https://github.com/99designs/aws-vault/releases/download/v{{ aws_vault_version }}/aws-vault-linux-amd64"
-aws_vault_checksum: "sha256:0ed3be765cafd37db7b03bdad11456b47459d2df380314813033582c0e71091c"
-
-# chrome
 chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
 chrome_repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
 
