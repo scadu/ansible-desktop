@@ -40,6 +40,12 @@ install_node: yes
 install_python: yes
 install_go: yes
 
+## hardware
+# hybrid graphics
+configure_prime: yes
+# choose between "intel" and "nvidia"
+graphic_card: "intel"
+
 vscode_extensions:
   - shan.code-settings-sync
 
