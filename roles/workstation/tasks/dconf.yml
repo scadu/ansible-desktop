@@ -11,7 +11,7 @@
     value: "{{ item.value }}"
   with_items:
     - { key: "hot-keys", value: "false" }
-    - { key: "dock-position", value: "'RIGHT'"}
+    - { key: "dock-position", value: "'RIGHT'" }
     - { key: "dock-fixed", value: "false" }
     - { key: "dash-max-icon-size", value: "20" }
 
@@ -29,9 +29,8 @@
     - { key: "move-to-workspace-2", value: "['<Shift><Super>at']" }
     - { key: "move-to-workspace-3", value: "['<Shift><Super>numbersign']" }
     - { key: "move-to-workspace-4", value: "['<Shift><Super>dollar']" }
-    - { key: "close", value: "['<Super>c']"}
+    - { key: "close", value: "['<Super>c']" }
     - { key: "toggle-maximized", value: "['<Super>x']" }
-
 
 - name: set interface misc settings
   dconf:
@@ -39,9 +38,9 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-   - { key: "enable-animations", value: "false" }
-   - { key: "show-battery-percentage", value: "true" }
-   
+    - { key: "enable-animations", value: "false" }
+    - { key: "show-battery-percentage", value: "true" }
+
 - name: set background colors
   dconf:
     key: "/org/gnome/desktop/{{ item.key }}"
@@ -52,12 +51,18 @@
     - { key: "background/color-shading-type", value: "'solid'" }
     - { key: "background/secondary-color", value: "'#888888'" }
     - { key: "background/primary-color", value: "'#888888'" }
-    - { key: "background/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
+    - {
+        key: "background/picture-uri",
+        value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'",
+      }
     - { key: "screensaver/picture-options", value: "'wallpaper'" }
     - { key: "screensaver/color-shading-type", value: "'solid'" }
     - { key: "screensaver/secondary-color", value: "'#888888'" }
     - { key: "screensaver/primary-color", value: "'#888888'" }
-    - { key: "screensaver/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
+    - {
+        key: "screensaver/picture-uri",
+        value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'",
+      }
 
 - name: set notifications preferences
   dconf:
@@ -73,7 +78,7 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "terminal", value: "'<Super>Return'"}
+    - { key: "terminal", value: "'<Super>Return'" }
 
 - name: set keyboard layout
   dconf:
@@ -97,13 +102,11 @@
   with_items:
     - { key: "dynamic-workspaces", value: "false" }
 
-- name: set night light (all day)
+- name: set night light
   dconf:
     key: "/org/gnome/settings-daemon/plugins/color/{{ item.key }}"
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "night-light-schedule-automatic", value: "false"}
-    - { key: "night-light-schedule-from", value: "0.0"}
-    - { key: "night-light-schedule-to", value: "24.0"}
-    - { key: "night-light-temperature", value: "uint32 4500"}
+    - { key: "night-light-schedule-automatic", value: "true" }
+    - { key: "night-light-temperature", value: "uint32 4200" }
