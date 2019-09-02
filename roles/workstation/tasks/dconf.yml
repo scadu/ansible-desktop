@@ -111,5 +111,7 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "night-light-schedule-automatic", value: "true" }
+    - { key: "night-light-schedule-automatic", value: "false" }
+    - { key: "night-light-schedule-from", value: "19:00" }
+    - { key: "night-light-schedule-to", value: "06:00" }
     - { key: "night-light-temperature", value: "uint32 4200" }
