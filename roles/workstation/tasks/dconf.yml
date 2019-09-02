@@ -82,9 +82,12 @@
 
 - name: set keyboard layout
   dconf:
-    key: "/org/gnome/desktop/input-sources/sources"
+    key: "/org/gnome/desktop/input-sources/{{ item.key }}"
+    value: "{{ item.value }}"
     state: present
-    value: "[('xkb', 'pl')]"
+  with_items:
+    - { key: "sources", value: "[('xkb', 'pl')]" }
+    - { key: "xkb-options", value: "['ctrl:nocaps']" }
 
 - name: set shell settings
   dconf:
