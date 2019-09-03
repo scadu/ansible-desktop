@@ -11,7 +11,7 @@
     value: "{{ item.value }}"
   with_items:
     - { key: "hot-keys", value: "false" }
-    - { key: "dock-position", value: "'LEFT'" }
+    - { key: "dock-position", value: "'RIGHT'" }
     - { key: "dock-fixed", value: "false" }
     - { key: "dash-max-icon-size", value: "20" }
 
