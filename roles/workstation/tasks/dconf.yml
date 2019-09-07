@@ -32,6 +32,22 @@
     - { key: "close", value: "['<Super>c']" }
     - { key: "toggle-maximized", value: "['<Super>x']" }
 
+- name: set shell keybindings
+  dconf:
+    key: "/org/gnome/shell/keybindings/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "switch-to-application-1", value: "[]" }
+    - { key: "switch-to-application-2", value: "[]" }
+    - { key: "switch-to-application-3", value: "[]" }
+    - { key: "switch-to-application-4", value: "[]" }
+    - { key: "switch-to-application-5", value: "[]" }
+    - { key: "switch-to-application-6", value: "[]" }
+    - { key: "switch-to-application-6", value: "[]" }
+    - { key: "switch-to-application-7", value: "[]" }
+    - { key: "switch-to-application-7", value: "[]" }
+
 - name: set interface misc settings
   dconf:
     key: "/org/gnome/desktop/interface/{{ item.key }}"
@@ -112,6 +128,7 @@
     value: "{{ item.value }}"
     state: present
   with_items:
+    - { key: "night-light-enabled", value: "true" }
     - { key: "night-light-schedule-automatic", value: "false" }
     - { key: "night-light-schedule-from", value: "19.00" }
     - { key: "night-light-schedule-to", value: "06.00" }
