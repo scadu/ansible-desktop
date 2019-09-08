@@ -11,6 +11,7 @@ install_signal: no
 install_spotify: no
 install_slack: yes
 install_chrome: yes
+install_syncthing: yes
 
 # system configuration
 configure_grub: yes

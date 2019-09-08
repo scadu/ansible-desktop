@@ -3,8 +3,19 @@
   become: yes
 
   block:
-  - name: install syncthing
-    package:
-      name: syncthing
-      state: present
-    notify: start syncthing
+    - name: add syncthing repo key
+      apt_key:
+        url: "{{ syncthing_repo_key }}"
+        state: present
+
+    - name: add syncthing repository
+      apt_repository:
+        repo: "{{ syncthing_repo }}"
+        filename: syncthing
+        state: present
+
+    - name: install syncthing
+      package:
+        name: syncthing
+        state: present
+      notify: start syncthing

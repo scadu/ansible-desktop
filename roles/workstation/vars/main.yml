@@ -16,8 +16,13 @@ aws_tools: [
   "aws-sam-cli"
 ]
 
+# google chrome
 chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
 chrome_repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+
+# syncthing
+syncthing_repo_key: "https://syncthing.net/release-key.txt"
+syncthing_repo: "deb https://apt.syncthing.net/ syncthing stable"
 
 # tarsnap
 tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
