@@ -16,7 +16,7 @@ install_syncthing: yes
 # system configuration
 configure_grub: yes
 configure_journald: yes
-install_tlp: yes
+install_tlp: no
 
 # tools
 ## docker and k8s
