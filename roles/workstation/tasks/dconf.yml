@@ -80,6 +80,15 @@
         value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'",
       }
 
+- name: hide home and trash icons from desktop
+  dconf:
+    key: "/org/gnome/shell/extensions/desktop-icons/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "show-home", value: "false" }
+    - { key: "show-trash", value: "false" }
+
 - name: set notifications preferences
   dconf:
     key: "/org/gnome/desktop/notifications/{{ item.key }}"
@@ -98,11 +107,16 @@
 
 - name: set keyboard layout
   dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'pl')]"
+    state: present
+
+- name: set keyboard custom bindings
+  dconf:
     key: "/org/gnome/desktop/input-sources/{{ item.key }}"
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "sources", value: "[('xkb', 'pl')]" }
     - { key: "xkb-options", value: "['ctrl:nocaps']" }
 
 - name: set shell settings
