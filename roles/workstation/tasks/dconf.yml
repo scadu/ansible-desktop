@@ -15,6 +15,15 @@
     - { key: "dock-fixed", value: "false" }
     - { key: "dash-max-icon-size", value: "20" }
 
+- name: set sloppy focus, disable audible bell
+  dconf:
+    key: "/org/gnome/desktop/wm/preferences/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "focus-mode", value: "sloppy" }
+    - { key: "audible-bell", value: "false" }
+
 - name: set wm keybindings
   dconf:
     key: "/org/gnome/desktop/wm/keybindings/{{ item.key }}"
@@ -56,6 +65,16 @@
   with_items:
     - { key: "enable-animations", value: "false" }
     - { key: "show-battery-percentage", value: "true" }
+
+- name: enable clearing old trash and temp files
+  dconf:
+    key: "/org/gnome/desktop/privacy/{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: "remove-old-temp-files", value: "true" }
+    - { key: "old-files-age", value: "uint32 7" }
+    - { key: "remove-old-trash-files", "true" }
 
 - name: set background colors
   dconf:
