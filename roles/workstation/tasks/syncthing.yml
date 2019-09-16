@@ -19,3 +19,11 @@
         name: syncthing
         state: present
       notify: start syncthing
+
+    - name: increase inotify limit
+      sysctl:
+        name: fs.inotify.max_user_watches
+        value: "204800"
+        state: present
+        sysctl_file: "/etc/sysctl.conf"
+        reload: yes
