@@ -21,7 +21,7 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "focus-mode", value: "sloppy" }
+    - { key: "focus-mode", value: "'sloppy'" }
     - { key: "audible-bell", value: "false" }
 
 - name: set wm keybindings
@@ -74,7 +74,7 @@
   with_items:
     - { key: "remove-old-temp-files", value: "true" }
     - { key: "old-files-age", value: "uint32 7" }
-    - { key: "remove-old-trash-files", "true" }
+    - { key: "remove-old-trash-files", value: "true" }
 
 - name: set background colors
   dconf:
