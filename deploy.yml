@@ -23,7 +23,7 @@
             upgrade: dist
 
         - name: install packages to allow apt to use a repo over https
-          package:
+          apt:
             name: "{{ item }}"
             state: present
           with_items:
