@@ -32,6 +32,13 @@
     - systemd-rfkill.socket
     - systemd-rfkill.service
 
+- name: start unattended-upgrades
+  become: yes
+  systemd:
+    name: unattended-upgrades
+    enabled: yes
+    state: restarted
+
 - name: regenerate grub cfg
   become: yes
   command: "grub-mkconfig -o /boot/grub/grub.cfg"

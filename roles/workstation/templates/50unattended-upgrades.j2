@@ -1,0 +1,33 @@
+{{ ansible_managed | comment }}
+// Automatically upgrade packages from these (origin:archive) pairs
+//
+// Note that in Ubuntu security updates may pull in new dependencies
+// from non-security sources (e.g. chromium). By allowing the release
+// pocket these get automatically pulled in.
+Unattended-Upgrade::Allowed-Origins {
+        "${distro_id}:${distro_codename}";
+	"${distro_id}:${distro_codename}-security";
+	// Extended Security Maintenance; doesn't necessarily exist for
+	// every release and this system may not have it installed, but if
+	// available, the policy for updates is such that unattended-upgrades
+	// should also install from here by default.
+	"${distro_id}ESM:${distro_codename}";
+	"${distro_id}:${distro_codename}-updates";
+	"${distro_id}:${distro_codename}-proposed";
+	"${distro_id}:${distro_codename}-backports";
+{% if install_chrome is sameas true %}
+	"Google LLC:stable";
+{% endif %}
+};
+
+// Use apt bandwidth limit feature, this example limits the download
+// speed to 70kb/sec
+Acquire::http::Dl-Limit "250";
+
+// Download and install upgrades only on AC power
+// (i.e. skip or gracefully stop updates on battery)
+Unattended-Upgrade::OnlyOnACPower "true";
+
+// Download and install upgrades only on non-metered connection
+// (i.e. skip or gracefully stop updates on a metered connection)
+Unattended-Upgrade::Skip-Updates-On-Metered-Connections "false";

@@ -143,3 +143,8 @@
   when: configure_prime | default(False)
   tags:
         - prime
+
+- import_tasks: unattended-upgrades.yml
+  when: unattended_upgrades | default(False)
+  tags:
+        - unattended_upgrades

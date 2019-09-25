@@ -16,6 +16,7 @@ install_syncthing: yes
 # system configuration
 configure_grub: yes
 configure_journald: yes
+unattended_upgrades: yes
 install_tlp: no
 
 # tools
