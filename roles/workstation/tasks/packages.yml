@@ -3,7 +3,7 @@
   become: yes
 
   block:
-  - name: install common packages
-    package:
-      name: "{{ packages }}"
-      state: present
+    - name: install common packages
+      apt:
+        name: "{{ packages }}"
+        state: present

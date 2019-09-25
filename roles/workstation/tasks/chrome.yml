@@ -1,23 +1,23 @@
 ---
 - name: install chrome
   become: yes
-  
+
   block:
-  - name: add chrome repo key
-    apt_key:
-       url: "{{ chrome_repo_key }}"
-       state: present
+    - name: add chrome repo key
+      apt_key:
+        url: "{{ chrome_repo_key }}"
+        state: present
 
-  - name: add chrome repository
-    apt_repository:
-      repo: "{{ chrome_repo }}"
-      filename: google-chrome
-      state: present
+    - name: add chrome repository
+      apt_repository:
+        repo: "{{ chrome_repo }}"
+        filename: google-chrome
+        state: present
 
-  - name: install chrome
-    package:
-      name: "{{ item }}"
-      state: present
-    with_items:
-     - google-chrome-stable
-     - fonts-noto-color-emoji
+    - name: install chrome
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - google-chrome-stable
+        - fonts-noto-color-emoji

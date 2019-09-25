@@ -15,7 +15,7 @@
         state: present
 
     - name: install syncthing
-      package:
+      apt:
         name: syncthing
         state: present
       notify: start syncthing

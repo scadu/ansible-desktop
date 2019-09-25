@@ -1,20 +1,20 @@
 ---
 - name: install tarsnap
   become: yes
-  
+
   block:
-  - name: add tarsnap repo key
-    apt_key:
-       url: "{{ tarsnap_repo_key }}"
-       state: present
+    - name: add tarsnap repo key
+      apt_key:
+        url: "{{ tarsnap_repo_key }}"
+        state: present
 
-  - name: add tarsnap repository
-    apt_repository:
-      repo: "{{ tarsnap_repo }}"
-      filename: tarsnap
-      state: present
+    - name: add tarsnap repository
+      apt_repository:
+        repo: "{{ tarsnap_repo }}"
+        filename: tarsnap
+        state: present
 
-  - name: install tarsnap
-    package:
-      name: tarsnap
-      state: present
+    - name: install tarsnap
+      apt:
+        name: tarsnap
+        state: present
