@@ -9,6 +9,7 @@
 - name: list vscode extensions
   command: "code --list-extensions"
   register: vscode_installed_extensions
+  changed_when: false
 
 - name: install vscode extensions
   command: "code --install-extension '{{ item }}'"
