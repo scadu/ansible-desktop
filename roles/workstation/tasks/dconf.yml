@@ -11,7 +11,7 @@
     value: "{{ item.value }}"
   with_items:
     - { key: "hot-keys", value: "false" }
-    - { key: "dock-position", value: "'LEFT'" }
+    - { key: "dock-position", value: "'RIGHT'" }
     - { key: "dock-fixed", value: "false" }
     - { key: "dash-max-icon-size", value: "20" }
 
@@ -27,7 +27,7 @@
 - name: set wm keybindings
   dconf:
     key: "/org/gnome/desktop/wm/keybindings/{{ item.key }}"
-    value: "{{ item.value }}"
+    value: "{{ item.value | string }}"
     state: present
   with_items:
     - { key: "switch-to-workspace-1", value: "['<Super>1']" }
@@ -44,7 +44,7 @@
 - name: set shell keybindings
   dconf:
     key: "/org/gnome/shell/keybindings/{{ item.key }}"
-    value: "{{ item.value }}"
+    value: "{{ item.value | string }}"
     state: present
   with_items:
     - { key: "switch-to-application-1", value: "['']" }
@@ -56,6 +56,7 @@
     - { key: "switch-to-application-6", value: "['']" }
     - { key: "switch-to-application-7", value: "['']" }
     - { key: "switch-to-application-7", value: "['']" }
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version is version('19.04', '>=')
 
 - name: set interface misc settings
   dconf:
@@ -124,19 +125,14 @@
   with_items:
     - { key: "terminal", value: "'<Super>Return'" }
 
-- name: set keyboard layout
-  dconf:
-    key: "/org/gnome/desktop/input-sources/sources"
-    value: "[('xkb', 'pl')]"
-    state: present
-
 - name: set keyboard custom bindings
   dconf:
     key: "/org/gnome/desktop/input-sources/{{ item.key }}"
-    value: "{{ item.value }}"
+    value: "{{ item.value | string }}"
     state: present
   with_items:
-    - { key: "xkb-options", value: "['ctrl:nocaps']" }
+    - { key: sources, value: "[('xkb', 'pl')]" }
+    - { key: xkb-options, value: "['ctrl:nocaps']" }
 
 - name: set shell settings
   dconf:
