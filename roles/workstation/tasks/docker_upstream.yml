@@ -16,12 +16,11 @@
 
     - name: install docker from upstream repository
       apt:
-        name: "{{ item }}"
         state: present
-      with_items:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
 
     - name: add my user to docker group
       become: yes

@@ -3,14 +3,13 @@
   hosts: all
 
   roles:
-  - role: workstation
-    tags: ['workstation']
+    - role: workstation
+      tags: ["workstation"]
 
-
-    vars:
-    # available params: "desktop", "wsl"
-    # see available files in vars/
-    install_type: "desktop"
+      vars:
+      # available params: "desktop", "wsl"
+      # see available files in vars/
+      install_type: "desktop"
 
   pre_tasks:
     - name: prepare system
@@ -24,14 +23,13 @@
 
         - name: install packages to allow apt to use a repo over https
           apt:
-            name: "{{ item }}"
             state: present
-          with_items:
-            - apt-transport-https
-            - ca-certificates
-            - curl
-            - gnupg-agent
-            - software-properties-common
+            name:
+              - apt-transport-https
+              - ca-certificates
+              - curl
+              - gnupg-agent
+              - software-properties-common
           tags:
             - pre_tasks
 
@@ -39,13 +37,19 @@
     - name: check if reboot required
 
       block:
-       - name: check if reboot required
-         stat:
-          path: "/var/run/reboot-required"
-         register: reboot_required
+        - name: check if reboot required
+          stat:
+            path: "/var/run/reboot-required"
+          register: reboot_required
 
-       - debug:
+        - debug:
             msg: "Reboot required!"
-         when: reboot_required.stat.isreg is defined
+          when: reboot_required.stat.isreg is defined
       tags:
         - post_tasks
+
+  # Do not yell at me about missing aptitude
+  # https://github.com/ansible/ansible/pull/61782
+  module_defaults:
+    apt:
+      force_apt_get: yes
