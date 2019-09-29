@@ -48,5 +48,8 @@ kubectl_snap_channel: "1.14"
 helm_snap_channel: "latest/stable"
 
 # go
+go_version: 1.13.1
+go_checksum: "sha256:94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124"
+
 # vscode snap
 vscode_bin: "/snap/code/current/usr/share/code/bin/code"
