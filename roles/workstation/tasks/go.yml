@@ -2,22 +2,20 @@
 - name: install Go
 
   block:
-    - name: check if Go already installed
-      command: /usr/local/go/bin/go version
-      ignore_errors: yes
-      register: go_version_installed
-
     - name: download Go binary
       get_url:
         url: "https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz"
         dest: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
         checksum: "{{ go_checksum }}"
 
-    - name: extract Go
+    - name: extract Go archive
       become: yes
       unarchive:
         src: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
         dest: "/usr/local/"
-  when: |
-    (go_version_installed is not defined) or
-    (go_version not in go_version_installed.stdout)
+
+  always:
+    - name: remove Go tarball
+      file:
+        path: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
+        state: absent
