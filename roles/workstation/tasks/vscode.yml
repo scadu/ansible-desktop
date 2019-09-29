@@ -7,11 +7,11 @@
     classic: yes
 
 - name: list vscode extensions
-  command: "code --list-extensions"
+  command: "{{ vscode_bin }} --list-extensions"
   register: vscode_installed_extensions
   changed_when: false
 
 - name: install vscode extensions
-  command: "code --install-extension '{{ item }}'"
+  command: "{{ vscode_bin }} --install-extension '{{ item }}'"
   loop: "{{ vscode_extensions }}"
   when: (vscode_extensions is defined) and (item not in vscode_installed_extensions.stdout|lower)
