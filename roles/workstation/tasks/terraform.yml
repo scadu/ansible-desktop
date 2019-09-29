@@ -3,7 +3,7 @@
 
   block:
     - name: make sure that bin, terragrunt and tfenv dirs exists
-      file: 
+      file:
         name: "{{ item }}"
         state: directory
         owner: "{{ ansible_user_id }}"
@@ -32,10 +32,25 @@
     - name: link tfenv and terragrunt scripts/binaries
       file:
         state: link
-        mode: '0700'
+        mode: "0700"
         path: "{{ item.path }}"
         src: "{{ item.src }}"
       with_items:
-        - { src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/tfenv", path: "{{ user_local_dir }}/bin/tfenv" }
-        - { src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/terraform", path: "{{ user_local_dir }}/bin/terraform" }
-        - { src: "{{ user_local_dir }}/terragrunt/terragrunt", path: "{{ user_local_dir }}/bin/terragrunt" }
+        - {
+            src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/tfenv",
+            path: "{{ user_local_dir }}/bin/tfenv",
+          }
+        - {
+            src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/terraform",
+            path: "{{ user_local_dir }}/bin/terraform",
+          }
+        - {
+            src: "{{ user_local_dir }}/terragrunt/terragrunt",
+            path: "{{ user_local_dir }}/bin/terragrunt",
+          }
+
+  always:
+    - name: remove tfenv tarball
+      file:
+        path: /tmp/tfenv.zip
+        state: absent
