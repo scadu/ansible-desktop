@@ -4,8 +4,9 @@ dist: bionic
 
 addons:
   apt:
+    update: true
     sources:
-      - ppa:ansible/ansible
+      - sourceline: "ppa:ansible/ansible"
     packages:
       - ansible-lint
 
