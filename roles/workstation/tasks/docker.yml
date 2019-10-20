@@ -31,5 +31,14 @@
         groups: docker
         append: yes
 
-    - name: install docker-compose pip package
-      import_tasks: docker_compose.yml
+    - name: install python3-pip
+      become: yes
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: install docker-compose
+      pip:
+        name: docker-compose
+        extra_args: "--user"
+        executable: pip3

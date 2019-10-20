@@ -59,9 +59,8 @@
   tags:
         - chrome
 
-- import_tasks: docker_upstream.yml
-  when: |
-        - install_docker | default(False)
+- import_tasks: docker.yml
+  when: install_docker | default(False)
   tags:
         - docker
 
