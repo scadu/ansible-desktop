@@ -3,8 +3,9 @@
   become: yes
 
   block:
-  - lineinfile:
-      path: "/etc/default/grub"
-      regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
-      line: "GRUB_CMDLINE_LINUX_DEFAULT=\"{{ grub_options }}\""
-    notify: regenerate grub cfg
+    - name: add grub options
+      lineinfile:
+        path: "/etc/default/grub"
+        regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="{{ grub_options }}"'
+      notify: regenerate grub cfg

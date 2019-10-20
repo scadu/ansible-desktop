@@ -1,10 +1,9 @@
 ---
 - name: install slack snap
   become: yes
-  
   block:
-  - name: add slack snap
-    snap:
-      name: slack
-      state: present
-      classic: yes
+    - name: add slack snap
+      snap:
+        name: slack
+        state: present
+        classic: yes

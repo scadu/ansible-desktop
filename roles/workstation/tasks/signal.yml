@@ -1,9 +1,8 @@
 ---
 - name: install signal desktop client
   become: yes
-  
   block:
-  - name: add signal snap
-    snap:
-      name: signal-desktop
-      state: present
+    - name: add signal snap
+      snap:
+        name: signal-desktop
+        state: present

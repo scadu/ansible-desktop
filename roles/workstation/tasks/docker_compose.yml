@@ -1,6 +1,5 @@
 ---
 - name: install docker-compose
-  
   block:
     - name: install python3-pip
       become: yes

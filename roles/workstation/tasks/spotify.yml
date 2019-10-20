@@ -1,9 +1,8 @@
 ---
 - name: install spotify snap
   become: yes
-  
   block:
-  - name: add spotify snap
-    snap:
-      name: spotify
-      state: present
+    - name: add spotify snap
+      snap:
+        name: spotify
+        state: present
