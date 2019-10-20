@@ -4,6 +4,8 @@ dist: bionic
 
 addons:
   apt:
+    sources:
+      - ppa:ansible/ansible
     packages:
       - ansible-lint
 
