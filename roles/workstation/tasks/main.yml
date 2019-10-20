@@ -59,18 +59,9 @@
   tags:
         - chrome
 
-# TODO: add user to docker group
 - import_tasks: docker_upstream.yml
   when: |
-        - install_docker | default(False) and
-        (ansible_distribution == "Ubuntu" and ansible_distribution_version is version('19.04', '<='))
-  tags:
-        - docker
-
-- import_tasks: docker.yml
-  when: |
-        - install_docker | default(False) and
-        (ansible_distribution == "Ubuntu" and ansible_distribution_version is version('19.10', '>='))
+        - install_docker | default(False)
   tags:
         - docker
 

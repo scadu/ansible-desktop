@@ -1,6 +1,6 @@
 # Ansible role for provisioning Ubuntu-based machines and WSL environments
 
-Tested on Ubuntu 18.04 and 19.04.
+Tested on Ubuntu 18.04 LTS.
 
 ## Usage
 
