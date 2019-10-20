@@ -2,7 +2,13 @@
 - name: install dotfiles
 
   block:
-    - name: install git config
+    - name: install zsh
+      become: yes
+      apt:
+        name: zsh
+        state: present
+
+    - name: generate gitconfig
       template:
         src: "templates/{{ item }}.j2"
         dest: "{{ ansible_user_dir }}/.{{ item }}"
@@ -11,19 +17,11 @@
         - gitconfig
         - gitignore
 
-    - name: install zsh
-      become: yes
-      apt:
-        name: zsh
-        state: present
-
-    - name: install zprezto
-      shell: |
-        git clone --recursive "{{ prezto_repo }}" "${ZDOTDIR:-$HOME}/.zprezto"
-
-        setopt EXTENDED_GLOB
-        for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-          ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-        done
-      args:
-        executable: /usr/bin/zsh
+    - name: copy zshrc
+      copy:
+        src: "files/{{ item }}"
+        dest: "{{ ansible_user_dir }}/.{{ item }}"
+        owner: "{{ ansible_user_id }}"
+      with_items:
+        - zshrc
+        - zshrc.local
