@@ -14,10 +14,10 @@
             autoremove: yes
 
   post_tasks:
-    - name: check if reboot required
+    - name: check if reboot is required
 
       block:
-        - name: check if reboot required
+        - name: check if reboot is required
           stat:
             path: "/var/run/reboot-required"
           register: reboot_required

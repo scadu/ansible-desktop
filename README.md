@@ -15,9 +15,7 @@ Tested on Ubuntu 18.04 LTS.
 
 2. Run deploy script
 
-    ``` sh
-    ./deploy.sh
-    ```
+    `./deploy.sh`
 
 3. Go grab a cup of $drink
 
