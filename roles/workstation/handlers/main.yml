@@ -42,3 +42,6 @@
 - name: regenerate grub cfg
   become: yes
   command: "grub-mkconfig -o /boot/grub/grub.cfg"
+
+- name: refresh font cache
+  command: fc-cache -f -v
