@@ -2,8 +2,6 @@
 language: python
 dist: bionic
 
-services: docker
-
 addons:
   apt:
     update: true
@@ -11,11 +9,6 @@ addons:
       - sourceline: "ppa:ansible/ansible"
     packages:
       - ansible-lint
-      - ansible
-
-before_install:
-  - pip3 install molecule docker
 
 script:
-  - cd roles/workstation
-  - molecule test
+  - ansible-lint -v *.yml

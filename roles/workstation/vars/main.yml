@@ -1,74 +1,55 @@
 ---
-# desktop things
-configure_dconf: yes
+# tfenv
+tfenv_version: 1.0.1
+tfenv_url: "https://github.com/tfutils/tfenv/archive/v{{ tfenv_version }}.tar.gz"
+tfenv_checksum: sha256:8121f269a1c6214d7621a06e7f40e114e0a1c38a87d5b57585405aa4862ff0f0"
 
-# dots and scripts
-install_dotfiles: yes
-install_scripts: yes
+# terragrunt
+terragrunt_version: 0.19.9
+terragrunt_url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
+terragrunt_checksum: "sha256:9226cffc6b67b48c78e659b8ed1228e41b01c6fa4bd55e26e3b56c4d488db7ea"
 
-# apps
-install_signal: yes
-install_spotify: no
-install_slack: yes
-install_chrome: yes
-install_syncthing: yes
+# list of AWS tools installed via pip
+aws_tools: [
+  "awscli",
+  "awsebcli",
+  "aws-sam-cli"
+]
 
-# system configuration
-configure_grub: yes
-configure_journald: yes
-unattended_upgrades: yes
-install_tlp: no
+# google chrome
+chrome_repo_key: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+chrome_repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
 
-# tools
-## docker and k8s
-install_docker: yes
-install_kubectl: yes
-install_helm: yes
+# syncthing
+syncthing_repo_key: "https://syncthing.net/release-key.txt"
+syncthing_repo: "deb https://apt.syncthing.net/ syncthing stable"
 
-## IaC
-install_terraform: yes
+# tarsnap
+tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
+tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
 
-## AWSL tools
-install_aws_tools: yes
+# docker upstream repo
+docker_repo_key: "https://download.docker.com/linux/ubuntu/gpg"
+docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
-## gcp
-install_gcloud: yes
+# prezto
+prezto_repo: "https://github.com/scadu/prezto.git"
 
-## editor
-install_vscode: yes
+# define local dir
+user_local_dir: "{{ ansible_user_dir }}/.local"
 
-# languages
-install_node: yes
-install_python: yes
-install_go: yes
+# node snap
+snap_node_channel: "12/stable"
 
-## hardware
-# hybrid graphics
-configure_prime: yes
-# choose between "intel" and "nvidia"
-graphic_card: "intel"
+# kubectl snap
+kubectl_snap_channel: "1.14"
 
-vscode_extensions:
-  - shan.code-settings-sync
+# helm snap
+helm_snap_channel: "latest/stable"
 
-packages:
-  - build-essential
-  - chrome-gnome-shell
-  - curl
-  - git
-  - gnome-tweak-tool
-  - htop
-  - lm-sensors
-  - neovim
-  - shellcheck
-  - ssh-askpass-gnome
-  - strace
-  - unzip
+# go
+go_version: 1.13.1
+go_checksum: "sha256:94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124"
 
-git:
-  name: Łukasz Jendrysik
-  email: scadu9@gmail.com
-  #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
-  #gpgsign:    false
-
-grub_options: "quiet splash btusb.enable_autosuspend=n"
+# vscode snap
+vscode_bin: "/snap/code/current/usr/share/code/bin/code"
