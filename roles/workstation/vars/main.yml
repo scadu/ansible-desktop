@@ -51,5 +51,21 @@ helm_snap_channel: "latest/stable"
 go_version: 1.13.1
 go_checksum: "sha256:94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124"
 
+packages:
+  - build-essential
+  - chrome-gnome-shell
+  - curl
+  - git
+  - gnome-tweak-tool
+  - htop
+  - lm-sensors
+  - neovim
+  - shellcheck
+  - ssh-askpass-gnome
+  - strace
+  - unzip
+  - fonts-firacode
+  - fonts-powerline
+
 # vscode snap
 vscode_bin: "/snap/code/current/usr/share/code/bin/code"

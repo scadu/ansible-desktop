@@ -8,7 +8,12 @@
         name: zsh
         state: present
 
-    - name: generate gitconfig
+    - name: clone oh-my-zsh repo
+      git:
+        repo: https://github.com/robbyrussell/oh-my-zsh
+        dest: "{{ ansible_user_dir }}/.oh-my-zsh"
+
+    - name: generate config files
       template:
         src: "templates/{{ item }}.j2"
         dest: "{{ ansible_user_dir }}/.{{ item }}"
@@ -16,12 +21,4 @@
       with_items:
         - gitconfig
         - gitignore
-
-    - name: copy zshrc
-      copy:
-        src: "files/{{ item }}"
-        dest: "{{ ansible_user_dir }}/.{{ item }}"
-        owner: "{{ ansible_user_id }}"
-      with_items:
         - zshrc
-        - zshrc.local

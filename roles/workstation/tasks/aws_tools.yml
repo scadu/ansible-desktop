@@ -8,7 +8,7 @@
         state: directory
         owner: "{{ ansible_user_id }}"
       with_items:
-        - "{{ user_local_dir }}/bin"
+        - "{{ ansible_user_dir }}/bin"
 
     - name: install AWS tools via pip
       pip:

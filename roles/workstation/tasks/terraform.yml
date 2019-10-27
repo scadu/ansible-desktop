@@ -8,9 +8,9 @@
         state: directory
         owner: "{{ ansible_user_id }}"
       with_items:
-        - "{{ user_local_dir }}/bin"
-        - "{{ user_local_dir }}/tfenv"
-        - "{{ user_local_dir }}/terragrunt"
+        - "{{ ansible_user_dir }}/bin"
+        - "{{ ansible_user_dir }}/tfenv"
+        - "{{ ansible_user_dir }}/terragrunt"
 
     - name: download tfenv
       get_url:
@@ -21,12 +21,12 @@
     - name: extract tfenv scripts
       unarchive:
         src: /tmp/tfenv.zip
-        dest: "{{ user_local_dir }}/tfenv"
+        dest: "{{ ansible_user_dir }}/tfenv"
 
     - name: download terragrunt binary
       get_url:
         url: "{{ terragrunt_url }}"
-        dest: "{{ user_local_dir }}/terragrunt/terragrunt"
+        dest: "{{ ansible_user_dir }}/terragrunt/terragrunt"
         checksum: "{{ terragrunt_checksum }}"
 
     - name: link tfenv and terragrunt scripts/binaries
@@ -37,16 +37,16 @@
         src: "{{ item.src }}"
       with_items:
         - {
-            src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/tfenv",
-            path: "{{ user_local_dir }}/bin/tfenv",
+            src: "{{ ansible_user_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/tfenv",
+            path: "{{ ansible_user_dir }}/bin/tfenv",
           }
         - {
-            src: "{{ user_local_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/terraform",
-            path: "{{ user_local_dir }}/bin/terraform",
+            src: "{{ ansible_user_dir }}/tfenv/tfenv-{{ tfenv_version }}/bin/terraform",
+            path: "{{ ansible_user_dir }}/bin/terraform",
           }
         - {
-            src: "{{ user_local_dir }}/terragrunt/terragrunt",
-            path: "{{ user_local_dir }}/bin/terragrunt",
+            src: "{{ ansible_user_dir }}/terragrunt/terragrunt",
+            path: "{{ ansible_user_dir }}/bin/terragrunt",
           }
 
   always:
