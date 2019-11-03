@@ -3,24 +3,11 @@
   become: yes
 
   block:
-    - name: add docker upstream repo key
-      apt_key:
-        url: "{{ docker_repo_key }}"
-        state: present
-
-    - name: add docker upstream repository
-      apt_repository:
-        repo: "{{ docker_repo }}"
-        filename: docker
-        state: present
-
-    - name: install docker from upstream repository
+    - name: install docker
       apt:
         state: present
         name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
+          - docker.io
 
     - name: add my user to docker group
       become: yes
@@ -30,12 +17,6 @@
         update_password: on_create
         groups: docker
         append: yes
-
-    - name: install python3-pip
-      become: yes
-      apt:
-        name: python3-pip
-        state: present
 
     - name: install docker-compose
       pip:
