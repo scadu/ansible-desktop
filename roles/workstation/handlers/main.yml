@@ -12,26 +12,6 @@
     state: started
     enabled: yes
 
-- name: start tlp
-  become: yes
-  systemd:
-    name: "{{ item }}"
-    state: started
-    enabled: yes
-  with_items:
-    - tlp
-    - tlp-sleep
-
-- name: mask systemd-rfkill
-  become: yes
-  systemd:
-    name: "{{ item }}"
-    enabled: no
-    masked: yes
-  with_items:
-    - systemd-rfkill.socket
-    - systemd-rfkill.service
-
 - name: start unattended-upgrades
   become: yes
   systemd:
