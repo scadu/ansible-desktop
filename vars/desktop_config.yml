@@ -7,7 +7,7 @@ install_dotfiles: yes
 install_scripts: yes
 
 # apps
-install_signal: yes
+install_signal: no
 install_spotify: no
 install_slack: yes
 install_chrome: yes
@@ -17,7 +17,6 @@ install_syncthing: yes
 configure_grub: yes
 configure_journald: yes
 unattended_upgrades: yes
-install_tlp: no
 
 # tools
 ## docker and k8s
@@ -38,9 +37,9 @@ install_gcloud: yes
 install_vscode: yes
 
 # languages
-install_node: yes
+install_node: no
 install_python: yes
-install_go: yes
+install_go: no
 
 ## hardware
 # hybrid graphics
