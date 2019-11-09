@@ -39,7 +39,7 @@
     - { key: "switch-to-application-6", value: "['']" }
     - { key: "switch-to-application-7", value: "['']" }
     - { key: "switch-to-application-7", value: "['']" }
-    
+
 - name: set wm keybindings
   dconf:
     key: "/org/gnome/desktop/wm/keybindings/{{ item.key }}"
