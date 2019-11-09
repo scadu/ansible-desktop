@@ -7,7 +7,7 @@ install_dotfiles: yes
 install_scripts: yes
 
 # apps
-install_signal: yes
+install_signal: no
 install_spotify: no
 install_slack: no
 install_chrome: yes
