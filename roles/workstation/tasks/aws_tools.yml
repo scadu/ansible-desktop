@@ -14,4 +14,4 @@
       pip:
         name: "{{ aws_tools }}"
         extra_args: "--user"
-        executable: pip3
+        executable: /usr/bin/pip3

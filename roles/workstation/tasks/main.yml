@@ -1,141 +1,119 @@
 ---
-- name: main task
-  include_vars: vars/{{ install_type }}_config.yml
-  when: (install_type is defined) and (install_type == "wsl" or install_type == "desktop")
-  tags:
-        - always
-
 - import_tasks: user.yml
 
 - import_tasks: unattended-upgrades.yml
   when: unattended_upgrades | default(False)
   tags:
-        - unattended_upgrades
+    - unattended_upgrades
 
 - import_tasks: packages.yml
   when: packages is defined
   tags:
-        - packages
+    - packages
 
 - import_tasks: dotfiles.yml
   when: install_dotfiles | default(False)
   tags:
-        - dotfiles
+    - dotfiles
 
 - import_tasks: dconf.yml
   when: configure_dconf | default(False)
   tags:
-        - dconf
+    - dconf
 
 - import_tasks: scripts.yml
   when: install_scripts | default(False)
   tags:
-        - scripts
+    - scripts
 
 - import_tasks: terraform.yml
   when: install_terraform | default(False)
   tags:
-        - terraform
-        - tfenv
+    - terraform
+    - tfenv
 
 - import_tasks: syncthing.yml
   when: install_syncthing | default(False)
   tags:
-        - syncthing
+    - syncthing
 
 - import_tasks: journald.yml
   when: configure_journald | default(False)
   tags:
-        - journald
-        - sytemd
+    - journald
+    - sytemd
 
 - import_tasks: vscode.yml
   when: install_vscode | default(False)
   tags:
-        - vscode
+    - vscode
 
 - import_tasks: chrome.yml
   when: install_chrome | default(False)
   tags:
-        - chrome
+    - chrome
 
 - import_tasks: docker.yml
   when: install_docker | default(False)
   tags:
-        - docker
+    - docker
 
 - import_tasks: kubectl.yml
   when: install_kubectl | default(False)
   tags:
-        - kubectl
+    - kubectl
 
 - import_tasks: helm.yml
   when: install_helm | default(False)
   tags:
-        - helm
+    - helm
 
 - import_tasks: gcloud.yml
   when: install_gcloud | default(False)
   tags:
-        - gcloud
-
-- import_tasks: alps.yml
-  when: ansible_product_name == "Latitude E7240" and configure_alps | default(False)
-  tags:
-        - alps
-        - touchpad
-
-- import_tasks: tlp.yml
-  when: install_tlp | default(False)
-  tags:
-        - tlp
+    - gcloud
 
 - import_tasks: signal.yml
   when: install_signal | default(False)
   tags:
-        - signal
+    - signal
 
 - import_tasks: spotify.yml
   when: install_spotify | default(False)
   tags:
-        - spotify
+    - spotify
 
 - import_tasks: slack.yml
   when: install_slack | default(False)
   tags:
-        - slack
+    - slack
 
 - import_tasks: aws_tools.yml
   when: install_aws_tools | default(False)
   tags:
-        - aws
+    - aws
 
 - import_tasks: node.yml
   when: install_node | default(False)
   tags:
-        - node
-
-- import_tasks: python.yml
-  when: install_python | default(False)
-  tags:
-        - python
+    - node
 
 - import_tasks: go.yml
   when: install_go | default(False)
   tags:
-        - go
+    - go
 
 - import_tasks: tarsnap.yml
   when: install_tarsnap | default(False)
   tags:
-        - tarsnap
+    - tarsnap
 
 - import_tasks: grub.yml
   when: configure_grub | default(False)
   tags:
-        - grub
+    - grub
 
 - import_tasks: prime.yml
   when: configure_prime | default(False)
   tags:
-        - prime
+    - prime

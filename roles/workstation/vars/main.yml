@@ -28,13 +28,6 @@ syncthing_repo: "deb https://apt.syncthing.net/ syncthing stable"
 tarsnap_repo_key: "https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc"
 tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }} ./"
 
-# docker upstream repo
-docker_repo_key: "https://download.docker.com/linux/ubuntu/gpg"
-docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
-
-# prezto
-prezto_repo: "https://github.com/scadu/prezto.git"
-
 # define local dir
 user_local_dir: "{{ ansible_user_dir }}/.local"
 
@@ -55,17 +48,18 @@ packages:
   - build-essential
   - chrome-gnome-shell
   - curl
+  - fonts-firacode
+  - fonts-powerline
   - git
   - gnome-tweak-tool
   - htop
+  - jq
   - lm-sensors
   - neovim
   - shellcheck
   - ssh-askpass-gnome
   - strace
   - unzip
-  - fonts-firacode
-  - fonts-powerline
 
 # vscode snap
 vscode_bin: "/snap/code/current/usr/share/code/bin/code"

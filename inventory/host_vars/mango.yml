@@ -1,0 +1,58 @@
+---
+# desktop things
+configure_dconf: yes
+
+# dots and scripts
+install_dotfiles: yes
+install_scripts: yes
+
+# apps
+install_signal: no
+install_spotify: no
+install_slack: yes
+install_chrome: yes
+install_syncthing: no
+
+# system configuration
+configure_grub: yes
+configure_journald: yes
+unattended_upgrades: yes
+
+# tools
+## docker and k8s
+install_docker: yes
+install_kubectl: yes
+install_helm: yes
+
+## IaC
+install_terraform: yes
+
+## AWSL tools
+install_aws_tools: yes
+
+## gcp
+install_gcloud: yes
+
+## editor
+install_vscode: yes
+
+# languages
+install_node: no
+install_go: no
+
+## hardware
+# hybrid graphics
+configure_prime: no
+# choose between "intel" and "nvidia"
+graphic_card: "intel"
+
+vscode_extensions:
+  - shan.code-settings-sync
+
+git:
+  name: Łukasz Jendrysik
+  email: scadu9@gmail.com
+  #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
+  #gpgsign:    false
+
+grub_options: "quiet splash btusb.enable_autosuspend=n"

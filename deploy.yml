@@ -1,15 +1,10 @@
 ---
 - name: zomg desktop
-  hosts: all
+  hosts: "{{ target }}"
 
   roles:
     - role: workstation
       tags: ["workstation"]
-
-      vars:
-      # available params: "desktop", "wsl"
-      # see available files in vars/
-      install_type: "desktop"
 
   pre_tasks:
     - name: prepare system
@@ -20,17 +15,6 @@
           apt:
             update_cache: yes
             upgrade: yes
-
-        - name: install packages to allow apt to use a repo over https
-          apt:
-            state: present
-            name:
-              - apt-transport-https
-              - ca-certificates
-              - curl
-              - gnupg-agent
-          tags:
-            - pre_tasks
 
   post_tasks:
     - name: check if reboot is required
