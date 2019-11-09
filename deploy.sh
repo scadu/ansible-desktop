@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-sudo apt update && sudo apt install software-properties-common -y
+printf "Preparing environment...\n"
+sudo apt install python3-{dev,pip,venv,apt}
+# shellcheck disable=SC1091
+python3 -m venv .venv && source ./.venv/bin/activate
+pip3 install -q -r requirements.txt --no-cache-dir
+ansible-playbook deploy.yml -e "target=$(hostname)" -D -K
 
-if ! command -v ansible >/dev/null 2>&1
-then
-  sudo apt-add-repository -y -u ppa:ansible/ansible 
-  sudo apt install ansible -y
-fi
+printf "Cleaning up...\n"
+rm -rf .venv
 
-ansible-playbook deploy.yml -D -K
+printf "Voilà!\n"

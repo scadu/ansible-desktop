@@ -24,6 +24,22 @@
     - { key: "focus-mode", value: "'click'" }
     - { key: "audible-bell", value: "false" }
 
+- name: set shell keybindings
+  dconf:
+    key: "/org/gnome/shell/keybindings/{{ item.key }}"
+    value: "{{ item.value | string }}"
+    state: present
+  with_items:
+    - { key: "switch-to-application-1", value: "['']" }
+    - { key: "switch-to-application-2", value: "['']" }
+    - { key: "switch-to-application-3", value: "['']" }
+    - { key: "switch-to-application-4", value: "['']" }
+    - { key: "switch-to-application-5", value: "['']" }
+    - { key: "switch-to-application-6", value: "['']" }
+    - { key: "switch-to-application-6", value: "['']" }
+    - { key: "switch-to-application-7", value: "['']" }
+    - { key: "switch-to-application-7", value: "['']" }
+
 - name: set wm keybindings
   dconf:
     key: "/org/gnome/desktop/wm/keybindings/{{ item.key }}"
@@ -141,7 +157,5 @@
     state: present
   with_items:
     - { key: "night-light-enabled", value: "true" }
-    - { key: "night-light-schedule-automatic", value: "false" }
-    - { key: "night-light-schedule-from", value: "00.00" }
-    - { key: "night-light-schedule-to", value: "24.00" }
+    - { key: "night-light-schedule-automatic", value: "true" }
     - { key: "night-light-temperature", value: "uint32 4500" }

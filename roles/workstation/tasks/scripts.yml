@@ -11,7 +11,7 @@
 - name: install scripts
   copy:
     src: "{{ item }}"
-    dest: "{{ ansible_user_dir }}/bin/"
+    dest: "{{ user_local_dir }}/bin/"
     mode: 0755
   with_fileglob:
     - "{{ playbook_dir }}/scripts/*"
