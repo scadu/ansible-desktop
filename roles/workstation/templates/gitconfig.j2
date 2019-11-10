@@ -156,11 +156,6 @@
 	# change to maching for machines with older versions of git 1.x.x
 	default = simple
 
-
-[url "git://github.com/"]
-
-	insteadOf = "github:"
-
 [url "git@gist.github.com:"]
 
 	insteadOf = "gst:"
@@ -190,6 +185,8 @@
 [user]
 	name = "{{ git.name }}"
 	email = {{ git.email }}
+[credential]
+	helper = cache --timeout=3600
 {% if git.signingkey is defined %}
 	signingkey = "{{ git.signingkey }}"
 {% endif %}
