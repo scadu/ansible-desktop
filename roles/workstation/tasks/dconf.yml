@@ -122,7 +122,7 @@
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "terminal", value: "'<Super>Return'" }
+    - { key: "terminal", value: "['<Super>Return']" }
 
 - name: set keyboard custom bindings
   dconf:
