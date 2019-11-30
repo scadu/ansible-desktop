@@ -1,6 +1,6 @@
 # Ansible role for provisioning Ubuntu-based systems
 
-Tested on Ubuntu 19.10.
+Tested on Ubuntu 18.04
 
 ## Usage
 
