@@ -18,6 +18,9 @@
       apt:
         state: present
         name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
 
     - name: add my user to docker group
       become: yes
