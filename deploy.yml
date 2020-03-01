@@ -1,6 +1,9 @@
 ---
 - name: zomg desktop
-  hosts: "{{ target }}"
+  hosts: all
+
+  vars_files:
+        "vars/{{ target }}.yml"
 
   roles:
     - role: workstation

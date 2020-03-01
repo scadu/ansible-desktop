@@ -53,20 +53,20 @@ go_checksum: "sha256:94f874037b82ea5353f4061e543681a0e79657f787437974214629af840
 
 packages:
   - build-essential
-  - chrome-gnome-shell
   - curl
   - fonts-firacode
   - fonts-powerline
   - git
-  - gnome-tweak-tool
   - htop
   - jq
-  - lm-sensors
   - neovim
   - shellcheck
-  - ssh-askpass-gnome
-  - strace
   - unzip
 
+gnome_packages:
+  - chrome-gnome-shell
+  - gnome-tweak-tool
+  - ssh-askpass-gnome
+  
 # vscode snap
 vscode_bin: "/snap/code/current/usr/share/code/bin/code"

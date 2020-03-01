@@ -1,3 +1,0 @@
-[all]
-pomelo	ansible_connection=local
-mango	ansible_connection=local
