@@ -8,7 +8,9 @@ addons:
     update: true
     packages:
       - shellcheck
+      - python3-setuptools
 
 script:
   - ansible-lint -v *.yml
   - shellcheck deploy.sh
+  - ansible-playbook deploy.yml -e "target=bare"
