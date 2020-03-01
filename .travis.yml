@@ -12,3 +12,4 @@ addons:
 script:
   - ansible-lint -v *.yml
   - shellcheck deploy.sh
+  - ansible-playbook deploy.yml -e vars/bare.yml -D
