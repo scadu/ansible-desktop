@@ -1,5 +1,5 @@
 ---
-language: minimal
+language: python
 dist: bionic
 install: pip3 install -r requirements.txt --no-cache-dir
 
