@@ -1,13 +1,13 @@
 ---
 # desktop things
-configure_dconf: yes
+configure_gnome: yes
 
 # dots and scripts
 install_dotfiles: yes
 install_scripts: yes
 
 # apps
-install_signal: no
+install_signal: yes
 install_spotify: no
 install_slack: no
 install_chrome: yes
@@ -21,8 +21,6 @@ unattended_upgrades: yes
 # tools
 ## docker and k8s
 install_docker: yes
-install_kubectl: yes
-install_helm: yes
 
 ## IaC
 install_terraform: yes
@@ -31,7 +29,7 @@ install_terraform: yes
 install_aws_tools: yes
 
 ## gcp
-install_gcloud: yes
+install_gcloud: no
 
 ## editor
 install_vscode: yes
@@ -42,7 +40,7 @@ install_go: no
 
 ## hardware
 # hybrid graphics
-configure_prime: yes
+configure_prime: no
 # choose between "intel" and "nvidia"
 graphic_card: "intel"
 

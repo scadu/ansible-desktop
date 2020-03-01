@@ -1,17 +1,14 @@
 ---
 # desktop things
-configure_dconf: yes
+configure_gnome: yes
 
 # dots and scripts
 install_dotfiles: yes
 install_scripts: yes
 
 # apps
-install_signal: no
-install_spotify: no
 install_slack: yes
 install_chrome: yes
-install_syncthing: no
 
 # system configuration
 configure_grub: yes
@@ -21,8 +18,8 @@ unattended_upgrades: yes
 # tools
 ## docker and k8s
 install_docker: yes
-install_kubectl: yes
-install_helm: yes
+install_kubectl: no
+install_helm: no
 
 ## IaC
 install_terraform: yes
@@ -31,7 +28,7 @@ install_terraform: yes
 install_aws_tools: yes
 
 ## gcp
-install_gcloud: yes
+install_gcloud: no
 
 ## editor
 install_vscode: yes
