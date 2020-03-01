@@ -16,10 +16,10 @@
   tags:
     - dotfiles
 
-- import_tasks: dconf.yml
-  when: configure_dconf | default(False)
+- import_tasks: gnome.yml
+  when: configure_gnome | default(False)
   tags:
-    - dconf
+    - gnome
 
 - import_tasks: scripts.yml
   when: install_scripts | default(False)
