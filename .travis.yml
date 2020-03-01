@@ -8,6 +8,7 @@ addons:
     update: true
     packages:
       - shellcheck
+      - python3-setuptools
 
 script:
   - ansible-lint -v *.yml
