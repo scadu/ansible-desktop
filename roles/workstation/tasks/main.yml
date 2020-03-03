@@ -43,6 +43,11 @@
     - journald
     - sytemd
 
+- import_tasks: sysctl.yml
+  when: configure_sysctl | default(False)
+  tags:
+    - sysctl
+
 - import_tasks: vscode.yml
   when: install_vscode | default(False)
   tags:
