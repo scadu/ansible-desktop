@@ -1,8 +1,8 @@
 ---
-- name: install python-psutil
+- name: install python3-psutil
   become: yes
   apt:
-    name: python-psutil
+    name: python3-psutil
     state: present
 
 - name: install GNOME packages
