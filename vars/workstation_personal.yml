@@ -17,6 +17,7 @@ install_syncthing: no
 configure_grub: yes
 configure_journald: yes
 unattended_upgrades: yes
+configure_sysctl: yes
 
 # tools
 ## docker and k8s
