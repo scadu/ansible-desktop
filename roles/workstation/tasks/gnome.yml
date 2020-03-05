@@ -147,9 +147,7 @@
     state: present
   with_items:
     - { key: "night-light-enabled", value: "true" }
-    - { key: "night-light-schedule-automatic", value: "false" }
-    - { key: "night-light-schedule-from", value: "0.0" }
-    - { key: "night-light-schedule-to", value: "24.0" }
+    - { key: "night-light-schedule-automatic", value: "true" }
     - { key: "night-light-temperature", value: "uint32 4000" }
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1618354
