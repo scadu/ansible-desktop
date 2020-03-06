@@ -6,3 +6,5 @@
     name: "{{ ansible_user_id }}"
     update_password: on_create
     shell: /bin/zsh
+    groups: audio
+    append: yes
