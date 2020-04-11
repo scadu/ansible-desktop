@@ -22,7 +22,7 @@ Unattended-Upgrade::Allowed-Origins {
 
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
-Acquire::http::Dl-Limit "250";
+// Acquire::http::Dl-Limit "250";
 
 // Download and install upgrades only on AC power
 // (i.e. skip or gracefully stop updates on battery)
@@ -30,4 +30,4 @@ Unattended-Upgrade::OnlyOnACPower "true";
 
 // Download and install upgrades only on non-metered connection
 // (i.e. skip or gracefully stop updates on a metered connection)
-Unattended-Upgrade::Skip-Updates-On-Metered-Connections "false";
+Unattended-Upgrade::Skip-Updates-On-Metered-Connections "true";
