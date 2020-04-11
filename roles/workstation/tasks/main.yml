@@ -32,11 +32,6 @@
     - terraform
     - tfenv
 
-- import_tasks: syncthing.yml
-  when: install_syncthing | default(False)
-  tags:
-    - syncthing
-
 - import_tasks: journald.yml
   when: configure_journald | default(False)
   tags:
@@ -82,11 +77,6 @@
   when: install_signal | default(False)
   tags:
     - signal
-
-- import_tasks: spotify.yml
-  when: install_spotify | default(False)
-  tags:
-    - spotify
 
 - import_tasks: slack.yml
   when: install_slack | default(False)

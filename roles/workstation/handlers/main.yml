@@ -5,13 +5,6 @@
     name: systemd-journald
     state: restarted
 
-- name: start syncthing
-  become: yes
-  systemd:
-    name: "syncthing@{{ ansible_user_id }}.service"
-    state: started
-    enabled: yes
-
 - name: start unattended-upgrades
   become: yes
   systemd:

@@ -8,10 +8,8 @@ install_scripts: yes
 
 # apps
 install_signal: yes
-install_spotify: no
 install_slack: no
 install_chrome: yes
-install_syncthing: no
 
 # system configuration
 configure_grub: yes
