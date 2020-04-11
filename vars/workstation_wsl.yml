@@ -3,28 +3,20 @@
 install_dotfiles: yes
 install_scripts: yes
 
-# system configuration
-configure_journald: no
-unattended_upgrades: no
-
-# tools
-## docker and k8s
-install_docker: no
-install_kubectl: no
-install_helm: no
-
 ## IaC
-install_terraform: no
+install_terraform: yes
 
 ## AWSL tools
-install_aws_tools: no
+install_aws_tools: yes
 
 ## gcp
 install_gcloud: no
+
+vscode_extensions:
+  - shan.code-settings-sync
 
 git:
   name: Łukasz Jendrysik
   email: scadu9@gmail.com
   #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
   #gpgsign:    false
-
