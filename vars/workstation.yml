@@ -47,10 +47,4 @@ graphic_card: "intel"
 vscode_extensions:
   - shan.code-settings-sync
 
-git:
-  name: Łukasz Jendrysik
-  email: scadu9@gmail.com
-  #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
-  #gpgsign:    false
-
 grub_options: "quiet splash btusb.enable_autosuspend=n"
