@@ -21,10 +21,3 @@ install_aws_tools: no
 
 ## gcp
 install_gcloud: no
-
-git:
-  name: Łukasz Jendrysik
-  email: scadu9@gmail.com
-  #signingkey: 81428558222B6C926149C6814F521D0B0F66261E
-  #gpgsign:    false
-
