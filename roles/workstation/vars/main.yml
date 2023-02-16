@@ -20,9 +20,6 @@ vscode:
   keyring: /etc/apt/keyrings/packages.microsoft.gpg
   repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
 
-# list of AWS tools installed via pip
-aws_tools: ["awscli", "aws-sam-cli"]
-
 # define local dir
 user_local_dir: "{{ ansible_user_dir }}/.local"
 
@@ -35,6 +32,7 @@ packages:
   - jq
   - shellcheck
   - unzip
+  - fonts-cascadia-code
 
 gnome_packages:
   - chrome-gnome-shell

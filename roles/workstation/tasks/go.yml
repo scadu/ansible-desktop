@@ -3,14 +3,14 @@
 
   block:
     - name: download Go binary
-      get_url:
+      ansible.builtin.get_url:
         url: "https://dl.google.com/go/go{{ go.version }}.linux-amd64.tar.gz"
         dest: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
         checksum: "{{ go.checksum }}"
 
     - name: extract Go archive
       become: true
-      unarchive:
+      ansible.builtin.unarchive:
         src: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
         dest: "/usr/local/"
 

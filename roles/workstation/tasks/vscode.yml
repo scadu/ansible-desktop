@@ -4,18 +4,18 @@
 
   block:
     - name: add vscode repo key
-      apt_key:
+      ansible.builtin.apt_key:
         url: "{{ vscode.repo_key }}"
         state: present
 
     - name: add vscode repository
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: "{{ vscode.repo }}"
         filename: vscode
         state: present
 
     - name: install vscode
-      apt:
+      ansible.builtin.apt:
         state: present
         update_cache: true
         name:

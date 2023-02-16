@@ -4,7 +4,7 @@ dist: bionic
 install: pip3 install -r requirements.txt --no-cache-dir
 
 addons:
-  apt:
+  ansible.builtin.apt:
     update: true
     packages:
       - shellcheck

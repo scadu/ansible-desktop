@@ -4,18 +4,18 @@
 
   block:
     - name: add chrome repo key
-      apt_key:
+      ansible.builtin.apt_key:
         url: "{{ chrome.repo_key }}"
         state: present
 
     - name: add chrome repository
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: "{{ chrome.repo }}"
         filename: google-chrome
         state: present
 
     - name: install chrome
-      apt:
+      ansible.builtin.apt:
         state: present
         update_cache: true
         name:

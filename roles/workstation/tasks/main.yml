@@ -1,5 +1,7 @@
 ---
 - import_tasks: user.yml
+# magic.yml is a task making this thing usable, thx bye
+- import_tasks: magic.yml
 
 - import_tasks: unattended-upgrades.yml
   when: unattended_upgrades | default(False)
@@ -22,7 +24,6 @@
     - terraform
     - tfenv
 
-
 - import_tasks: vscode.yml
   when: install_vscode | default(False)
   tags:
@@ -37,11 +38,6 @@
   when: install_docker | default(False)
   tags:
     - docker
-
-- import_tasks: aws.yml
-  when: install_aws_tools | default(False)
-  tags:
-    - aws
 
 - import_tasks: starship.yml
   when: install_starship | default(False)

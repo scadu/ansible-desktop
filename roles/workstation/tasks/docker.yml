@@ -4,19 +4,19 @@
 
   block:
     - name: add docker upstream repo key
-      apt_key:
+      ansible.builtin.apt_key:
         url: "{{ docker.repo_key }}"
         keyring: "{{ docker.keyring }}"
         state: present
 
     - name: add docker upstream repository
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: "{{ docker.repo }}"
         filename: docker
         state: present
 
     - name: install docker from upstream repository
-      apt:
+      ansible.builtin.apt:
         state: present
         update_cache: true
         name:
@@ -29,8 +29,8 @@
     - name: add my user to docker group
       become: true
 
-      user:
+      ansible.builtin.user:
         name: "{{ ansible_user_id }}"
         update_password: on_create
         groups: docker
-        append: yes
+        append: true

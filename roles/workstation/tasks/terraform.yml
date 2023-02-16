@@ -12,15 +12,14 @@
         - "{{ user_local_dir }}/tfenv"
 
     - name: download tfenv
-      get_url:
+      ansible.builtin.get_url:
         url: "https://github.com/tfutils/tfenv/v{{ tfenv_version }}.tar.gz"
         dest: /tmp/tfenv.zip
 
     - name: extract tfenv scripts
-      unarchive:
+      ansible.builtin.unarchive:
         src: /tmp/tfenv.zip
         dest: "{{ user_local_dir }}/tfenv"
-
 
     - name: link tfenv scripts/binaries
       ansible.builtin.file:

@@ -3,10 +3,10 @@
   connection: local
 
   vars:
-    install_docker: yes
-    install_go: yes
-    install_vscode: yes
-    install_starship: yes
+    install_docker: true
+    install_go: true
+    install_vscode: true
+    install_starship: true
 
   roles:
     - role: workstation
@@ -18,9 +18,9 @@
 
       block:
         - name: upgrade system packages
-          apt:
-            update_cache: yes
-            upgrade: yes
+          ansible.builtin.apt:
+            update_cache: true
+            upgrade: true
 
   post_tasks:
     - name: check if reboot is required
@@ -39,5 +39,5 @@
   # Do not yell about missing aptitude
   # https://github.com/ansible/ansible/pull/61782
   module_defaults:
-    apt:
-      force_apt_get: yes
+    ansible.builtin.apt:
+      force_apt_get: true

@@ -1,11 +1,11 @@
 ---
 - name: install zsh
-  apt:
+  ansible.builtin.apt:
     state: present
     name: zsh
 
 - name: generate zshrc
-  template:
+  ansible.builtin.template:
     src: "templates/{{ item }}.j2"
     dest: "{{ ansible_user_dir }}/.{{ item }}"
     owner: "{{ ansible_user_id }}"

@@ -1,13 +1,13 @@
 ---
 - name: install python3-psutil
   become: true
-  apt:
+  ansible.builtin.apt:
     name: python3-psutil
     state: present
 
 - name: install GNOME packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ gnome_packages }}"
     state: present
 

@@ -1,16 +1,16 @@
 ---
 - name: restart journald
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: systemd-journald
     state: restarted
 
 - name: start unattended-upgrades
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: unattended-upgrades
-    enabled: yes
+    enabled: true
     state: restarted
 
 - name: refresh font cache
-  command: fc-cache -f -v
+  ansible.builtin.command: fc-cache -f -v
