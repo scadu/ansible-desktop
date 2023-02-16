@@ -1,6 +1,6 @@
 ---
 - name: install common packages
-  become: yes
+  become: true
 
   block:
     - name: install common packages

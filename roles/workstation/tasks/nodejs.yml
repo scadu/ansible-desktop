@@ -1,6 +1,6 @@
 ---
-- name: install node
-  become: yes
+- name: install node.js
+  become: true
   block:
     - name: add node snap
       snap:

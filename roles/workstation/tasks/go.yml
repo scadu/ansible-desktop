@@ -9,7 +9,7 @@
         checksum: "{{ go_checksum }}"
 
     - name: extract Go archive
-      become: yes
+      become: true
       unarchive:
         src: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
         dest: "/usr/local/"

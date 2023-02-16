@@ -1,6 +1,6 @@
 ---
 - name: install docker
-  become: yes
+  become: true
 
   block:
     - name: add docker upstream repo key
@@ -23,22 +23,10 @@
           - containerd.io
 
     - name: add my user to docker group
-      become: yes
+      become: true
 
       user:
         name: "{{ ansible_user_id }}"
         update_password: on_create
         groups: docker
         append: yes
-
-    - name: install python3-pip
-      become: yes
-      apt:
-        name: python3-pip
-        state: present
-
-    - name: install docker-compose
-      pip:
-        name: docker-compose
-        extra_args: "--user"
-        executable: pip3

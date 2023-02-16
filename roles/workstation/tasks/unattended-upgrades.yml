@@ -1,6 +1,6 @@
 ---
 - name: configure unattended-upgrades
-  become: yes
+  become: true
 
   block:
     - name: install unattended-upgrades package

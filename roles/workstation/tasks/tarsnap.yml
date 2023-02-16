@@ -1,6 +1,6 @@
 ---
 - name: install tarsnap
-  become: yes
+  become: true
 
   block:
     - name: add tarsnap repo key

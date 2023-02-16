@@ -1,6 +1,6 @@
 ---
 - name: install vscode snap
-  become: yes
+  become: true
   snap:
     name: code
     state: present

@@ -1,20 +1,16 @@
 ---
 - name: restart journald
-  become: yes
+  become: true
   systemd:
     name: systemd-journald
     state: restarted
 
 - name: start unattended-upgrades
-  become: yes
+  become: true
   systemd:
     name: unattended-upgrades
     enabled: yes
     state: restarted
-
-- name: regenerate grub cfg
-  become: yes
-  command: "grub-mkconfig -o /boot/grub/grub.cfg"
 
 - name: refresh font cache
   command: fc-cache -f -v

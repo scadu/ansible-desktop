@@ -3,7 +3,7 @@
 
   block:
     - name: install zsh
-      become: yes
+      become: true
       apt:
         name: zsh
         state: present

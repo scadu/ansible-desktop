@@ -11,7 +11,7 @@
 
   pre_tasks:
     - name: prepare system
-      become: yes
+      become: true
 
       block:
         - name: upgrade system packages

@@ -8,9 +8,3 @@ install_terraform: yes
 
 ## AWSL tools
 install_aws_tools: yes
-
-## gcp
-install_gcloud: no
-
-vscode_extensions:
-  - shan.code-settings-sync

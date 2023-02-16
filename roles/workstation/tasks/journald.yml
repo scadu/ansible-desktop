@@ -1,6 +1,6 @@
 ---
 - name: configure journald
-  become: yes
+  become: true
   block:
     - name: apply journald configuration
       template:

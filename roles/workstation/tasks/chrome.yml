@@ -1,6 +1,6 @@
 ---
 - name: install chrome
-  become: yes
+  become: true
 
   block:
     - name: add chrome repo key

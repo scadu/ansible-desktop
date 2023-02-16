@@ -1,9 +1,0 @@
----
-- name: install gcloud
-  become: yes
-  block:
-    - name: add gcloud sdk snap
-      snap:
-        name: google-cloud-sdk
-        state: present
-        classic: yes

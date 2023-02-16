@@ -1,18 +1,13 @@
 ---
 # tfenv
-tfenv_version: 1.0.1
+tfenv_version: 3.0.0
 tfenv_url: "https://github.com/tfutils/tfenv/archive/v{{ tfenv_version }}.tar.gz"
 tfenv_checksum: sha256:8121f269a1c6214d7621a06e7f40e114e0a1c38a87d5b57585405aa4862ff0f0"
 
-# terragrunt
-terragrunt_version: 0.19.9
-terragrunt_url: "https://github.com/gruntwork-io/terragrunt/releases/download/v{{ terragrunt_version }}/terragrunt_linux_amd64"
-terragrunt_checksum: "sha256:9226cffc6b67b48c78e659b8ed1228e41b01c6fa4bd55e26e3b56c4d488db7ea"
 
 # list of AWS tools installed via pip
 aws_tools: [
   "awscli",
-  "awsebcli",
   "aws-sam-cli"
 ]
 
@@ -28,24 +23,12 @@ tarsnap_repo: "deb http://pkg.tarsnap.com/deb/{{ ansible_distribution_release }}
 docker_repo_key: "https://download.docker.com/linux/ubuntu/gpg"
 docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
-# prezto
-prezto_repo: "https://github.com/scadu/prezto.git"
-
 # define local dir
 user_local_dir: "{{ ansible_user_dir }}/.local"
 
-# node snap
-snap_node_channel: "12/stable"
-
-# kubectl snap
-kubectl_snap_channel: "1.14"
-
-# helm snap
-helm_snap_channel: "latest/stable"
-
 # go
-go_version: 1.13.1
-go_checksum: "sha256:94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124"
+go_version: 1.20.1
+go_checksum: "sha256:000a5b1fca4f75895f78befeb2eecf10bfff3c428597f3f1e69133b63b911b02"
 
 packages:
   - build-essential

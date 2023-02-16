@@ -1,5 +1,5 @@
 - name: apply sysctl settings
-  become: yes
+  become: true
   sysctl:
     sysctl_file: /etc/sysctl.d/10-custom.conf
     name: "{{ item.key }}"

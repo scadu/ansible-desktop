@@ -1,12 +1,12 @@
 ---
 - name: install python3-psutil
-  become: yes
+  become: true
   apt:
     name: python3-psutil
     state: present
 
 - name: install GNOME packages
-  become: yes
+  become: true
   apt:
     name: "{{ gnome_packages }}"
     state: present
