@@ -8,8 +8,10 @@
 - name: install GNOME packages
   become: true
   ansible.builtin.apt:
-    name: "{{ gnome_packages }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - gnome-tweaks  
 
 - name: configure dock
   dconf:
@@ -19,7 +21,7 @@
     - { key: "hot-keys", value: "false" }
     - { key: "dock-position", value: "'RIGHT'" }
     - { key: "dock-fixed", value: "false" }
-    - { key: "dash-max-icon-size", value: "20" }
+    - { key: "dash-max-icon-size", value: "32" }
 
 - name: set focus wm click focus, disable audible bell
   dconf:
@@ -49,29 +51,6 @@
     - { key: "old-files-age", value: "uint32 7" }
     - { key: "remove-old-trash-files", value: "true" }
 
-- name: set background colors
-  dconf:
-    key: "/org/gnome/desktop/{{ item.key }}"
-    value: "{{ item.value }}"
-    state: present
-  with_items:
-    - { key: "background/picture-options", value: "'wallpaper'" }
-    - { key: "background/color-shading-type", value: "'solid'" }
-    - { key: "background/secondary-color", value: "'#888888'" }
-    - { key: "background/primary-color", value: "'#888888'" }
-    - {
-        key: "background/picture-uri",
-        value: "'ansible.builtin.file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'",
-      }
-    - { key: "screensaver/picture-options", value: "'wallpaper'" }
-    - { key: "screensaver/color-shading-type", value: "'solid'" }
-    - { key: "screensaver/secondary-color", value: "'#888888'" }
-    - { key: "screensaver/primary-color", value: "'#888888'" }
-    - {
-        key: "screensaver/picture-uri",
-        value: "'ansible.builtin.file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'",
-      }
-
 - name: hide home and trash icons from desktop
   dconf:
     key: "/org/gnome/shell/extensions/desktop-icons/{{ item.key }}"
@@ -89,14 +68,6 @@
   with_items:
     - { key: "show-in-lock-screen", value: "false" }
 
-- name: set media keys
-  dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/{{ item.key }}"
-    value: "{{ item.value }}"
-    state: present
-  with_items:
-    - { key: "terminal", value: "'<Super>Return'" }
-
 - name: set shell settings
   dconf:
     key: "/org/gnome/shell/{{ item.key }}"
@@ -113,13 +84,3 @@
   with_items:
     - { key: "dynamic-workspaces", value: "false" }
     - { key: "workspaces-only-on-primary", value: "true" }
-
-- name: set night light
-  dconf:
-    key: "/org/gnome/settings-daemon/plugins/color/{{ item.key }}"
-    value: "{{ item.value }}"
-    state: present
-  with_items:
-    - { key: "night-light-enabled", value: "true" }
-    - { key: "night-light-schedule-automatic", value: "true" }
-    - { key: "night-light-temperature", value: "uint32 4000" }

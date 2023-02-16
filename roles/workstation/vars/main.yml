@@ -33,8 +33,3 @@ packages:
   - shellcheck
   - unzip
   - fonts-cascadia-code
-
-gnome_packages:
-  - chrome-gnome-shell
-  - gnome-tweak-tool
-  - ssh-askpass-gnome
