@@ -21,11 +21,6 @@
   tags:
     - gnome
 
-- import_tasks: scripts.yml
-  when: install_scripts | default(False)
-  tags:
-    - scripts
-
 - import_tasks: terraform.yml
   when: install_terraform | default(False)
   tags:
@@ -52,6 +47,12 @@
   when: install_aws_tools | default(False)
   tags:
     - aws
+
+- import_tasks: starship.yml
+  when: install_starship | default(False)
+  tags:
+    - starship
+    - prompt
 
 - import_tasks: go.yml
   when: install_go | default(False)

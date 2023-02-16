@@ -1,7 +1,22 @@
 ---
-- name: install vscode snap
+- name: install chrome
   become: true
-  snap:
-    name: code
-    state: present
-    classic: yes
+
+  block:
+    - name: add vscode repo key
+      apt_key:
+        url: "{{ vscode.repo_key }}"
+        state: present
+
+    - name: add vscode repository
+      apt_repository:
+        repo: "{{ vscode.repo }}"
+        filename: vscode
+        state: present
+
+    - name: install vscode
+      apt:
+        state: present
+        update_cache: true
+        name:
+          - code

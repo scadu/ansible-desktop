@@ -1,4 +1,17 @@
 ---
+- name: install zsh
+  apt:
+    state: present
+    name: zsh
+
+- name: generate zshrc
+  template:
+    src: "templates/{{ item }}.j2"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
+    owner: "{{ ansible_user_id }}"
+  with_items:
+    - zshrc
+
 - name: set zsh as default shell
   become: true
 
@@ -6,5 +19,3 @@
     name: "{{ ansible_user_id }}"
     update_password: on_create
     shell: /bin/zsh
-    groups: audio
-    append: yes

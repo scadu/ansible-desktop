@@ -1,9 +1,12 @@
 ---
-- name: zomg desktop
-  hosts: all
+- hosts: localhost
+  connection: local
 
-  vars_files:
-        "vars/{{ target }}.yml"
+  vars:
+    install_docker: yes
+    install_go: yes
+    install_vscode: yes
+    install_starship: yes
 
   roles:
     - role: workstation

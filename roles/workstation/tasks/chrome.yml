@@ -17,6 +17,7 @@
     - name: install chrome
       apt:
         state: present
+        update_cache: true
         name:
           - google-chrome-stable
           - fonts-noto-color-emoji
