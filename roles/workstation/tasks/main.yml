@@ -11,11 +11,6 @@
   tags:
     - packages
 
-- import_tasks: dotfiles.yml
-  when: install_dotfiles | default(False)
-  tags:
-    - dotfiles
-
 - import_tasks: gnome.yml
   when: configure_gnome | default(False)
   tags:
@@ -43,7 +38,7 @@
   tags:
     - docker
 
-- import_tasks: aws_tools.yml
+- import_tasks: aws.yml
   when: install_aws_tools | default(False)
   tags:
     - aws
