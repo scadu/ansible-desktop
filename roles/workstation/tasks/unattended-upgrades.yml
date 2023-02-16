@@ -1,15 +1,15 @@
 ---
 - name: configure unattended-upgrades
-  become: yes
+  become: true
 
   block:
     - name: install unattended-upgrades package
-      apt:
+      ansible.builtin.apt:
         name: unattended-upgrades
         state: present
 
     - name: configure unattended-upgrades
-      template:
+      ansible.builtin.template:
         src: templates/{{ item }}.j2
         dest: /etc/apt/apt.conf.d/{{ item }}
         owner: root

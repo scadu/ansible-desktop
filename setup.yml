@@ -1,9 +1,12 @@
 ---
-- name: zomg desktop
-  hosts: all
+- hosts: localhost
+  connection: local
 
-  vars_files:
-        "vars/{{ target }}.yml"
+  vars:
+    install_docker: true
+    install_go: true
+    install_vscode: true
+    install_starship: true
 
   roles:
     - role: workstation
@@ -11,17 +14,16 @@
 
   pre_tasks:
     - name: prepare system
-      become: yes
+      become: true
 
       block:
         - name: upgrade system packages
-          apt:
-            update_cache: yes
-            upgrade: yes
+          ansible.builtin.apt:
+            update_cache: true
+            upgrade: true
 
   post_tasks:
     - name: check if reboot is required
-
       block:
         - name: check if reboot is required
           stat:
@@ -37,5 +39,5 @@
   # Do not yell about missing aptitude
   # https://github.com/ansible/ansible/pull/61782
   module_defaults:
-    apt:
-      force_apt_get: yes
+    ansible.builtin.apt:
+      force_apt_get: true

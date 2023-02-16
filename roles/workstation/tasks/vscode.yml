@@ -1,17 +1,22 @@
 ---
-- name: install vscode snap
-  become: yes
-  snap:
-    name: code
-    state: present
-    classic: yes
+- name: install chrome
+  become: true
 
-- name: list vscode extensions
-  command: "{{ vscode_bin }} --list-extensions"
-  register: vscode_installed_extensions
-  changed_when: false
+  block:
+    - name: add vscode repo key
+      ansible.builtin.apt_key:
+        url: "{{ vscode.repo_key }}"
+        state: present
 
-- name: install vscode extensions
-  command: "{{ vscode_bin }} --install-extension '{{ item }}'"
-  loop: "{{ vscode_extensions }}"
-  when: (vscode_extensions is defined) and (item not in vscode_installed_extensions.stdout|lower)
+    - name: add vscode repository
+      ansible.builtin.apt_repository:
+        repo: "{{ vscode.repo }}"
+        filename: vscode
+        state: present
+
+    - name: install vscode
+      ansible.builtin.apt:
+        state: present
+        update_cache: true
+        name:
+          - code

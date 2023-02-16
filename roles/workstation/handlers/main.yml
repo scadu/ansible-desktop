@@ -1,20 +1,16 @@
 ---
 - name: restart journald
-  become: yes
-  systemd:
+  become: true
+  ansible.builtin.systemd:
     name: systemd-journald
     state: restarted
 
 - name: start unattended-upgrades
-  become: yes
-  systemd:
+  become: true
+  ansible.builtin.systemd:
     name: unattended-upgrades
-    enabled: yes
+    enabled: true
     state: restarted
 
-- name: regenerate grub cfg
-  become: yes
-  command: "grub-mkconfig -o /boot/grub/grub.cfg"
-
 - name: refresh font cache
-  command: fc-cache -f -v
+  ansible.builtin.command: fc-cache -f -v

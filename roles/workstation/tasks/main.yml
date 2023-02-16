@@ -1,5 +1,7 @@
 ---
 - import_tasks: user.yml
+# magic.yml is a task making this thing usable, thx bye
+- import_tasks: magic.yml
 
 - import_tasks: unattended-upgrades.yml
   when: unattended_upgrades | default(False)
@@ -11,37 +13,16 @@
   tags:
     - packages
 
-- import_tasks: dotfiles.yml
-  when: install_dotfiles | default(False)
-  tags:
-    - dotfiles
-
 - import_tasks: gnome.yml
   when: configure_gnome | default(False)
   tags:
     - gnome
-
-- import_tasks: scripts.yml
-  when: install_scripts | default(False)
-  tags:
-    - scripts
 
 - import_tasks: terraform.yml
   when: install_terraform | default(False)
   tags:
     - terraform
     - tfenv
-
-- import_tasks: journald.yml
-  when: configure_journald | default(False)
-  tags:
-    - journald
-    - sytemd
-
-- import_tasks: sysctl.yml
-  when: configure_sysctl | default(False)
-  tags:
-    - sysctl
 
 - import_tasks: vscode.yml
   when: install_vscode | default(False)
@@ -58,57 +39,13 @@
   tags:
     - docker
 
-- import_tasks: kubectl.yml
-  when: install_kubectl | default(False)
+- import_tasks: starship.yml
+  when: install_starship | default(False)
   tags:
-    - kubectl
-
-- import_tasks: helm.yml
-  when: install_helm | default(False)
-  tags:
-    - helm
-
-- import_tasks: gcloud.yml
-  when: install_gcloud | default(False)
-  tags:
-    - gcloud
-
-- import_tasks: signal.yml
-  when: install_signal | default(False)
-  tags:
-    - signal
-
-- import_tasks: slack.yml
-  when: install_slack | default(False)
-  tags:
-    - slack
-
-- import_tasks: aws_tools.yml
-  when: install_aws_tools | default(False)
-  tags:
-    - aws
-
-- import_tasks: node.yml
-  when: install_node | default(False)
-  tags:
-    - node
+    - starship
+    - prompt
 
 - import_tasks: go.yml
   when: install_go | default(False)
   tags:
     - go
-
-- import_tasks: tarsnap.yml
-  when: install_tarsnap | default(False)
-  tags:
-    - tarsnap
-
-- import_tasks: grub.yml
-  when: configure_grub | default(False)
-  tags:
-    - grub
-
-- import_tasks: prime.yml
-  when: configure_prime | default(False)
-  tags:
-    - prime
