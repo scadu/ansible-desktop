@@ -15,3 +15,7 @@ SAVEHIST=1000
 {% if install_starship %}
 eval "$(starship init zsh)"
 {% endif %}
+
+{% if install_go %}
+path+=("/usr/local/go/bin")
+{% endif %}
