@@ -3,7 +3,7 @@
 
   block:
     - name: make sure that bin, tfenv dirs exists
-      file:
+      ansible.builtin.file:
         name: "{{ item }}"
         state: directory
         owner: "{{ ansible_user_id }}"
@@ -13,9 +13,8 @@
 
     - name: download tfenv
       get_url:
-        url: "{{ tfenv_url }}"
+        url: "https://github.com/tfutils/tfenv/v{{ tfenv_version }}.tar.gz"
         dest: /tmp/tfenv.zip
-        checksum: "{{ tfenv_checksum }}"
 
     - name: extract tfenv scripts
       unarchive:
@@ -24,7 +23,7 @@
 
 
     - name: link tfenv scripts/binaries
-      file:
+      ansible.builtin.file:
         state: link
         mode: "0700"
         path: "{{ item.path }}"
@@ -41,6 +40,6 @@
 
   always:
     - name: remove tfenv tarball
-      file:
+      ansible.builtin.file:
         path: /tmp/tfenv.zip
         state: absent

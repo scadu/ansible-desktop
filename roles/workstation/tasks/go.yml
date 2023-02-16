@@ -4,18 +4,18 @@
   block:
     - name: download Go binary
       get_url:
-        url: "https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz"
-        dest: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
-        checksum: "{{ go_checksum }}"
+        url: "https://dl.google.com/go/go{{ go.version }}.linux-amd64.tar.gz"
+        dest: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
+        checksum: "{{ go.checksum }}"
 
     - name: extract Go archive
       become: true
       unarchive:
-        src: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
+        src: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
         dest: "/usr/local/"
 
   always:
     - name: remove Go tarball
-      file:
-        path: "/tmp/go-{{ go_version }}.linux-amd64.tar.gz"
+      ansible.builtin.file:
+        path: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
         state: absent

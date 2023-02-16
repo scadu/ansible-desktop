@@ -5,22 +5,26 @@
   block:
     - name: add docker upstream repo key
       apt_key:
-        url: "{{ docker_repo_key }}"
+        url: "{{ docker.repo_key }}"
+        keyring: "{{ docker.keyring }}"
         state: present
 
     - name: add docker upstream repository
       apt_repository:
-        repo: "{{ docker_repo }}"
+        repo: "{{ docker.repo }}"
         filename: docker
         state: present
 
     - name: install docker from upstream repository
       apt:
         state: present
+        update_cache: true
         name:
           - docker-ce
           - docker-ce-cli
           - containerd.io
+          - docker-buildx-plugin 
+          - docker-compose-plugin
 
     - name: add my user to docker group
       become: true

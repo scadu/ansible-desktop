@@ -5,12 +5,12 @@
   block:
     - name: add chrome repo key
       apt_key:
-        url: "{{ chrome_repo_key }}"
+        url: "{{ chrome.repo_key }}"
         state: present
 
     - name: add chrome repository
       apt_repository:
-        repo: "{{ chrome_repo }}"
+        repo: "{{ chrome.repo }}"
         filename: google-chrome
         state: present
 

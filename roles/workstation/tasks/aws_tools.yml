@@ -3,7 +3,7 @@
 
   block:
     - name: make sure that required directories exists
-      file:
+      ansible.builtin.file:
         name: "{{ item }}"
         state: directory
         owner: "{{ ansible_user_id }}"

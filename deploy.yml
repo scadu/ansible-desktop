@@ -21,7 +21,6 @@
 
   post_tasks:
     - name: check if reboot is required
-
       block:
         - name: check if reboot is required
           stat:
