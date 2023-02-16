@@ -1,6 +1,9 @@
-# Ansible role for provisioning Ubuntu-based systems
+# Ansible role for provisioning Ubuntu-based workstations
 
-Tested on Ubuntu 22.10
+Currently used with Ubuntu 22.10.
+Review before running anything from that repo. 
+
+You've been warned.
 
 ## Usage
 
