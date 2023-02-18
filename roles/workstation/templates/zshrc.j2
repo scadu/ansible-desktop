@@ -1,17 +1,10 @@
-# The following lines were added by compinstall
-
-zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle :compinstall filename '$HOME/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
-
 path+=("/usr/local/go/bin")
 
-eval "$(starship init zsh)"
+source $HOME/.antidote/antidote.zsh
+
+antidote load
+
+bindkey "$terminfo[kcuu1]" history-substring-search-up 
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up 
+bindkey '^[[B' history-substring-search-down

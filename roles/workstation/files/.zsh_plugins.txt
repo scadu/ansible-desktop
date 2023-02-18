@@ -1,0 +1,2 @@
+mattmc3/zephyr
+zsh-users/zsh-history-substring-search
