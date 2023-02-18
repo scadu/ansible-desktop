@@ -1,6 +1,6 @@
-# Ansible role for provisioning Ubuntu-based workstations
+# Ansible role for provisioning Fedora-based desktops
 
-Currently used with Ubuntu 22.10.
+Currently used with Fedora 37.
 Review before running anything from that repo. 
 
 You've been warned.

@@ -1,12 +1,16 @@
-vscode_repo_key: https://packages.microsoft.com/keys/microsoft.asc
+user_local_dir: "{{ ansible_user_dir }}/.local"
 
-rpm_repos:
+rpm:
   onepassword:
     name: 1Password Stable Channel
     baseurl: https://downloads.1password.com/linux/rpm/stable/$basearch
     gpgkey: https://downloads.1password.com/linux/keys/1password.asc
 
-password_rpm_uri: https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
+  vscode:
+    name: Visual Studio Code
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+
 
 go:
   version: 1.20.1

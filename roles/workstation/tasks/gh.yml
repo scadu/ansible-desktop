@@ -10,8 +10,12 @@
         baseurl: https://cli.github.com/packages/rpm
         gpgcheck: true
         gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
+      when: ansible_distribution == 'Fedora'
+
 
     - name: install gh cli
       ansible.builtin.dnf:
         name: gh
-        state: latest
+        state: present
+      when: ansible_distribution == 'Fedora'
+      

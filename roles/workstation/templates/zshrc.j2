@@ -12,10 +12,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 # End of lines configured by zsh-newuser-install
 
-{% if install_starship %}
-eval "$(starship init zsh)"
-{% endif %}
-
-{% if install_go %}
 path+=("/usr/local/go/bin")
-{% endif %}
+
+eval "$(starship init zsh)"

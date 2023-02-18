@@ -1,0 +1,27 @@
+---
+- import_tasks: vscode.yml
+  tags:
+    - vscode
+    - dev 
+- import_tasks: shell.yml
+  tags:
+    - shell
+    - dev
+- import_tasks: gh.yml
+  tags:
+    - gh
+    - github
+    - dev
+- import_tasks: go.yml
+  tags: 
+    - go
+    - golang
+    - dev
+- import_tasks: chrome.yml
+  tags:
+    - chrome
+    - desktop
+- import_tasks: 1password.yml
+  tags:
+    - 1password
+    - desktop

@@ -3,7 +3,7 @@
   become: true
 
   block:
-    - name: install chrome
+    - name: fedora install chrome
       ansible.builtin.dnf:
         state: present
         enablerepo: google-chrome
