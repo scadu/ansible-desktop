@@ -1,0 +1,11 @@
+---
+- name: install chrome
+  become: true
+
+  block:
+    - name: install chrome
+      ansible.builtin.dnf:
+        state: present
+        enablerepo: google-chrome
+        name:
+          - google-chrome-stable

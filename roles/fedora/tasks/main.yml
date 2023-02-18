@@ -1,0 +1,13 @@
+---
+# - import_tasks: vscode.yml
+- import_tasks: user.yml
+- import_tasks: starship.yml
+- import_tasks: gh.yml
+- import_tasks: go.yml
+  tags: 
+    - go
+    - golang
+- import_tasks: chrome.yml
+- import_tasks: 1password.yml
+  tags:
+    - 1password

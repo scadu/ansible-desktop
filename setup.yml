@@ -1,44 +1,43 @@
 ---
 - hosts: localhost
   connection: local
+  roles:
+    - fedora
 
   vars:
-    install_docker: true
+  #   install_docker: true
     install_go: true
-    install_vscode: true
+    # install_vscode: true
     install_starship: true
-    configure_gnome: true
+  #   configure_gnome: true
 
-  roles:
-    - role: workstation
-      tags: ["workstation"]
 
-  pre_tasks:
-    - name: prepare system
-      become: true
+  # pre_tasks:
+  #   - name: prepare system
+  #     become: true
 
-      block:
-        - name: upgrade system packages
-          ansible.builtin.apt:
-            update_cache: true
-            upgrade: true
+  #     block:
+  #       - name: upgrade system packages
+  #         ansible.builtin.apt:
+  #           update_cache: true
+  #           upgrade: true
 
-  post_tasks:
-    - name: check if reboot is required
-      block:
-        - name: check if reboot is required
-          stat:
-            path: "/var/run/reboot-required"
-          register: reboot_required
+  # post_tasks:
+  #   - name: check if reboot is required
+  #     block:
+  #       - name: check if reboot is required
+  #         stat:
+  #           path: "/var/run/reboot-required"
+  #         register: reboot_required
 
-        - debug:
-            msg: "Reboot required!"
-          when: reboot_required.stat.isreg is defined
-      tags:
-        - post_tasks
+  #       - debug:
+  #           msg: "Reboot required!"
+  #         when: reboot_required.stat.isreg is defined
+  #     tags:
+  #       - post_tasks
 
   # Do not yell about missing aptitude
   # https://github.com/ansible/ansible/pull/61782
-  module_defaults:
-    ansible.builtin.apt:
-      force_apt_get: true
+  # module_defaults:
+  #   ansible.builtin.apt:
+  #     force_apt_get: true
