@@ -29,3 +29,6 @@
   tags:
     - magic
     - desktop
+- import_tasks: dnf.yml
+  tags:
+    - dnf
