@@ -1,5 +1,11 @@
 user_local_dir: "{{ ansible_user_dir }}/.local"
 
+packages:
+  - ripgrep
+  - jq
+  - neovim
+  - fira-code-fonts
+
 rpm:
   onepassword:
     name: 1Password Stable Channel

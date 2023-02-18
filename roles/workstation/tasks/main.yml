@@ -32,3 +32,6 @@
 - import_tasks: dnf.yml
   tags:
     - dnf
+- import_tasks: packages.yml
+  tags:
+    - packages
