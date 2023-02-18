@@ -1,0 +1,9 @@
+---
+# https://www.mail-archive.com/kernel-packages@lists.launchpad.net/msg495367.html
+# https://discourse.ubuntu.com/t/why-ubuntu-22-04-is-so-fast-and-how-to-make-it-faster/30369
+- name: make mutter go brr
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    regexp: '^MUTTER_DEBUG_FORCE_KMS_MODE'
+    line: MUTTER_DEBUG_FORCE_KMS_MODE=0
