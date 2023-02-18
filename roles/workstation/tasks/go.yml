@@ -2,17 +2,26 @@
 - name: install Go
 
   block:
+    - name: check Go version installed
+      ansible.builtin.shell: 
+        cmd: go version
+      register: go_version_installed
+      ignore_errors: true
+
     - name: download Go binary
       ansible.builtin.get_url:
         url: "https://dl.google.com/go/go{{ go.version }}.linux-amd64.tar.gz"
         dest: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
         checksum: "{{ go.checksum }}"
+      when: go_version_installed.stdout is not search(go.version)
 
     - name: extract Go archive
       become: true
       ansible.builtin.unarchive:
         src: "/tmp/go-{{ go.version }}.linux-amd64.tar.gz"
         dest: "/usr/local/"
+      when: go_version_installed is not search(go.version)
+
 
   always:
     - name: remove Go tarball

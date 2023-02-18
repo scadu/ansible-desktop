@@ -1,0 +1,21 @@
+---
+- name: install gh cli
+  become: true
+
+  block:
+    - name: add gh cli repo
+      ansible.builtin.yum_repository:
+        name: gh-cli
+        description: GitHub CLI
+        baseurl: https://cli.github.com/packages/rpm
+        gpgcheck: true
+        gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
+      when: ansible_distribution == 'Fedora'
+
+
+    - name: install gh cli
+      ansible.builtin.dnf:
+        name: gh
+        state: present
+      when: ansible_distribution == 'Fedora'
+      

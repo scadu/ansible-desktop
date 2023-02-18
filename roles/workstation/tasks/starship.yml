@@ -1,7 +1,0 @@
----
-- name: install starship prompt
-  become: true
-  snap:
-    name: starship
-    state: present
-    channel: edge

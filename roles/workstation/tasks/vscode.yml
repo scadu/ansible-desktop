@@ -1,22 +1,18 @@
 ---
-- name: install chrome
+- name: install vscode
   become: true
 
   block:
-    - name: add vscode repo key
-      ansible.builtin.apt_key:
-        url: "{{ vscode.repo_key }}"
-        state: present
-
-    - name: add vscode repository
-      ansible.builtin.apt_repository:
-        repo: "{{ vscode.repo }}"
-        filename: vscode
-        state: present
-
+    - name: add vscode repo
+      ansible.builtin.yum_repository:
+        name: vscode
+        description: "{{ rpm.vscode.name }}"
+        baseurl: "{{ rpm.vscode.baseurl }}"
+        gpgcheck: true
+        gpgkey: "{{ rpm.vscode.gpgkey }}"
+      
     - name: install vscode
-      ansible.builtin.apt:
+      ansible.builtin.dnf:
+        name: code
         state: present
-        update_cache: true
-        name:
-          - code
+      

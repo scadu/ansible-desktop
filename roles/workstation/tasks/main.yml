@@ -1,51 +1,27 @@
 ---
-- import_tasks: user.yml
-# magic.yml is a task making this thing usable, thx bye
-- import_tasks: magic.yml
-
-- import_tasks: unattended-upgrades.yml
-  when: unattended_upgrades | default(False)
-  tags:
-    - unattended_upgrades
-
-- import_tasks: packages.yml
-  when: packages is defined
-  tags:
-    - packages
-
-- import_tasks: gnome.yml
-  when: configure_gnome | default(False)
-  tags:
-    - gnome
-
-- import_tasks: terraform.yml
-  when: install_terraform | default(False)
-  tags:
-    - terraform
-    - tfenv
-
 - import_tasks: vscode.yml
-  when: install_vscode | default(False)
   tags:
     - vscode
-
+    - dev 
+- import_tasks: shell.yml
+  tags:
+    - shell
+    - dev
+- import_tasks: gh.yml
+  tags:
+    - gh
+    - github
+    - dev
+- import_tasks: go.yml
+  tags: 
+    - go
+    - golang
+    - dev
 - import_tasks: chrome.yml
-  when: install_chrome | default(False)
   tags:
     - chrome
-
-- import_tasks: docker.yml
-  when: install_docker | default(False)
+    - desktop
+- import_tasks: 1password.yml
   tags:
-    - docker
-
-- import_tasks: starship.yml
-  when: install_starship | default(False)
-  tags:
-    - starship
-    - prompt
-
-- import_tasks: go.yml
-  when: install_go | default(False)
-  tags:
-    - go
+    - 1password
+    - desktop
