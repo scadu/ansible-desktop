@@ -5,6 +5,17 @@
     state: present
     name: zsh
 
+- name: install antidote plugin manager
+  ansible.builtin.git:
+    repo: https://github.com/mattmc3/antidote
+    dest: "{{ ansible_user_dir }}/.antidote"
+    depth: 1
+
+- name: copy .zsh_plugins.txt
+  ansible.builtin.copy:
+    src: .zsh_plugins.txt
+    dest: "{{ ansible_user_dir }}/.zsh_plugins.txt"
+
 - name: generate zshrc
   ansible.builtin.template:
     src: "templates/{{ item }}.j2"
@@ -30,4 +41,4 @@
   become: true
   ansible.builtin.dnf:
     name: starship
-    state: installed
+    state: present
