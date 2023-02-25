@@ -5,5 +5,14 @@
   become: true
   ansible.builtin.lineinfile:
     path: /etc/environment
-    regexp: '^MUTTER_DEBUG_FORCE_KMS_MODE'
+    regexp: "^MUTTER_DEBUG_FORCE_KMS_MODE"
     line: MUTTER_DEBUG_FORCE_KMS_MODE=0
+
+# https://www.phoronix.com/news/Linux-6.1-rc7-Easier-AMD-Pstate
+- name: enable amd-pstate
+  become: true
+  ansible.builtin.command:
+    cmd: 'grubby --update-kernel=ALL --args="amd_pstate=passive"'
+  when: |
+    ansible_processor | intersect(["AuthenticAMD"]) 
+    and ansible_kernel is version('6.1', '>=')
