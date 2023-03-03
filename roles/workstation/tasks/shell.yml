@@ -23,6 +23,7 @@
     owner: "{{ ansible_user_id }}"
   with_items:
     - zshrc
+    - zshenv
 
 - name: set zsh as default shell
   become: true
