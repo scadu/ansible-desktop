@@ -15,6 +15,13 @@
         checksum: "{{ go.checksum }}"
       when: go_version_installed.stdout is not search(go.version)
 
+    - name: remove existing Go installation
+      become: true
+      ansible.builtin.file:
+        path: "/usr/local/go"
+        state: absent
+      when: go_version_installed is not search(go.version)
+
     - name: extract Go archive
       become: true
       ansible.builtin.unarchive:
