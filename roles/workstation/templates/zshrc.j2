@@ -1,5 +1,3 @@
-alias vim="nvim"
-
 source $HOME/.antidote/antidote.zsh
 
 antidote load
@@ -8,3 +6,6 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up 
 bindkey '^[[B' history-substring-search-down
+
+alias vim="nvim"
+alias bump="sudo dnf upgrade && flatpak update -y"
