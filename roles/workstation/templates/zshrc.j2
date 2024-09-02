@@ -9,3 +9,8 @@ bindkey '^[[B' history-substring-search-down
 
 alias vim="nvim"
 alias bump="sudo dnf upgrade && flatpak update -y"
+
+source $HOME/.config/op/plugins.sh
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
