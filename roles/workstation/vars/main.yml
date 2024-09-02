@@ -16,8 +16,3 @@ rpm:
     name: Visual Studio Code
     baseurl: https://packages.microsoft.com/yumrepos/vscode
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-
-
-go:
-  version: 1.20.1
-  checksum: "sha256:000a5b1fca4f75895f78befeb2eecf10bfff3c428597f3f1e69133b63b911b02"

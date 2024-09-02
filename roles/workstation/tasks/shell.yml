@@ -38,8 +38,11 @@
     state: enabled
     name: atim/starship
 
-- name: install starship
+- name: install starship, zoxide and othe utils
   become: true
   ansible.builtin.dnf:
-    name: starship
+    name: 
+      - starship
+      - zoxide
+      - fzf # In case if already not installed as dependency for zoxide
     state: present

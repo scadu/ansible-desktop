@@ -12,11 +12,6 @@
     - gh
     - github
     - dev
-- import_tasks: go.yml
-  tags: 
-    - go
-    - golang
-    - dev
 - import_tasks: chrome.yml
   tags:
     - chrome
