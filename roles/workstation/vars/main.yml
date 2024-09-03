@@ -5,6 +5,7 @@ packages:
   - jq
   - neovim
   - fira-code-fonts
+  - gnome-tweaks
 
 rpm:
   onepassword:

@@ -30,3 +30,7 @@
 - import_tasks: packages.yml
   tags:
     - packages
+- import_tasks: gnome.yml
+  tags:
+    - gnome
+    
