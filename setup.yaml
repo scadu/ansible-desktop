@@ -4,6 +4,7 @@
 
   vars:
     desktop: false
+    coding_env: false
 
   vars_files:
       - "vars/{{ lookup('env', 'AS_CONFIG') }}.yaml"
@@ -51,4 +52,9 @@
     tags:
       - ssh
     when: desktop
-      
+  - include_tasks: tasks/python.yaml
+    tags:
+      - coding
+      - python
+    when: coding_env
+    
