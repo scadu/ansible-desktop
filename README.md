@@ -8,5 +8,7 @@ You've been warned.
 ## Usage
 
 ```bash
-ansible-playbook setup.yml -D -K
+./deploy
 ```
+Above will ask you for the config. If left empty, it will use defaults.
+Otherwise, it would map provided config name to `vars/$config.yaml`.

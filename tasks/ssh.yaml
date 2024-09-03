@@ -1,0 +1,8 @@
+- name: setup 1password ssh agent
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_user_dir }}/.ssh/config"
+    block: |
+      Host *
+        IdentityAgent ~/.1password/agent.sock
+    create: true
+  when: desktop

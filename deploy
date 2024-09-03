@@ -1,0 +1,14 @@
+#!/bin/bash -e
+# Source: https://github.com/cdown/ansible-desktop/blob/d6dccb7983190d72bcc2f9b6ef11c5eac3487bd2/run
+
+config_file=$HOME/.ansibleconfig
+
+if ! [[ -e $config_file ]]; then
+    read -r -p 'Config: ' AS_CONFIG
+    echo "$AS_CONFIG" > "$config_file"
+fi
+
+AS_CONFIG=$(cat "$config_file")
+export AS_CONFIG
+
+ansible-playbook -c local -i localhost -K setup.yaml

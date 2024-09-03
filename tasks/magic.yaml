@@ -8,11 +8,11 @@
     regexp: "^MUTTER_DEBUG_FORCE_KMS_MODE"
     line: MUTTER_DEBUG_FORCE_KMS_MODE=0
 
-# https://www.phoronix.com/news/Linux-6.1-rc7-Easier-AMD-Pstate
-- name: enable amd-pstate
+# https://docs.kernel.org/admin-guide/pm/amd-pstate.html#guided-mode
+- name: set amd-pstate mode
   become: true
   ansible.builtin.command:
-    cmd: 'grubby --update-kernel=ALL --args="amd_pstate=passive"'
+    cmd: 'grubby --update-kernel=ALL --args="amd_pstate=guided"'
   when: |
     ansible_processor | intersect(["AuthenticAMD"]) 
-    and ansible_kernel is version('6.1', '>=')
+    and ansible_kernel is version('6.4', '>=')
