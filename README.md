@@ -5,6 +5,9 @@ Review before running anything from that repo.
 
 You've been warned.
 
+## Prerequirements
+`ansible` and `python3-psutil` packages
+
 ## Usage
 
 ```bash
