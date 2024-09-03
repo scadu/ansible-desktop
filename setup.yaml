@@ -19,9 +19,9 @@
     tags:
       - shell
       - dev
-  - include_tasks: tasks/gh.yaml
+  - include_tasks: tasks/git.yaml
     tags:
-      - gh
+      - git
       - github
       - dev
   - include_tasks: tasks/chrome.yaml
@@ -57,4 +57,7 @@
       - coding
       - python
     when: coding_env
+  - include_tasks: tasks/git.yaml
+    tags:
+      - git
     
