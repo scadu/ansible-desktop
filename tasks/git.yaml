@@ -21,3 +21,4 @@
     template:
       src: templates/gitconfig.j2
       dest: "{{ ansible_user_dir }}/.gitconfig"
+      force: no # copy only if file does not exist on the target
