@@ -1,20 +1,22 @@
 ---
 # https://www.mail-archive.com/kernel-packages@lists.launchpad.net/msg495367.html
 # https://discourse.ubuntu.com/t/why-ubuntu-22-04-is-so-fast-and-how-to-make-it-faster/30369
-- name: make mutter go brr
+- name: Make mutter go brr
   become: true
   ansible.builtin.lineinfile:
     path: /etc/environment
-    regexp: "^MUTTER_DEBUG_FORCE_KMS_MODE"
+    regexp: ^MUTTER_DEBUG_FORCE_KMS_MODE
     line: MUTTER_DEBUG_FORCE_KMS_MODE=0
 
 # https://docs.kernel.org/admin-guide/pm/amd-pstate.html
 # https://discussion.fedoraproject.org/t/6-5-kernel-and-amd-pstate-driver-as-default/88128/15
 # TODO: Switch from `active` to `guided` once available. Maybe in 6.11?
-- name: set amd-pstate mode
+- name: Set amd-pstate mode
   become: true
   ansible.builtin.command:
-    cmd: 'grubby --update-kernel=ALL --args="amd_pstate=active"'
+    cmd: grubby --update-kernel=ALL --args="amd_pstate=active"
+  register: grubby_result
+  changed_when: grubby_result.rc == 0 and grubby_result.stdout != ""
   when: |
-    ansible_processor | intersect(["AuthenticAMD"]) 
+    ansible_processor | intersect(["AuthenticAMD"])
     and ansible_kernel is version('6.3', '>=')

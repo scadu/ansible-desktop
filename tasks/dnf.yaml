@@ -1,7 +1,7 @@
 ---
-- name: generate dnf.conf
+- name: Generate dnf.conf
   become: true
   ansible.builtin.lineinfile:
     path: /etc/dnf/dnf.conf
-    regexp: '^defaultyes'
+    regexp: ^defaultyes
     line: defaultyes=True

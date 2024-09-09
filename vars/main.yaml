@@ -1,3 +1,4 @@
+---
 user_local_dir: "{{ ansible_user_dir }}/.local"
 
 packages:

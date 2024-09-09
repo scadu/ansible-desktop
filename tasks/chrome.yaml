@@ -1,8 +1,8 @@
 ---
-  - name: fedora install chrome
-    ansible.builtin.dnf:
-      state: present
-      enablerepo: google-chrome
-      name:
-        - google-chrome-stable
-    become: true
+- name: Install chrome
+  ansible.builtin.dnf:
+    state: present
+    enablerepo: google-chrome
+    name:
+      - google-chrome-stable
+  become: true

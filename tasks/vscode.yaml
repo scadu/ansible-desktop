@@ -1,18 +1,17 @@
 ---
-- name: install vscode
+- name: Install vscode
   become: true
 
   block:
-    - name: add vscode repo
+    - name: Add vscode repo
       ansible.builtin.yum_repository:
         name: vscode
         description: "{{ rpm.vscode.name }}"
         baseurl: "{{ rpm.vscode.baseurl }}"
         gpgcheck: true
         gpgkey: "{{ rpm.vscode.gpgkey }}"
-      
-    - name: install vscode
+
+    - name: Install vscode
       ansible.builtin.dnf:
         name: code
         state: present
-      

@@ -1,11 +1,11 @@
 ---
-  - name: install pipx
-    ansible.builtin.dnf:
-      name: pipx
-      state: present
-    become: true
-  
-  - name: install uv
-    community.general.pipx:
-      name: uv
-      state: latest
+- name: Install pipx
+  ansible.builtin.dnf:
+    name: pipx
+    state: present
+  become: true
+
+- name: Install uv
+  community.general.pipx:
+    name: uv
+    state: latest

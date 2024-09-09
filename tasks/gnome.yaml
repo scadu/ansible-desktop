@@ -1,33 +1,33 @@
 ---
-- name: configure wm preferences
+- name: Configure wm preferences
   community.general.dconf:
-    key: "/org/gnome/desktop/wm/preferences/{{ item.key }}"
+    key: /org/gnome/desktop/wm/preferences/{{ item.key }}
     value: "{{ item.value }}"
     state: present
-  with_items: 
-    - { key: "num-workspaces", value: 4 }
-    - { key: "button-layout", value: "'appmenu:minimize,maximize,close'" }
+  with_items:
+    - { key: num-workspaces, value: 4 }
+    - { key: button-layout, value: "'appmenu:minimize,maximize,close'" }
 
 
-- name: configure mouse acceleration
+- name: Configure mouse acceleration
   community.general.dconf:
-    key: "/org/gnome/desktop/peripherals/mouse/speed"
+    key: /org/gnome/desktop/peripherals/mouse/speed
     value: "-0.39849624060150379"
     state: present
 
-- name: configure extensions
+- name: Configure extensions
   community.general.dconf:
-    key: "/org/gnome/shell/extensions/gsnap/{{ item.key }}"
+    key: /org/gnome/shell/extensions/gsnap/{{ item.key }}
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "show-tabs", value: false }
-    - { key: "use-modifier", value: true }
+    - { key: show-tabs, value: false }
+    - { key: use-modifier, value: true }
 
-- name: configure notifications
+- name: Configure notifications
   community.general.dconf:
-    key: "/org/gnome/desktop/notifications/{{ item.key }}"
+    key: /org/gnome/desktop/notifications/{{ item.key }}
     value: "{{ item.value }}"
     state: present
   with_items:
-    - { key: "show-in-lock-screen", value: false }
+    - { key: show-in-lock-screen, value: false }

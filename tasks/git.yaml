@@ -1,24 +1,26 @@
 ---
-- block:
-  - name: add gh cli repo
-    ansible.builtin.yum_repository:
-      name: gh-cli
-      description: GitHub CLI
-      baseurl: https://cli.github.com/packages/rpm
-      gpgcheck: true
-      gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
+- name: Configure git and GitHub CLI
+  block:
+    - name: Add gh cli repo
+      ansible.builtin.yum_repository:
+        name: gh-cli
+        description: GitHub CLI
+        baseurl: https://cli.github.com/packages/rpm
+        gpgcheck: true
+        gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
 
-  - name: install git tooling
-    ansible.builtin.dnf:
-      name: "{{ item }}"
-      state: present
-    with_items: 
-      - git-delta
-      - gh
-    become: true
-    
-  - name: set up gitconfig
-    template:
-      src: templates/gitconfig.j2
-      dest: "{{ ansible_user_dir }}/.gitconfig"
-      force: no # copy only if file does not exist on the target
+    - name: Install git tooling
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git-delta
+        - gh
+      become: true
+
+    - name: Set up gitconfig
+      ansible.builtin.template:
+        src: templates/gitconfig.j2
+        dest: "{{ ansible_user_dir }}/.gitconfig"
+        force: false # copy only if file does not exist on the target
+        mode: "0644"

@@ -1,47 +1,50 @@
 ---
-- name: install zsh
+- name: Install zsh
   become: true
   ansible.builtin.dnf:
     state: present
     name: zsh
 
-- name: install antidote plugin manager
+- name: Install antidote plugin manager
   ansible.builtin.git:
     repo: https://github.com/mattmc3/antidote
     dest: "{{ ansible_user_dir }}/.antidote"
+    version: main
     depth: 1
 
-- name: copy .zsh_plugins.txt
+- name: Copy .zsh_plugins.txt
   ansible.builtin.copy:
     src: .zsh_plugins.txt
     dest: "{{ ansible_user_dir }}/.zsh_plugins.txt"
+    mode: "0644"
 
-- name: generate zshrc
+- name: Generate zshrc
   ansible.builtin.template:
-    src: "templates/{{ item }}.j2"
+    src: templates/{{ item }}.j2
     dest: "{{ ansible_user_dir }}/.{{ item }}"
     owner: "{{ ansible_user_id }}"
+    mode: "0644"
   with_items:
     - zshrc
     - zshenv
 
-- name: set zsh as default shell
+- name: Set zsh as default shell
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     update_password: on_create
     shell: /bin/zsh
 
-- name: enable starship copr
+- name: Enable starship copr
   become: true
   community.general.copr:
     state: enabled
     name: atim/starship
 
-- name: install starship, zoxide and othe utils
+- name: Install starship, zoxide and othe utils
   become: true
   ansible.builtin.dnf:
-    name: 
+    name:
       - starship
       - zoxide
       - fzf # In case if already not installed as dependency for zoxide
