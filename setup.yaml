@@ -7,57 +7,56 @@
     coding_env: false
 
   vars_files:
-      - "vars/{{ lookup('env', 'AS_CONFIG') }}.yaml"
+    - vars/{{ lookup('env', 'AS_CONFIG') }}.yaml
 
-  tasks:  
-  - include_vars: vars/main.yaml
-  - include_tasks: tasks/vscode.yaml
-    tags:
-      - vscode
-    when: desktop
-  - include_tasks: tasks/shell.yaml
-    tags:
-      - shell
-      - dev
-  - include_tasks: tasks/git.yaml
-    tags:
-      - git
-      - github
-      - dev
-  - include_tasks: tasks/chrome.yaml
-    tags:
-      - chrome
-      - desktop
-    when: desktop
-  - include_tasks: tasks/1password.yaml
-    tags:
-      - 1password
-      - desktop
-    when: desktop
-  - include_tasks: tasks/magic.yaml
-    tags:
-      - magic
-      - desktop
-  - include_tasks: tasks/dnf.yaml
-    tags:
-      - dnf
-  - include_tasks: tasks/packages.yaml
-    tags:
-      - packages
-  - include_tasks: tasks/gnome.yaml
-    tags:
-      - gnome
-    when: desktop
-  - include_tasks: tasks/ssh.yaml
-    tags:
-      - ssh
-    when: desktop
-  - include_tasks: tasks/python.yaml
-    tags:
-      - coding
-      - python
-    when: coding_env
-  - include_tasks: tasks/git.yaml
-    tags:
-      - git
-    
+  tasks:
+    - ansible.builtin.include_vars: vars/main.yaml
+    - ansible.builtin.include_tasks: tasks/vscode.yaml
+      tags:
+        - vscode
+      when: desktop
+    - ansible.builtin.include_tasks: tasks/shell.yaml
+      tags:
+        - shell
+        - dev
+    - ansible.builtin.include_tasks: tasks/git.yaml
+      tags:
+        - git
+        - github
+        - dev
+    - ansible.builtin.include_tasks: tasks/chrome.yaml
+      tags:
+        - chrome
+        - desktop
+      when: desktop
+    - ansible.builtin.include_tasks: tasks/1password.yaml
+      tags:
+        - 1password
+        - desktop
+      when: desktop
+    - ansible.builtin.include_tasks: tasks/magic.yaml
+      tags:
+        - magic
+        - desktop
+    - ansible.builtin.include_tasks: tasks/dnf.yaml
+      tags:
+        - dnf
+    - ansible.builtin.include_tasks: tasks/packages.yaml
+      tags:
+        - packages
+    - ansible.builtin.include_tasks: tasks/gnome.yaml
+      tags:
+        - gnome
+      when: desktop
+    - ansible.builtin.include_tasks: tasks/ssh.yaml
+      tags:
+        - ssh
+      when: desktop
+    - ansible.builtin.include_tasks: tasks/python.yaml
+      tags:
+        - coding
+        - python
+      when: coding_env
+    - ansible.builtin.include_tasks: tasks/git.yaml
+      tags:
+        - git
