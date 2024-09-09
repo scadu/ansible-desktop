@@ -16,6 +16,7 @@
       with_items:
         - git-delta
         - gh
+        - pre-commit
       become: true
 
     - name: Set up gitconfig
