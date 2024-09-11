@@ -68,17 +68,37 @@
       ansible.builtin.debug:
         var: ls_tmp_result.stdout_lines
 
-    - name: Extract Starship binary
+    - name: Create temporary directory for extraction
+      ansible.builtin.tempfile:
+        state: directory
+        suffix: starship
+      register: tempdir
+
+    - name: Extract Starship binary to temporary directory
       ansible.builtin.unarchive:
         src: "/tmp/starship.tar.gz"
-        dest: "{{ ansible_user_dir }}/bin"
+        dest: "{{ tempdir.path }}"
         remote_src: yes
-        extra_opts: [--strip-components=1]
       register: extract_result
 
     - name: Debug - Show extract result
       ansible.builtin.debug:
         var: extract_result
+
+    - name: Debug - List content of temp directory
+      ansible.builtin.command: ls -l {{ tempdir.path }}
+      register: ls_temp_result
+
+    - name: Debug - Show temp directory content
+      ansible.builtin.debug:
+        var: ls_temp_result.stdout_lines
+
+    - name: Move Starship binary to ~/bin
+      ansible.builtin.copy:
+        src: "{{ tempdir.path }}/starship"
+        dest: "{{ ansible_user_dir }}/bin/starship"
+        mode: '0755'
+        remote_src: yes
 
     - name: Debug - List content of ~/bin
       ansible.builtin.command: ls -l {{ ansible_user_dir }}/bin
@@ -88,16 +108,13 @@
       ansible.builtin.debug:
         var: ls_bin_result.stdout_lines
 
-    - name: Set Starship binary permissions
+    - name: Remove Starship archive and temp directory
       ansible.builtin.file:
-        path: "{{ ansible_user_dir }}/bin/starship"
-        mode: '0755'
-      when: ls_bin_result.stdout is search('starship')
-
-    - name: Remove Starship archive
-      ansible.builtin.file:
-        path: "/tmp/starship.tar.gz"
+        path: "{{ item }}"
         state: absent
+      loop:
+        - "/tmp/starship.tar.gz"
+        - "{{ tempdir.path }}"
 
   rescue:
     - name: Debug - Show error
