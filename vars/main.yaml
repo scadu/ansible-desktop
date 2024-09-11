@@ -5,8 +5,8 @@ packages:
   - ripgrep
   - jq
   - neovim
-  - fira-code-fonts
-  - gnome-tweaks
+  # - fira-code-fonts
+  # - gnome-tweaks
 
 rpm:
   onepassword:

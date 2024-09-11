@@ -1,6 +1,6 @@
 ---
 - name: Install pipx
-  ansible.builtin.dnf:
+  ansible.builtin.apt:
     name: pipx
     state: present
   become: true

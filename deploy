@@ -11,4 +11,23 @@ fi
 AS_CONFIG=$(cat "$config_file")
 export AS_CONFIG
 
-ansible-playbook -c local -i localhost -K setup.yaml
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Check if Ansible is installed
+if ! command_exists ansible; then
+    echo "Ansible is not installed. Installing now..."
+    sudo apt-get update
+    sudo apt-get install -y ansible
+
+fi
+
+# Check if ansible-playbook is available
+if ! command_exists ansible-playbook; then
+    echo "Error: ansible-playbook command not found. Please ensure Ansible is correctly installed."
+    exit 1
+fi
+
+ansible-playbook -c local -i localhost, -K setup.yaml

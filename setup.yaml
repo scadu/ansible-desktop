@@ -41,9 +41,9 @@
     # - ansible.builtin.include_tasks: tasks/dnf.yaml
     #   tags:
     #     - dnf
-    - ansible.builtin.include_tasks: tasks/packages.yaml
-      tags:
-        - packages
+    # - ansible.builtin.include_tasks: tasks/packages.yaml
+    #   tags:
+    #     - packages
     - ansible.builtin.include_tasks: tasks/gnome.yaml
       tags:
         - gnome
@@ -57,6 +57,3 @@
         - coding
         - python
       when: coding_env
-    - ansible.builtin.include_tasks: tasks/git.yaml
-      tags:
-        - git

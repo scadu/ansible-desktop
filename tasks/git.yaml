@@ -1,18 +1,24 @@
 ---
 - name: Configure git and GitHub CLI
   block:
-    - name: Add gh cli repo
-      ansible.builtin.yum_repository:
-        name: gh-cli
-        description: GitHub CLI
-        baseurl: https://cli.github.com/packages/rpm
-        gpgcheck: true
-        gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
+    - name: Add GitHub CLI repository signing key
+      ansible.builtin.apt_key:
+        url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
+        state: present
+      become: true
+
+    - name: Add GitHub CLI repository
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64] https://cli.github.com/packages stable main
+        state: present
+        filename: github-cli
+      become: true
 
     - name: Install git tooling
-      ansible.builtin.dnf:
+      ansible.builtin.apt:
         name: "{{ item }}"
         state: present
+        update_cache: yes
       with_items:
         - git-delta
         - gh

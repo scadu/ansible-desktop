@@ -1,9 +1,10 @@
 ---
 - name: Install zsh
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.apt:
     state: present
     name: zsh
+    update_cache: yes
 
 - name: Install antidote plugin manager
   ansible.builtin.git:
@@ -35,17 +36,46 @@
     update_password: on_create
     shell: /bin/zsh
 
-- name: Enable starship copr
-  become: true
-  community.general.copr:
-    state: enabled
-    name: atim/starship
+- name: Install Starship
+  block:
+    - name: Ensure ~/bin directory exists
+      ansible.builtin.file:
+        path: "{{ ansible_user_dir }}/bin"
+        state: directory
+        mode: '0755'
 
-- name: Install starship, zoxide and othe utils
+    - name: Get latest Starship release
+      community.general.github_release:
+        user: starship
+        repo: starship
+        action: latest_release
+      register: starship_release
+
+    - name: Download Starship binary
+      ansible.builtin.get_url:
+        url: "https://github.com/starship/starship/releases/download/{{ starship_release.tag }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+        dest: "/tmp/starship.tar.gz"
+        mode: '0644'
+
+    - name: Extract Starship binary
+      ansible.builtin.unarchive:
+        src: "/tmp/starship.tar.gz"
+        dest: "{{ ansible_user_dir }}/bin"
+        remote_src: yes
+        extra_opts: [--strip-components=1]
+
+    - name: Set Starship binary permissions
+      ansible.builtin.file:
+        path: "{{ ansible_user_dir }}/bin/starship"
+        mode: '0755'
+
+- name: Install zoxide and other utils
   become: true
-  ansible.builtin.dnf:
+  ansible.builtin.apt:
     name:
-      - starship
       - zoxide
-      - fzf # In case if already not installed as dependency for zoxide
+      - fzf
+      - ripgrep
+      - jq
     state: present
+    update_cache: yes
