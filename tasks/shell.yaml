@@ -44,16 +44,19 @@
         state: directory
         mode: '0755'
 
-    - name: Get latest Starship release
-      community.general.github_release:
-        user: starship
-        repo: starship
-        action: latest_release
-      register: starship_release
+    - name: Get latest Starship release info
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/starship/starship/releases/latest
+        return_content: yes
+      register: starship_release_info
+
+    - name: Set Starship version
+      ansible.builtin.set_fact:
+        starship_version: "{{ starship_release_info.json.tag_name }}"
 
     - name: Download Starship binary
       ansible.builtin.get_url:
-        url: "https://github.com/starship/starship/releases/download/{{ starship_release.tag }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+        url: "https://github.com/starship/starship/releases/download/{{ starship_version }}/starship-x86_64-unknown-linux-gnu.tar.gz"
         dest: "/tmp/starship.tar.gz"
         mode: '0644'
 
@@ -69,13 +72,16 @@
         path: "{{ ansible_user_dir }}/bin/starship"
         mode: '0755'
 
+    - name: Remove Starship archive
+      ansible.builtin.file:
+        path: "/tmp/starship.tar.gz"
+        state: absent
+
 - name: Install zoxide and other utils
   become: true
   ansible.builtin.apt:
     name:
       - zoxide
       - fzf
-      - ripgrep
-      - jq
     state: present
     update_cache: yes
