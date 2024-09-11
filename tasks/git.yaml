@@ -1,6 +1,15 @@
 ---
 - name: Configure git and GitHub CLI
   block:
+    - name: Ensure required packages are installed
+      ansible.builtin.apt:
+        name:
+          - gnupg
+          - software-properties-common
+        state: present
+        update_cache: yes
+      become: true
+
     - name: Add GitHub CLI repository signing key
       ansible.builtin.apt_key:
         url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
@@ -16,13 +25,12 @@
 
     - name: Install git tooling
       ansible.builtin.apt:
-        name: "{{ item }}"
+        name: 
+          - git-delta
+          - gh
+          - pre-commit
         state: present
         update_cache: yes
-      with_items:
-        - git-delta
-        - gh
-        - pre-commit
       become: true
 
     - name: Set up gitconfig
@@ -31,3 +39,12 @@
         dest: "{{ ansible_user_dir }}/.gitconfig"
         force: false # copy only if file does not exist on the target
         mode: "0644"
+
+  rescue:
+    - name: Debug - Show error
+      ansible.builtin.debug:
+        msg: "An error occurred during git and GitHub CLI setup. Please check the output above for details."
+
+    - name: Fail the play if setup failed
+      ansible.builtin.fail:
+        msg: "Git and GitHub CLI setup failed. Please review the debug output and try again."
