@@ -60,22 +60,53 @@
         dest: "/tmp/starship.tar.gz"
         mode: '0644'
 
+    - name: Debug - List content of /tmp
+      ansible.builtin.command: ls -l /tmp/starship.tar.gz
+      register: ls_tmp_result
+
+    - name: Debug - Show ls result
+      ansible.builtin.debug:
+        var: ls_tmp_result.stdout_lines
+
     - name: Extract Starship binary
       ansible.builtin.unarchive:
         src: "/tmp/starship.tar.gz"
         dest: "{{ ansible_user_dir }}/bin"
         remote_src: yes
         extra_opts: [--strip-components=1]
+      register: extract_result
+
+    - name: Debug - Show extract result
+      ansible.builtin.debug:
+        var: extract_result
+
+    - name: Debug - List content of ~/bin
+      ansible.builtin.command: ls -l {{ ansible_user_dir }}/bin
+      register: ls_bin_result
+
+    - name: Debug - Show ls result
+      ansible.builtin.debug:
+        var: ls_bin_result.stdout_lines
 
     - name: Set Starship binary permissions
       ansible.builtin.file:
         path: "{{ ansible_user_dir }}/bin/starship"
         mode: '0755'
+      when: ls_bin_result.stdout is search('starship')
 
     - name: Remove Starship archive
       ansible.builtin.file:
         path: "/tmp/starship.tar.gz"
         state: absent
+
+  rescue:
+    - name: Debug - Show error
+      ansible.builtin.debug:
+        msg: "An error occurred during Starship installation. Please check the output above for details."
+
+    - name: Fail the play if Starship installation failed
+      ansible.builtin.fail:
+        msg: "Starship installation failed. Please review the debug output and try again."
 
 - name: Install zoxide and other utils
   become: true
