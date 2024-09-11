@@ -38,9 +38,9 @@
       tags:
         - magic
         - desktop
-    - ansible.builtin.include_tasks: tasks/dnf.yaml
-      tags:
-        - dnf
+    # - ansible.builtin.include_tasks: tasks/dnf.yaml
+    #   tags:
+    #     - dnf
     - ansible.builtin.include_tasks: tasks/packages.yaml
       tags:
         - packages
