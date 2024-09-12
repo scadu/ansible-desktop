@@ -44,77 +44,47 @@
         state: directory
         mode: '0755'
 
-    - name: Get latest Starship release info
-      ansible.builtin.uri:
-        url: https://api.github.com/repos/starship/starship/releases/latest
-        return_content: yes
-      register: starship_release_info
+    - name: Check if Starship is already installed
+      ansible.builtin.stat:
+        path: "{{ ansible_user_dir }}/bin/starship"
+      register: starship_binary
 
-    - name: Set Starship version
-      ansible.builtin.set_fact:
-        starship_version: "{{ starship_release_info.json.tag_name }}"
+    - name: Install Starship using gh cli
+      when: not starship_binary.stat.exists
+      block:
+        - name: Get latest Starship release
+          ansible.builtin.command:
+            cmd: gh release download --repo starship/starship --pattern '*x86_64-unknown-linux-gnu.tar.gz' --dir /tmp
+          register: starship_download
 
-    - name: Download Starship binary
-      ansible.builtin.get_url:
-        url: "https://github.com/starship/starship/releases/download/{{ starship_version }}/starship-x86_64-unknown-linux-gnu.tar.gz"
-        dest: "/tmp/starship.tar.gz"
-        mode: '0644'
+        - name: Extract Starship binary
+          ansible.builtin.unarchive:
+            src: "{{ starship_download.stdout_lines[0] }}"
+            dest: "{{ ansible_user_dir }}/bin"
+            remote_src: yes
+            extra_opts: [--strip-components=1]
 
-    - name: Debug - List content of /tmp
-      ansible.builtin.command: ls -l /tmp/starship.tar.gz
-      register: ls_tmp_result
+        - name: Set Starship binary permissions
+          ansible.builtin.file:
+            path: "{{ ansible_user_dir }}/bin/starship"
+            mode: '0755'
 
-    - name: Debug - Show ls result
-      ansible.builtin.debug:
-        var: ls_tmp_result.stdout_lines
+        - name: Remove Starship archive
+          ansible.builtin.file:
+            path: "{{ starship_download.stdout_lines[0] }}"
+            state: absent
 
-    - name: Create temporary directory for extraction
-      ansible.builtin.tempfile:
-        state: directory
-        suffix: starship
-      register: tempdir
-
-    - name: Extract Starship binary to temporary directory
-      ansible.builtin.unarchive:
-        src: "/tmp/starship.tar.gz"
-        dest: "{{ tempdir.path }}"
-        remote_src: yes
-      register: extract_result
-
-    - name: Debug - Show extract result
-      ansible.builtin.debug:
-        var: extract_result
-
-    - name: Debug - List content of temp directory
-      ansible.builtin.command: ls -l {{ tempdir.path }}
-      register: ls_temp_result
-
-    - name: Debug - Show temp directory content
-      ansible.builtin.debug:
-        var: ls_temp_result.stdout_lines
-
-    - name: Move Starship binary to ~/bin
-      ansible.builtin.copy:
-        src: "{{ tempdir.path }}/starship"
-        dest: "{{ ansible_user_dir }}/bin/starship"
-        mode: '0755'
-        remote_src: yes
-
-    - name: Debug - List content of ~/bin
-      ansible.builtin.command: ls -l {{ ansible_user_dir }}/bin
-      register: ls_bin_result
-
-    - name: Debug - Show ls result
-      ansible.builtin.debug:
-        var: ls_bin_result.stdout_lines
-
-    - name: Remove Starship archive and temp directory
+    - name: Ensure Starship config directory exists
       ansible.builtin.file:
-        path: "{{ item }}"
-        state: absent
-      loop:
-        - "/tmp/starship.tar.gz"
-        - "{{ tempdir.path }}"
+        path: "{{ ansible_user_dir }}/.config"
+        state: directory
+        mode: '0755'
+
+    - name: Configure Starship with plain text symbols
+      ansible.builtin.command:
+        cmd: starship preset plain-text-symbols -o {{ ansible_user_dir }}/.config/starship.toml
+      args:
+        creates: "{{ ansible_user_dir }}/.config/starship.toml"
 
   rescue:
     - name: Debug - Show error
