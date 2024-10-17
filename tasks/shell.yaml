@@ -12,21 +12,11 @@
     version: main
     depth: 1
 
-- name: Copy .zsh_plugins.txt
+- name: Copy .zshrc
   ansible.builtin.copy:
-    src: .zsh_plugins.txt
-    dest: "{{ ansible_user_dir }}/.zsh_plugins.txt"
-    mode: "0644"
-
-- name: Generate zshrc
-  ansible.builtin.template:
-    src: templates/{{ item }}.j2
-    dest: "{{ ansible_user_dir }}/.{{ item }}"
-    owner: "{{ ansible_user_id }}"
-    mode: "0644"
-  with_items:
-    - zshrc
-    - zshenv
+    src: .zshrc
+    dest: "{{ ansible_user_dir }}/.zshrc"
+    mode: 644
 
 - name: Set zsh as default shell
   become: true

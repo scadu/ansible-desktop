@@ -24,4 +24,4 @@
         src: templates/gitconfig.j2
         dest: "{{ ansible_user_dir }}/.gitconfig"
         force: false # copy only if file does not exist on the target
-        mode: "0644"
+        mode: 644
